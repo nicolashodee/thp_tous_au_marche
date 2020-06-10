@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>A bientôt sur Tous Au Marché !</h1>
-    <p>
-      Vous avez supprimé votre compte utilisateur sur le site Tous au Marché en utilisant l'e-mail suivant: <%= @user.email %>.
-      Les informations associées à ce compte ont été supprimé. 
-    </p>
-    <p>
-      Nous espérons vous revoir bientôt parmi nous !
-      La team TousAuMarché.
-    </p>
-  </body>
-</html>
+<div class="container">
+
+  <div class="card mb-4 my-5" style="border-top: 15px solid black;">
+    <div class="card-body">
+      <h4 class="text-center">A bientôt sur Tous Au Marché</h4>
+      <p class="text-muted text-center">Nous espérons vous revoir bientôt parmi nous !</p>
+     
+    </div>
+  </div>
+
+  <div class="card w-100 mb-4">
+    <div class="card-body">
+      <img width="50" height="50" class="mx-auto" src="https://image.flaticon.com/icons/png/512/725/725030.png" alt="logo coeur brise"><br>
+      <h4 class="text-center">Vous vous êtes désinscrit(e) de votre compte Consommateur</h4>
+      <p class="text-muted text-center">Votre email : <%= @user.email %></p>
+      <p class="text-center">Les informations associées à ce compte consommateur ont bien été supprimé.</p>
+    </div>
+  </div>
+
+</div>

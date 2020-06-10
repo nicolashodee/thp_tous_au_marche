@@ -12,7 +12,7 @@ class ProducerMailer < ApplicationMailer
   def goodbye_email(producer)
     @producer = producer 
     @url  = 'https://tous-au-marche.herokuapp.com' 
-    mail(to: @producer.email, subject: 'Vous nous quittez déjà ?') 
+    make_bootstrap_mail(to: @producer.email, subject: 'On se revoit bientôt ?') 
   end
   
 end
