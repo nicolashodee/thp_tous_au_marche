@@ -15,3 +15,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets")
 Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "javascripts")
+
+#Bootstrap email - line to compile the new SASS file
+Rails.application.config.assets.precompile += %w( application-mailer.scss )
+
