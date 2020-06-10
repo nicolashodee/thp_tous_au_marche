@@ -11,4 +11,11 @@ class ProducerMailer < ApplicationMailer
     #it is this call to mail() that allows us to send the e-mail by defining recipient and subject.
     mail(to: @producer.email, subject: 'Bienvenue sur votre espace producteur TOUS AU MARCHE !') 
   end
+
+  def goodbye_email(producer)
+    @producer = producer 
+    @url  = 'https://tous-au-marche.herokuapp.com' 
+    mail(to: @producer.email, subject: 'Vous nous quittez déjà ?') 
+  end
+
 end

@@ -11,13 +11,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-      @user = User.find(params[:id])
-      @user.destroy
-  
-      if @user.destroy
-          flash[:notice] = 'Utilisateur supprime'
-          redirect_to root_url
-      end
+    @user = User.find(params[:id])
+    @user.destroy
+
+    if @user.destroy
+      flash[:notice] = 'Vous avez supprimé votre compte utilisateur. A bientôt !'
+      redirect_to root_url
+    else 
+      flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
+      redirect_to root_url
+    end
   end
 
   def update

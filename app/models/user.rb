@@ -11,5 +11,11 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+
+  ### sending an email when a user is deleted
+  before_destroy :goodbye_send
+  def goodbye_send
+    UserMailer.goodbye_email(self).deliver_now
+  end
   
 end
