@@ -1,0 +1,6 @@
+<div>
+  <p>Vous etes un utilisateur et votre email : <%= @user.email %></p>
+  <ul class="p-info">
+      <li><%= link_to "Modifier ces informations", edit_user_registration_path, { :type => "button",  :class => 'btn-outline-secondary' } %></li>
+  </ul>
+</div>
