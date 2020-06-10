@@ -11,13 +11,16 @@ class ProducersController < ApplicationController
   end
 
   def destroy
-      @producer = Producer.find(params[:id])
-      @producer.destroy
-  
-      if @producer.destroy
-          flash[:notice] = 'Producteur supprime'
-          redirect_to root_url
-      end
+    @producer = Producer.find(params[:id])
+    @producer.destroy
+    if @producer.destroy
+      flash[:notice] = 'Vous avez supprimé votre compte producteur. A bientôt !'
+      redirect_to root_url
+    else 
+      flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
+      redirect_to root_url
+    end
+    
   end
 
   def update
