@@ -19,5 +19,4 @@ require 'faker'
     last_name: Faker::Name.last_name,
     description: Faker::TvShows::Simpsons.quote,
   )
-  puts producer
 end
