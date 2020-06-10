@@ -10,3 +10,14 @@ Producer.destroy_all
 
 require 'faker'
 
+20.times do
+  producer = Producer.create(
+    email: Faker::Internet.email,
+    password: 'azerty',
+    password_confirmation: 'azerty',
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    description: Faker::TvShows::Simpsons.quote,
+  )
+  puts producer
+end
