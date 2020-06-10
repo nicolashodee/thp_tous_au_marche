@@ -12,5 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+//= require jquery.min
+//= require jquery.easing.1.3
+//= require bootstrap.min
+//= require jquery.waypoints.min
+//= require jquery.stellar.min
+//= require jquery.countTo
+//= require jquery.magnific-popup.min
+//= require magnific-popup-options
+//= require main 
