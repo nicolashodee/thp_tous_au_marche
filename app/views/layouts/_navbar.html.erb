@@ -1,0 +1,39 @@
+<header role="banner" id="fh5co-header" class='navbar-fixed-top fh5co-animated slideInDown'>
+  <div class="container">
+
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <i></i>
+        </a>
+        <%= link_to "Tous au marché !", root_path, { :type => "button", :class => "navbar-brand" } %>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to "Contact", root_path, { :type => "button" } %>
+          </li>
+          <li>
+            <%= link_to "A propos", root_path, { :type => "button", :'data-nav-section' => 'about' } %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="active">
+              <%= link_to "Mon profil", user_path(current_user), { :type => "button", :'data-nav-section' => 'about' } %>
+            </li>
+            <li>
+              <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button" } %>
+            </li>
+          <% elsif producer_signed_in? %>
+            <li>
+              <%= link_to "Mon profil", producer_path(current_user), { :type => "button" } %>
+            </li>
+            <li>
+              <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button" } %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+</header>

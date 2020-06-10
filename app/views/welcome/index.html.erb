@@ -1,9 +1,10 @@
-Welcome on TOUS AU MARCHE ! 
+Welcome on TOUS AU MARCHE !
+
 
 <!--THIS TESTING BLOCK IS FOR NAVIGATION THROUGH THE WEBSITE UNTIL WE GET A NAVBAR-->
 <div class="user-access">
   <% if user_signed_in? %>
-    
+
     <%= link_to "Mon profil utilisateur", user_path(current_user), { :type => "button",  :class => 'in' } %>
     <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in' } %>
   <% else %>
@@ -20,4 +21,9 @@ Welcome on TOUS AU MARCHE !
     <%= link_to "Connexion pour les producteurs", new_producer_session_path, :type => "button",  :class => 'in' %>
   <% end %>
 </div>
+
+<section id="fh5co-about" data-section="about">
+  <p>Voilà</p>
+</section>
+
 <!--END OF TESTING BLOCK-->
