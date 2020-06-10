@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_090332) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "address"
     t.text "description"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
