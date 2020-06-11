@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Elate &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!-- Facebook and Twitter integration -->
+		<meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:url" content="" />
+		<meta name="twitter:card" content="" />
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+		<!-- FOR IE9 below -->
+		<!--[if lt IE 9]>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<section id="fh5co-home" data-section="home" style="background-image: url(<%= asset_path('homepage/field.jpg') %>);" data-stellar-background-ratio="0.5">
+			<div class="gradient"></div>
+			<div class="container">
+				<div class="text-wrap">
+					<div class="text-inner">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2">
+								<h1 class="to-animate">Tout commence là.</h1>
+								<h2 class="to-animate"><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slant"></div>
+		</section>
+
+		<section id="fh5co-intro">
+			<div class="container">
+				<div class="row row-bottom-padded-lg buttons-intro-homepage">
+					<div class="fh5co-block to-animate" style="background-image: url(<%= asset_path('homepage/buyer.jpg')%>);">
+						<div class="overlay-darker"></div>
+						<div class="overlay"></div>
+						<div class="fh5co-text">
+              <span style="font-size: 8em; color: green;">
+							  <i class="fas fa-seedling"></i>
+              </span>
+							<h2>Je cherche un producteur local</h2>
+							<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, on est allés le demander pour vous !</p>
+							<p><a href="#" class="btn btn-primary">Voir la carte</a></p>
+						</div>
+					</div>
+					<div class="fh5co-block to-animate" style="background-image: url(<%= asset_path('homepage/seeding.jpg')%>);">
+						<div class="overlay-darker"></div>
+						<div class="overlay"></div>
+						<div class="fh5co-text">
+              <span style="font-size: 8em; color: #ff9900;"> 
+							  <i class="fas fa-hands-helping"></i>
+              </span>
+							<h2>Je suis un producteur</h2>
+              <p>Les passionnés le savent : tout est une question de pratique et de persévérance.<br>
+              Vous avez le savoir-faire, maintenant faites le savoir !</p>
+							<p><a href="#" class="btn btn-primary">S'inscrire</a></p>
+						</div>
+					</div>
+				</div>
+
+        <div class="row watch-video text-center to-animate">
+					<span>Watch the video</span>
+					<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><span style="font-size: 5em; color: #339966;"><i class="far fa-play-circle"></i></span></a>
+				</div>
+        <!--THIS TESTING BLOCK IS FOR NAVIGATION THROUGH THE WEBSITE UNTIL WE GET A NAVBAR-->
+        <div class="test-links row">
+            <% if user_signed_in? %>
+              <div class="col-md-12">
+                <%= link_to "Mon profil utilisateur", user_path(current_user), { :type => "button",  :class => 'in btn btn-success' } %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-success' } %>
+              </div>>
+            <% else %>
+              <div class="col-md-12">
+                <%= link_to "Signup utilisateur", new_user_registration_path, :type => "button", :class => 'in btn btn-success' %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Login utilisateurs", new_user_session_path, :type => "button",  :class => 'in btn btn-success' %>
+              </div>
+            <% end %>
+            <% if producer_signed_in? %>
+              <div class="col-md-12">
+                <%= link_to "Mon profil producteur", producer_path(current_producer), { :type => "button",  :class => 'in btn btn-success' } %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-success' } %>
+              </div>
+            <% else %>
+              <div class="my-1">
+                <%= link_to "Signup producteur", new_producer_registration_path, :type => "button", :class => 'in btn btn-success' %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Signin producteur", new_producer_session_path, :type => "button",  :class => 'in btn btn-success' %>
+              </div>
+            <% end %>
+          <div class="col-md-12">
+            <%= link_to "Liste des producteurs", producers_path(@producer), { :type => "button",  :class => 'in btn btn-success' } %>
+          </div>
+        </div>
+        <!--END OF TESTING BLOCK-->
+			</div>
+		</section>
+
+		<section id="fh5co-services" data-section="services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 section-heading text-left">
+						<h2 class=" left-border to-animate">Nos valeurs</h2>
+						<div class="row">
+							<div class="col-md-8 subtext to-animate">
+								<h3>L'autosuffisance alimentaire pour tous, face à l'urgence climatique.</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+						<span style="font-size: 3em; color: red;">
+              <i class="fas fa-virus-slash"></i>
+            </span>
+						<h3>COVID-19 Proof</h3>
+						<p>La pandémie de Sars-cov-2 nous a prouvé l'importance des circuits courts et résilients. En vous reliant directement à vos producteurs, Tous au Marché contribue à votre indépendance alimentaire. </p>
+					</div>
+					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+						<span style="font-size: 3em; color: yellow;">
+              <i class="fas fa-lemon"></i>
+            </span>
+						<h3>Fraicheur &amp; qualité</h3>
+						<p>Un esprit sain dans un corps sain. Rien de nouveau sous le soleil ! Mais n'est-ce pas encore meilleur en sachant ce qui se cache derrière votre assiette ?</p>
+					</div>
+
+					
+
+					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+						<span style="font-size: 3em; color: #FFC107;">
+              <i class="fas fa-hand-sparkles"></i>
+            </span>
+						<h3>Made in chez vous</h3>
+						<p>Découvrez comment travaille votre producteur local, quels sont ses labels, et comment le contacter.</p>
+					</div>
+					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+            <span style="font-size: 3em; color: #00ff33;">
+						  <i class="fas fa-globe-americas"></i>
+            </span>
+						<h3>Bon pour la planète</h3>
+						<p>Parce qu'il y a urgence à repenser nos modes de consommation, pour notre avenir et celui de nos enfants.</p>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		
+		<section id="fh5co-about" data-section="about">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 section-heading text-center">
+						<h2 class="to-animate">A propos</h2>
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 subtext to-animate">
+								<h3>Il était une fois 5 millénials, qui voulaient changer le monde...</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+        <div class ="portraits">
+					<div class="col-xs-4">
+						<div class="fh5co-person text-center to-animate">
+							<figure><img src="<%= asset_path('homepage/portraits/nicolas.jpg') %>" alt="Image"></figure>
+							<h3>Nicolas Hodée</h3>
+							<span class="fh5co-position">Photographe / Retoucheur</span>
+							<p>Expert des pixels et de la couleur, je partage mon temps entre le debug, le debug, et le debug. Et vous ?</p>
+							<ul class="social social-circle">
+								<li><a href="https://www.instagram.com/nicolas_hodee_photography/"><i class="fab fa-instagram"></i></a></li>
+								<li><a href="https://www.facebook.com/photos.nicolashodee"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="http://www.nicolashodee.com/"><i class="fas fa-code"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="fh5co-person text-center to-animate">
+							<figure><img src="<%= asset_path('homepage/portraits/jordan.jpg') %>" alt="Image"></figure>
+							<h3>Jordan Tournerie</h3>
+							<span class="fh5co-position">expert Asset Pipeline</span>
+							<p>Expert en magie noire, je ne suis pas sûr de pouvoir invoquer Bootstrap 4 sur ce site, alors prenez garde ! </p>
+							<ul class="social social-circle">
+								<li><a href="#"><i class="icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon-github"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="fh5co-person text-center to-animate">
+							<figure><img src="<%= asset_path('homepage/portraits/aurore.jpg') %>" alt="Image"></figure>
+							<h3>Aurore Carrière</h3>
+							<span class="fh5co-position">Web designer</span>
+							<p>Ma flemme est une source d'inspiration ! T'as mieux que ça à dire ? </p>
+							<ul class="social social-circle">
+								<li><a href="#"><i class="icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							</ul>
+						</div>
+					</div>
+        </div> 
+        <div class ="portraits">
+          <div class="col-md-4 mx-auto my-5">
+						<div class="fh5co-person text-center to-animate">
+							<figure><img src="<%= asset_path('homepage/portraits/marvin.jpg') %>" alt="Image"></figure>
+							<h3>Marvin Pierrat</h3>
+							<span class="fh5co-position">Expert Linux & Rails</span>
+							<p>Ce que je touche sur Rails se transforme en or, alors ne tardez plus et envoyez moi une app!</p>
+							<ul class="social social-circle">
+								<li><a href="#"><i class="icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							</ul>
+						</div>
+					</div>
+          <div class="col-md-4 mx-5 my-5">
+						<div class="fh5co-person text-center to-animate">
+							<figure><img src="<%= asset_path('homepage/portraits/clement.jpg') %>" alt="Image"></figure>
+							<h3>Clément Facco</h3>
+							<span class="fh5co-position">Trello Manager</span>
+							<p>Grand amoureux de Trello, des épis de blé et des croziflettes. Si ça te pose un problème, vas voir ailleurs. </p>
+							<ul class="social social-circle">
+								<li><a href="#"><i class="icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon-dribbble"></i></a></li>
+							</ul>
+						</div>
+					</div>
+        </div> 
+			</div>
+		</section>
+		
+		<section id="fh5co-counters" style="background-image: url(<%= asset_path('homepage/full_image_1.jpg') %>);" data-stellar-background-ratio="0.5">
+			<div class="fh5co-overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 section-heading text-center to-animate">
+						<h2>Tous au Marché en chiffres</h2>
+					</div>
+				</div>
+				<div class="row counter-homepage">
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="fh5co-counter to-animate">
+              <span style="font-size: 3em; color: #white;">
+							  <i class="fas fa-user-friends"></i>
+              </span>
+							<span class="fh5co-counter-number js-counter" data-from="0" data-to="89" data-speed="5000" data-refresh-interval="50">89</span>
+							<span class="fh5co-counter-label">producteurs inscrits</span>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="fh5co-counter to-animate">
+              <span style="font-size: 3em; color: #white;">
+                <i class="fas fa-terminal"></i>
+              </span>
+							<span class="fh5co-counter-number js-counter" data-from="0" data-to="2343409" data-speed="5000" data-refresh-interval="50">2343409</span>
+							<span class="fh5co-counter-label">Lignes de code</span>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<div class="fh5co-counter to-animate">
+              <span style="font-size: 3em; color: #white;">
+                <i class="fas fa-coffee"></i>
+              </span>
+							<span class="fh5co-counter-number js-counter" data-from="0" data-to="1302" data-speed="5000" data-refresh-interval="50">1302</span>
+							<span class="fh5co-counter-label">Verres de café</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+		
+		<!-- Main JS (Do not remove) -->
+		<script src="vendor/assets/javascripts/main.js"></script>
+	</body>
+</html>
+
