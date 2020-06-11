@@ -1,10 +1,13 @@
 class Producer < ApplicationRecord
-  belongs_to :city
+  belongs_to :city, optional: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_many :join_table_product_category
+  has_many :categories, through: :join_table_product_category
+
   private
 
   ### Sending an email when a producer is created
