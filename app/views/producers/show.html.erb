@@ -22,27 +22,29 @@
       </div>
     </div>
     <div class="row row-bottom-padded-sm">
-      <div class="col-md-4 col-sm-6 col-xxs-12">
-        <a href="images/work_1.jpg" class="fh5co-project-item image-popup to-animate fadeInUp animated">
+      <div class="col-md-6 text-center to-animate fadeInUp animated">
+        <a href="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" class="fh5co-project-item image-popup to-animate fadeInUp animated">
           <img src=" https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" alt="Image" class="img-responsive">
         </a>
       </div>
-      <div class="row">
-        <div class="col-md-12 text-center to-animate fadeInUp animated">
-          <ul class="fh5co-contact-info" style="list-style-type:none;">
-            <li class="fh5co-contact-address">
-              <i class="fas fa-home"></i> 5555 Love Paradise 56 New Clity 5655,
-              <br>
-              <%= @producer.city.city_name%> <%= @producer.city.zip_code%> </li>
-            <li><i class="fas fa-phone-alt"></i> (123) 465-6789</li>
-            <li><i class="fas fa-at"></i> <%= @producer.email%></li>
-            <li><i class="fas fa-globe"></i> <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row text-center">
-        <%= @producer.description%>
+      <div class="col-md-6 text-center to-animate fadeInUp animated">
+        <ul class="fh5co-contact-info" style="list-style-type: none">
+          <li><i class="fas fa-home"></i> 5555 Love Paradise 56 New Clity 5655,
+            <br>
+            <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
+          </li>
+          <li><i class="fas fa-phone-alt"></i> (123) 465-6789</li>
+          <li><i class="fas fa-at"></i> <%= @producer.email%></li>
+          <li><i class="fas fa-globe"></i> <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
+    <div class="row" style="margin-top: 50px">
+      <blockquote class="to-animate-2 fadeInDown animated">
+        <p><%= @producer.description%></p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="slant"></div>
+</section>
