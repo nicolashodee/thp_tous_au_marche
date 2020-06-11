@@ -31,7 +31,7 @@
             </li>
           <% elsif producer_signed_in? %>
             <li>
-              <%= link_to producer_path(current_user), { :'data-nav-section' => 'profile' } do %>
+              <%= link_to producer_path(current_producer), { :'data-nav-section' => 'profile' } do %>
                 <span>Mon profil</span>
               <% end %>
             </li>
