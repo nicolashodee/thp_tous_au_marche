@@ -2,6 +2,10 @@ class ProducersController < ApplicationController
   before_action :authenticate_producer!, only: [:show]
   before_action :is_current_producer_showing?, only: [:show]
 
+  def index
+    @producer = Producer.all
+  end
+
   def show
     @producer = Producer.find(params[:id])
   end

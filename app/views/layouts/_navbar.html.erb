@@ -11,32 +11,33 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to root_path, { :'data-nav-section' => 'contact' } do %>
+            <%= link_to root_path, { :'data-nav-section' => 'contact', :class => 'external' } do %>
               <span>Contact</span>
             <% end %>
           </li>
           <li>
-            <%= link_to root_path, { :'data-nav-section' => 'about' } do %>
+            <%= link_to root_path, { :'data-nav-section' => 'about', :class => 'external' } do %>
               <span>A propos</span>
             <% end %>
           </li>
           <% if user_signed_in? %>
             <li>
-              <%= link_to user_path(current_user), { :'data-nav-section' => 'profile' }  do %>
+              <%= link_to user_path(current_user), { :'data-nav-section' => 'profile', :class => 'external' }  do %>
                 <span>Mon profil</span>
               <% end %>
             </li>
             <li>
-              <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button" } %>
+              <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button", :class => 'external' } %>
             </li>
           <% elsif producer_signed_in? %>
             <li>
               <%= link_to producer_path(current_producer), { :'data-nav-section' => 'profile' } do %>
+
                 <span>Mon profil</span>
               <% end %>
             </li>
             <li>
-              <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button" } %>
+              <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button", :class => 'external' } %>
             </li>
           <% end %>
         </ul>
