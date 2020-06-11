@@ -52,6 +52,12 @@ footer a .fa-arrow-up {
   flex-direction: row;
 }
 
+.test-links {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
 #fh5co-home .gradient {
   position: absolute;
   top: 0;

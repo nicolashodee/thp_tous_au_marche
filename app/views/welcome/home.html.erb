@@ -81,7 +81,43 @@
 					<span>Watch the video</span>
 					<a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><span style="font-size: 5em; color: #339966;"><i class="far fa-play-circle"></i></span></a>
 				</div>
-
+        <!--THIS TESTING BLOCK IS FOR NAVIGATION THROUGH THE WEBSITE UNTIL WE GET A NAVBAR-->
+        <div class="test-links row">
+            <% if user_signed_in? %>
+              <div class="col-md-12">
+                <%= link_to "Mon profil utilisateur", user_path(current_user), { :type => "button",  :class => 'in btn btn-success' } %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-success' } %>
+              </div>>
+            <% else %>
+              <div class="col-md-12">
+                <%= link_to "Signup utilisateur", new_user_registration_path, :type => "button", :class => 'in btn btn-success' %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Login utilisateurs", new_user_session_path, :type => "button",  :class => 'in btn btn-success' %>
+              </div>
+            <% end %>
+            <% if producer_signed_in? %>
+              <div class="col-md-12">
+                <%= link_to "Mon profil producteur", producer_path(current_producer), { :type => "button",  :class => 'in btn btn-success' } %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-success' } %>
+              </div>
+            <% else %>
+              <div class="my-1">
+                <%= link_to "Signup producteur", new_producer_registration_path, :type => "button", :class => 'in btn btn-success' %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to "Signin producteur", new_producer_session_path, :type => "button",  :class => 'in btn btn-success' %>
+              </div>
+            <% end %>
+          <div class="col-md-12">
+            <%= link_to "Liste des producteurs", producers_path(@producer), { :type => "button",  :class => 'in btn btn-success' } %>
+          </div>
+        </div>
+        <!--END OF TESTING BLOCK-->
 			</div>
 		</section>
 
