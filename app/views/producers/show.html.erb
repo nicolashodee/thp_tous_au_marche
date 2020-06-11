@@ -45,10 +45,11 @@
         <p><%= @producer.description%></p>
       </blockquote>
     </div>
-    <div class="row box-edit">
-      <input class="btn btn-primary btn-lg" value="Modifier ces informations" type="submit">
-      <%= link_to "Modifier ces informations", edit_producer_registration_path, { :type => "button",  :class => 'btn btn-primary btn-lg' } %>
-    </div>
+    <%if producer_signed_in?%>
+      <div class="row box-edit">
+        <%= link_to "Modifier ces informations", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
+      </div>
+    <%end%>
   </div>
   <div class="slant"></div>
 </section>
