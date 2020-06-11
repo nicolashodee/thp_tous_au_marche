@@ -5,6 +5,9 @@ class Producer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_many :join_table_product_category
+  has_many :categories, through: :join_table_product_category
+
   private
 
   ### Sending an email when a producer is created
