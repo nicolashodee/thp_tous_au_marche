@@ -450,7 +450,7 @@
 
 		burgerMenu();
 
-		clickMenu();
+		// clickMenu();
 
 		/* --------------- BELOW PART IN COMMENT --------------- */
 
@@ -462,7 +462,7 @@
 
 		navigationSection();
 
-		goToTop();
+		// goToTop();
 
 
 		// Animations
