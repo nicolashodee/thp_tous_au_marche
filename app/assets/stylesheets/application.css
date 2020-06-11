@@ -17,3 +17,18 @@
  *= require bootstrap
  *= require style
  */
+
+ .box-testimony blockquote {
+    padding-left: 0;
+    border-left: none;
+    padding: 30px;
+    background: #fff;
+    background: #52d3aa;
+    font-size: 20px;
+    font-weight: 300;
+    position: relative;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    border-radius: 7px;
+}
