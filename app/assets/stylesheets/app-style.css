@@ -1,5 +1,48 @@
+html,
 body {
+ height: 100%;
+ position: relative;
+}
+
+.main-container {
   padding-top: 57px;
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 120px; 
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding-bottom: 0px;
+}
+
+footer .hr {
+  align-items: center;
+  display: flex;
+  text-align: center;
+  position: relative;
+  top: -10px;
+}
+
+footer .hr::before,
+footer .hr::after {
+  border-top: 1px #A4D792 solid;
+  content: "";
+  flex: 1;
+  margin: 0 .5em;
+}
+
+footer a {
+  max-height: 40px;
+}
+
+footer a .fa-arrow-up {
+  position: relative;
+  top: -10px;
 }
 
 /* Custom CSS for the HOME PAGE */
