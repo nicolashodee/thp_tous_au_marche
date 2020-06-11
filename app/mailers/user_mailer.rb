@@ -9,6 +9,13 @@ class UserMailer < ApplicationMailer
     @url  = 'https://tous-au-marche.herokuapp.com/login' 
 
     #it is this call to mail() that allows us to send the e-mail by defining recipient and subject.
-    mail(to: @user.email, subject: 'Bienvenue sur votre espace utilisateur TOUS AU MARCHE !') 
+    make_bootstrap_mail(to: @user.email, subject: 'Bienvenue sur votre espace utilisateur TOUS AU MARCHE !') 
   end
+
+  def goodbye_email(user)
+    @user = user 
+    @url  = 'https://tous-au-marche.herokuapp.com' 
+    make_bootstrap_mail(to: @user.email, subject: 'On se revoit bientôt ?') 
+  end
+
 end
