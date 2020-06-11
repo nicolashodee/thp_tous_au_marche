@@ -21,7 +21,7 @@
             <% end %>
           </li>
           <% if user_signed_in? %>
-            <li class="active">
+            <li>
               <%= link_to user_path(current_user), { :'data-nav-section' => 'profile' }  do %>
                 <span>Mon profil</span>
               <% end %>
