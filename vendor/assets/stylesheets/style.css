@@ -1401,11 +1401,19 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.fh5co-animated {
-  -webkit-animation-duration: .3s;
-  animation-duration: .3s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
+/* --------------- BELOW PART IN COMMENT --------------- */
+
+/* For now, we use a fixed navbar in any situation. If we change our mind, the code below has to be put in again */
+
+/*
+  .fh5co-animated {
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+*/
+
+	/* --------------- ABOVE PART IN COMMENT --------------- */
 
 /*# sourceMappingURL=style4.css.map */
