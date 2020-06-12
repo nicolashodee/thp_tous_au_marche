@@ -1,47 +1,43 @@
 <header role="banner" id="fh5co-header" class='navbar-fixed-top fh5co-animated slideInDown'>
-  <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light py-0">
+    <%= link_to "Tous au marché !", root_path, { :type => "button", :class => "navbar-brand" } %>
+    <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle border-0 mr-2" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <i></i>
+    </button>
 
-    <nav class="navbar navbar-default">
-      <div class="navbar-header">
-        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <i></i>
-        </a>
-        <%= link_to "Tous au marché !", root_path, { :type => "button", :class => "navbar-brand" } %>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to root_path, { :'data-nav-section' => 'contact', :class => 'external' } do %>
-              <span>Contact</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to root_path, { :'data-nav-section' => 'about', :class => 'external' } do %>
-              <span>A propos</span>
-            <% end %>
-          </li>
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to user_path(current_user), { :'data-nav-section' => 'profile', :class => 'external' }  do %>
-                <span>Mon profil</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button", :class => 'external' } %>
-            </li>
-          <% elsif producer_signed_in? %>
-            <li>
-              <%= link_to producer_path(current_user), { :'data-nav-section' => 'profile', :class => 'external' } do %>
-                <span>Mon profil</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button", :class => 'external' } %>
-            </li>
+    <div id="navbar" class="collapse navbar-collapse row mx-1">
+      <ul class="navbar-nav ml-2">
+        <li class='nav-item'>
+          <%= link_to root_path(anchor: "fh5co-home"), { :'data-nav-section' => 'home', :class => 'nav-link external' } do %>
+            <span>Accueil</span>
           <% end %>
-        </ul>
-      </div>
-    </nav>
+        </li>
+        <li class='nav-item'>
+          <%= link_to contact_path, { :'data-nav-section' => 'contact', :class => 'nav-link external' } do %>
+            <span>Contact</span>
+          <% end %>
+        </li>
+        <% if user_signed_in? %>
+          <li class='nav-item'>
+            <%= link_to user_path(current_user), { :'data-nav-section' => 'profile', :class => 'nav-link external' }  do %>
+              <span>Mon profil</span>
+            <% end %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button", :class => 'nav-link external' } %>
+          </li>
+        <% elsif producer_signed_in? %>
+          <li class='nav-item'>
+            <%= link_to producer_path(current_producer), { :'data-nav-section' => 'profile', :class => 'nav-link external' } do %>
+              <span>Mon profil</span>
+            <% end %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button", :class => 'nav-link external' } %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-  </div>
+  </nav>
 </header>
