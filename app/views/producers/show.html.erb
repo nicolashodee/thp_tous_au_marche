@@ -31,7 +31,11 @@
         <ul class="fh5co-contact-info" style="list-style-type: none">
           <li><i class="fas fa-home"></i> <%= @producer.address%>
             <br>
-            <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
+            <%if @producer.city.nil?%>
+              <p> </p>
+            <%else%>
+              <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
+            <%end%>
           </li>
           <li><i class="fas fa-phone-alt"></i> <%= @producer.phone_number %></li>
           <li><i class="fas fa-at"></i> <%= @producer.email%></li>
