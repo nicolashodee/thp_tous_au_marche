@@ -29,13 +29,13 @@
       </div>
       <div class="col-md-6 text-center to-animate fadeInUp animated">
         <ul class="fh5co-contact-info" style="list-style-type: none">
-          <li><i class="fas fa-home"></i> 5555 Love Paradise 56 New Clity 5655,
+          <li><i class="fas fa-home"></i> <%= @producer.address%>
             <br>
             <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
           </li>
-          <li><i class="fas fa-phone-alt"></i> (123) 465-6789</li>
+          <li><i class="fas fa-phone-alt"></i> <%= @producer.phone_number %></li>
           <li><i class="fas fa-at"></i> <%= @producer.email%></li>
-          <li><i class="fas fa-globe"></i> <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a>
+          <li><i class="fas fa-globe"></i> <%= link_to @producer.website, @producer.website %>
           </li>
         </ul>
       </div>
