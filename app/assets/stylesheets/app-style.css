@@ -45,36 +45,6 @@ footer a .fa-arrow-up {
   top: -10px;
 }
 
-.box-testimony blockquote {
-  padding-left: 0;
-  border-left: none;
-  padding: 30px;
-  background: #fff;
-  background: #A4D792;
-  font-size: 20px;
-  font-weight: 300;
-  position: relative;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
-}
-
-.user_picture {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
-.container_card {
-  height: 100vh;
-  position: fixed;
-  right: 0;
-  top: 0;
-}
-
-
 /* Custom CSS for the HOME PAGE */
 .buttons-intro-homepage {
   display: flex;
@@ -115,6 +85,8 @@ footer a .fa-arrow-up {
   flex-direction: row;
 }
 
+/* Custom CSS for indexproducers */
+
 .box-testimony blockquote {
   padding-left: 0;
   border-left: none;
@@ -142,4 +114,16 @@ footer a .fa-arrow-up {
   position: fixed;
   right: 0;
   top: 0;
+}
+
+.index_producers_background {
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+ 
+}
+
+.hello {
+  margin: auto;
+  text-align: center;
 }
