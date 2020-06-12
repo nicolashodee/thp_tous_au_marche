@@ -337,7 +337,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: scaleX(1);
   background-color: #A4D792;
 }
-#fh5co-header .navbar-default {
+#fh5co-header .navbar-expand-lg {
   border: transparent;
   background: transparent;
   -webkit-border-radius: 0px;
@@ -346,19 +346,19 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0px;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-header .navbar-default {
+  #fh5co-header .navbar-expand-lg {
     margin-top: 0px;
     padding-right: 0px;
     padding-left: 0px;
   }
 }
-#fh5co-header .navbar-default .brand-slogan {
+#fh5co-header .navbar-expand-lg .brand-slogan {
   margin: 28px 0 0 15px;
   float: left;
   letter-spacing: 2px;
   color: #adadad;
 }
-#fh5co-header .navbar-default .brand-slogan em {
+#fh5co-header .navbar-expand-lg .brand-slogan em {
   color: #A4D792;
   font-style: normal;
 }
@@ -1415,5 +1415,3 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 	/* --------------- ABOVE PART IN COMMENT --------------- */
-
-/*# sourceMappingURL=style4.css.map */
