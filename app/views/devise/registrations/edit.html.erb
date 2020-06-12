@@ -1,6 +1,6 @@
-<div class="col-lg-6 col-lg-offset-3 to-animate fadeInUp animated text-center">
+<div class="col-lg-6 to-animate fadeInUp animated text-center mx-auto p-5">
 
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  <h3>Modifier son mot de passe </h3>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -19,7 +19,7 @@
 
     <div class="field">
       <%#<%= f.label :password  <i>(leave blank if you don't want to change it)</i><br /> %>
-      <%= f.password_field :password, autocomplete: "new-password ", placeholder:"New password (leave blank if you don't want to change it)", class:"form-control" %>
+      <%= f.password_field :password, autocomplete: "new-password ", placeholder:"New password (leave blank if you don't want to change it)", class:"form-control mb-2" %>
       <% if @minimum_password_length %>
        
       <% end %>
@@ -27,22 +27,22 @@
 
     <div class="field">
       <%#<%= f.label :password_confirmation <br /> %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Password confirmation", class:"form-control" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Password confirmation", class:"form-control mb-2" %>
     </div>
 
     <div class="field">
       <%#<%= f.label :current_password  <i>(we need your current password to confirm your changes)</i><br /> %>
-      <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"Current password (we need your current password to confirm your changes)", class:"form-control" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"Current password (we need your current password to confirm your changes)", class:"form-control mb-2" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Update", class: "btn btn-primary btn-lg " %>
+      <%= f.submit "Modifié", class: "btn btn-primary btn-lg " %>
     </div></br>
   <% end %>
 
-  <h3 class >Cancel my account</h3>
+  <h3 class >Supprimer mon compte</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: "btn btn-primary btn-lg"%></p>
+  <p>Insatisfait ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Vous nous quittez déjà ?" }, method: :delete , class: "btn btn-primary btn-lg"%></p>
 
   <%= link_to "Back", :back %>
 </div> 
