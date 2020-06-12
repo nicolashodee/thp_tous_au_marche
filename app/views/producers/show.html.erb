@@ -32,7 +32,7 @@
           <li><i class="fas fa-home"></i> <%= @producer.address%>
             <br>
             <%if @producer.city.nil?%>
-              <p> </p>
+              <i>Pas d'adresse enregistrée pour le moment</i>
             <%else%>
               <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
             <%end%>

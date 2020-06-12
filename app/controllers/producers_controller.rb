@@ -1,6 +1,4 @@
 class ProducersController < ApplicationController
-  before_action :authenticate_producer!, only: [:show]
-  before_action :is_current_producer_showing?, only: [:show]
 
   def index
     @producer = Producer.all
@@ -39,12 +37,6 @@ class ProducersController < ApplicationController
 
 
   private
-  def is_current_producer_showing?
-    unless current_producer.id.to_s == params[:id].to_s
-      flash[:danger] = "Vous ne pouvez pas afficher un profil producteur qui n'est pas le votre !"
-      redirect_to producer_path(current_producer.id)
-    end
-  end
 
   def producer_params
     params.require(:producer).permit(:email, :password)
