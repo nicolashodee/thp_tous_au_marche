@@ -1,17 +1,17 @@
 <header role="banner" id="fh5co-header" class='navbar-fixed-top fh5co-animated slideInDown'>
-  <div class="container">
+  <div class="containery">
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-expand-lg">
       <div class="navbar-header">
-        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <i></i>
-        </a>
         <%= link_to "Tous au marché !", root_path, { :type => "button", :class => "navbar-brand" } %>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to root_path, { :'data-nav-section' => 'contact', :class => 'external' } do %>
+            <%= link_to contact_path, { :'data-nav-section' => 'contact', :class => 'external' } do %>
               <span>Contact</span>
             <% end %>
           </li>
@@ -31,8 +31,7 @@
             </li>
           <% elsif producer_signed_in? %>
             <li>
-              <%= link_to producer_path(current_producer), { :'data-nav-section' => 'profile' } do %>
-
+              <%= link_to producer_path(current_producer), { :'data-nav-section' => 'profile', :class => 'external' } do %>
                 <span>Mon profil</span>
               <% end %>
             </li>

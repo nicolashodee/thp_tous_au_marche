@@ -5,19 +5,21 @@ body {
 }
 
 .main-container {
-  padding-top: 57px;
   min-height: 100vh;
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 120px; 
+  padding: 75px 0px 120px 0px;
+  margin: 0 auto;
 }
 
 #footer {
   position: absolute;
   bottom: 0px;
+  padding: 0px 20px;
+  margin: 0 auto;
   width: 100%;
-  padding-bottom: 0px;
+  max-width: 1300px;
 }
 
 footer .hr {
@@ -77,4 +79,52 @@ footer a .fa-arrow-up {
 .box-edit {
   margin-top: 4%;
   text-align: center;
+}
+
+input[class*='form-control'] {
+  height: 40px;
+}
+
+.form-control {
+  border-radius: 7px;
+  border: 1px solid #A6A6A6;
+
+/* Custom CSS for the HOME PAGE */
+.buttons-intro-homepage {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.test-links {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#fh5co-home .gradient {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  opacity: 0.15;
+  -webkit-backface-visibility: hidden;
+  background-color:linear-gradient(315deg, transparent 0%, #f9d976 74%);
+}
+
+.portraits {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: space-between;
+  height: 100%;
+  margin-top: 100px;
+  flex-wrap: nowrap;
+}
+
+.counter-homepage {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
