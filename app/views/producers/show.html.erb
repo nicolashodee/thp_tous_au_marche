@@ -1,6 +1,60 @@
-<div>
-  <p>Vous etes un producteur et votre email : <%= @producer.email %></p>
-  <ul class="p-info">
-      <li><%= link_to "Modifier ces informations", edit_producer_registration_path, { :type => "button",  :class => 'btn-outline-secondary' } %></li>
-  </ul>
-</div>
+<div class="gradient"></div>
+<section id="fh5co-home" data-section="home" style="background-image: url(&quot; https://cdn.pixabay.com/photo/2019/06/16/19/10/wheat-4278543_1280.jpg &quot;); background-position: 0px 0px; height: 200px" data-stellar-background-ratio="0.5" class="animated">
+  <div class="gradient"></div>
+  <div class="container">
+    <div class="text-wrap" style="height: 180px">
+      <div class="text-inner">
+        <div class="row text-center">
+          <div class="col-md-8 col-md-offset-2">
+            <h1 class="to-animate fadeInUp animated"><%= @producer.first_name %> <%= @producer.last_name %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slant"></div>
+</section>
+<section id="fh5co-work" data-section="work" class="animated">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 section-heading text-center" style="padding: 0">
+        <h2 class="to-animate fadeInUp animated">Informations</h2>
+      </div>
+    </div>
+    <div class="row row-bottom-padded-sm">
+      <div class="col-md-6 text-center to-animate fadeInUp animated">
+        <a href="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" class="fh5co-project-item image-popup to-animate fadeInUp animated">
+          <img src=" https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" alt="Image" class="img-responsive" style="height: 350px">
+        </a>
+      </div>
+      <div class="col-md-6 text-center to-animate fadeInUp animated">
+        <ul class="fh5co-contact-info" style="list-style-type: none">
+          <li><i class="fas fa-home"></i> <%= @producer.address%>
+            <br>
+            <!-- if city = nil, there is an error because city_name and zip_code aren't defined -->
+            <%if @producer.city.nil?%>
+              <i>Pas d'adresse enregistrée pour le moment</i>
+            <%else%>
+              <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
+            <%end%>
+          </li>
+          <li><i class="fas fa-phone-alt"></i> <%= @producer.phone_number %></li>
+          <li><i class="fas fa-at"></i> <%= @producer.email%></li>
+          <li><i class="fas fa-globe"></i> <%= link_to @producer.website, @producer.website %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row description-box" style="margin-top: 50px">
+      <blockquote class="to-animate-2 fadeInDown animated">
+        <p><%= @producer.description%></p>
+      </blockquote>
+    </div>
+    <%if producer_signed_in?%>
+      <div class="row box-edit">
+        <%= link_to "Modifier mes informations", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
+      </div>
+    <%end%>
+  </div>
+  <div class="slant"></div>
+</section>
