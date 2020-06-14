@@ -186,12 +186,12 @@ input[class*='form-control'] {
   margin-right: 20px;
 }
 
-.container_card {
-  height: 100vh;
-  position: fixed;
-  right: 0;
-  top: 0;
+#map {
+ height: 100vh;
+ position: fixed;
 }
+
+/* Custom CSS for indexproducers no sign-in*/
 
 .index_producers_background {
   height: 100vh;
@@ -204,3 +204,4 @@ input[class*='form-control'] {
   margin: auto;
   text-align: center;
 }
+er has a defined height, for exam
