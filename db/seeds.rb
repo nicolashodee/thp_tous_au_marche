@@ -18,6 +18,12 @@ require 'faker'
   )
 end
 
+10.times do 
+  Category.create(
+    product_category: Faker::Food.fruits,
+  )
+end
+
 20.times do
   Producer.create(
     email: Faker::Internet.email,

@@ -31,6 +31,7 @@
         <ul class="fh5co-contact-info" style="list-style-type: none">
           <li><i class="fas fa-home"></i> <%= @producer.address%>
             <br>
+            <!-- if city = nil, there is an error because city_name and zip_code aren't defined -->
             <%if @producer.city.nil?%>
               <i>Pas d'adresse enregistrée pour le moment</i>
             <%else%>
@@ -50,7 +51,7 @@
     </div>
     <%if producer_signed_in?%>
       <div class="row box-edit">
-        <%= link_to "Modifier ces informations", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
+        <%= link_to "Modifier mes informations", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
       </div>
     <%end%>
   </div>
