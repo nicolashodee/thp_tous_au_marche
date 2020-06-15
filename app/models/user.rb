@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  private 
+  has_many :comments
+
+  private
 
   ### Sending an email when a user is created
   after_create :welcome_send
@@ -17,5 +19,5 @@ class User < ApplicationRecord
   def goodbye_send
     UserMailer.goodbye_email(self).deliver_now
   end
-  
+
 end
