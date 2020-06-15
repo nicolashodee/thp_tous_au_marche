@@ -34,7 +34,7 @@
             <!-- if city = nil, there is an error because city_name and zip_code aren't defined -->
             <%if @producer.city.nil?%>
               <i>Pas d'adresse enregistrée pour le moment</i>
-            <%else%>
+            <% else %>
               <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
             <%end%>
           </li>
@@ -42,10 +42,11 @@
           <li><i class="fas fa-at"></i> <%= @producer.email%></li>
           <li><i class="fas fa-globe"></i> <%= link_to @producer.website, @producer.website %></li>
         </ul>
-        <!--Favorite producer feature-->
-        <% if current_user %>
-          <%= link_to "favorite",   favorite_producer_path(@producer, type: "favorite"), method: :put %>
-          <%= link_to "unfavorite", favorite_producer_path(@producer, type: "unfavorite"), method: :put %>
+        <!--Favorite producer feature--> 
+        <% if current_user && @favorited %>
+          <%= link_to "unfavorite", favorite_producer_path(@producer, type: "unfavorite"), method: :put, :type => "button",  :class => 'btn btn-danger rounded-pill'  %>
+        <% else %>
+          <%= link_to "favorite",   favorite_producer_path(@producer, type: "favorite"), method: :put, :type => "button",  :class => 'btn btn-success rounded-pill'  %>
         <% end %>
       </div>
     </div>

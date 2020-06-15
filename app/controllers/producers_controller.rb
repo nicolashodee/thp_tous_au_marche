@@ -6,6 +6,7 @@ class ProducersController < ApplicationController
 
   def show
     @producer = Producer.find(params[:id])
+    @favorited = FavoriteProducer.find_by(user_id: current_user.id, producer_id: @producer.id).present?
   end
 
   def edit
@@ -37,18 +38,24 @@ class ProducersController < ApplicationController
 
   # Add and remove favorite producers for current_user
   def favorite
+    @producer = Producer.find(params[:id])
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @producer
-      redirect_to :back, notice: 'You favorited #{@producer.email}'
+      flash[:success] = "Vous avez ajouté #{@producer.first_name} #{@producer.last_name} à votre liste de producteurs favoris."
+      redirect_to producers_path(@producer)
+      
 
     elsif type == "unfavorite"
       current_user.favorites.delete(@producer)
-      redirect_to :back, notice: 'Unfavorited #{@producer.email}'
+      flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
+      redirect_to producers_path(@producer)
 
     else
       # Type missing, nothing happens
-      redirect_to :back, notice: 'Nothing happened.'
+      flash[:notice] = 'Nothing happened.'
+      redirect_to root_url
+      
     end
   end
 
