@@ -29,23 +29,31 @@
         </a>
       </div>
 
-      <div class="col-md-6 text-center to-animate fadeInUp animated">
-        <ul class="fh5co-contact-info" style="list-style-type: none">
-          <li><i class="fas fa-home"></i> <%= @producer.address%>
-            <br>
-            <!-- if city = nil, there is an error because city_name and zip_code aren't defined -->
-            <%if @producer.city.nil?%>
-              <i>Pas d'adresse enregistrée pour le moment</i>
-            <%else%>
-              <%= @producer.city.zip_code%> <%= @producer.city.city_name%>
-            <%end%>
-          </li>
-          <li><i class="fas fa-phone-alt"></i> <%= @producer.phone_number %></li>
-          <li><i class="fas fa-globe"></i> <%= link_to @producer.website, @producer.website %></li>
-        </ul>
+      <div class="col-md-6 to-animate fadeInUp animated">
+        <div>
+          <ul class="fh5co-contact-info">
+            <li><i class="fas fa-home"></i> <%= @producer.address%>
+              <br>
+              <!-- if city = nil, there is an error because city_name and zip_code aren't defined -->
+              <%if @producer.city.nil?%>
+                <i>Pas d'adresse enregistrée pour le moment</i>
+              <%else%>
+                <%= @producer.city.zip_code%> <%= @producer.city.city_name%>
+              <%end%>
+            </li>
+            <li><i class="fas fa-globe"></i> <%= link_to @producer.website, @producer.website %></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="fh5co-contact-info">
+            <li><i class="fas fa-phone-alt"></i> <%= @producer.phone_number %></li>
+            <li><i class="fas fa-at"></i> <%= @producer.email%></li>
+          </ul>
+        </div>
       </div>
     </div>
-          <li><i class="fas fa-at"></i> <%= @producer.email%></li>
+
     <div class="row description-box" style="margin-top: 50px">
       <blockquote class="to-animate-2 fadeInDown animated">
         <p><%= @producer.description%></p>
