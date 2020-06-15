@@ -65,7 +65,7 @@ footer a .fa-arrow-up {
 
 .description-box {
   background-color: #fff;
-  color: #777777; 
+  color: #777777;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
@@ -197,7 +197,7 @@ input[class*='form-control'] {
   height: 100vh;
   background-size: cover;
   display: flex;
- 
+
 }
 
 .hello {
