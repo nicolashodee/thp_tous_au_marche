@@ -67,6 +67,7 @@ footer a .fa-arrow-up {
     position: relative;
     top: 0;
     background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.13);
     overflow: hidden;
     z-index: 9;
     margin-bottom: 30px;
@@ -78,10 +79,11 @@ footer a .fa-arrow-up {
     -o-transition: 0.3s;
     transition: 0.3s;
     list-style-type: none;
+    padding-inline-start: 0px;
 }
 
 .fh5co-contact-info:hover {
-    border-color: rgb(52, 36, 141);
+    border: 1px solid white;
 }
 
 .fh5co-contact-info li {

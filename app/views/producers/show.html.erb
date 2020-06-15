@@ -29,7 +29,7 @@
         </a>
       </div>
 
-      <div class="col-md-6 to-animate fadeInUp animated">
+      <div class="col-md-6 text-center to-animate fadeInUp animated">
         <div>
           <ul class="fh5co-contact-info">
             <li><i class="fas fa-home"></i> <%= @producer.address%>
@@ -38,7 +38,7 @@
               <%if @producer.city.nil?%>
                 <i>Pas d'adresse enregistrée pour le moment</i>
               <%else%>
-                <%= @producer.city.zip_code%> <%= @producer.city.city_name%>
+                <%= @producer.city.zip_code%> <%= @producer.city.city_name.upcase %>
               <%end%>
             </li>
             <li><i class="fas fa-globe"></i> <%= link_to @producer.website, @producer.website %></li>
