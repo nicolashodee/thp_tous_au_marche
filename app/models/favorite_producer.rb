@@ -1,0 +1,2 @@
+class FavoriteProducer < ApplicationRecord
+end
