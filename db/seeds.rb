@@ -11,14 +11,14 @@ City.destroy_all
 
 require 'faker'
 
-10.times do 
+10.times do
   City.create(
     city_name: Faker::Games::Pokemon.location,
     zip_code: Faker::Address.zip_code,
   )
 end
 
-10.times do 
+10.times do
   Category.create(
     product_category: Faker::Food.fruits,
   )
@@ -38,3 +38,5 @@ end
     website: Faker::Internet.url,
   )
 end
+
+User.create(email: 'aa@aa.com', password: 'azerty', first_name: 'John', last_name: 'Doe')
