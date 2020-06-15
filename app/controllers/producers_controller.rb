@@ -1,4 +1,5 @@
 class ProducersController < ApplicationController
+  before_action :deny_to_visitors, only: [:show]
 
   def index
     @producer = Producer.all
@@ -40,6 +41,11 @@ class ProducersController < ApplicationController
 
   def producer_params
     params.require(:producer).permit(:email, :password)
+  end
+
+  def deny_to_visitors
+    flash[:danger] = 'Vous devez vous connecter !'
+    redirect_to root_path unless user_signed_in? or producer_signed_in?
   end
 
 end
