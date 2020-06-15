@@ -1,4 +1,5 @@
 class ProducersController < ApplicationController
+  before_action :authenticate_producer!, only: [:edit]
   before_action :deny_to_visitors, only: [:show, :edit]
 
   def index
@@ -23,19 +24,17 @@ class ProducersController < ApplicationController
       flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
       redirect_to root_url
     end
-    
   end
 
   def update
     @producer = Producer.find(params[:id])
     if @producer.update(producer_params)
       flash[:notice] = 'Vos informations ont été mises à jour !'
-      redirect_to root_url
+      redirect_to producer_path(current_producer.id)
     else
       render :edit
     end
   end
-
 
   private
 

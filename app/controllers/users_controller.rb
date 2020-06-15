@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   private
+  
   def is_current_user_showing?
     unless current_user.id.to_s == params[:id].to_s
       flash[:danger] = "Vous ne pouvez pas afficher un profil utilisateur qui n'est pas le votre !"

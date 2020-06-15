@@ -1,7 +1,8 @@
 <section id="fh5co-connection" data-section="connection" class='pt-5'>
   <div class="col-8 offset-2 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4 to-animate fadeInUp animated text-center">
     <h1 class='display-4 mb-5'>Édition du profil</h1>
-    <%= form_for(@producer, as: current_producer, url: user_path(current_producer), html: { method: :put }) do |f| %>
+    
+    <%= form_for(@producer, as: current_producer, url: producer_path(current_producer), html: { method: :put }) do |f| %>
 
       <div class="form-group text-left mb-4">
         <%= f.label :first_name, 'Prénom' %><br />
@@ -24,12 +25,62 @@
       </div>
 
       <div class="form-group text-left mb-4">
+        <%= f.label :description, 'Informations importantes' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-history"></i></span>
+          </div>
+          <%= f.text_field :description, autocomplete: "description", placeholder:"Vos horaires, vos jours d'ouverture, les informations pertinentes, votre histoire, ...", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
+        <%= f.label :address, 'Adresse' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-map-marked-alt"></i></span>
+          </div>
+          <%= f.text_field :address, autocomplete: "address", placeholder:"Adresse de votre lieu de vente", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
+        <%= label :city, :city_name, 'Ville' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-map-marker-alt"></i></span>
+          </div>
+          <%= text_field :city, :city_name, autocomplete: "city_name", placeholder:"Ville", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
+        <%= label :city, :zip_code, 'Ville' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-map-marker"></i></span>
+          </div>
+          <%= text_field :city, :zip_code, autocomplete: "zip_code", placeholder:"Code Postal", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
         <%= f.label :phone_number, 'Numéro de téléphone' %>
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-mobile-alt"></i></span>
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-phone-alt"></i></span>
           </div>
           <%= f.text_field :phone_number, autocomplete: "phone_number ", placeholder:"0601020304", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
+        <%= f.label :website, 'Site internet' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-globe"></i></span>
+          </div>
+          <%= f.text_field :website, autocomplete: "website ", placeholder:"www.votresite.com", class:"form-control" %>
         </div>
       </div>
 
