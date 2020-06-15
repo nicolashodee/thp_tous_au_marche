@@ -42,6 +42,11 @@
           <li><i class="fas fa-at"></i> <%= @producer.email%></li>
           <li><i class="fas fa-globe"></i> <%= link_to @producer.website, @producer.website %></li>
         </ul>
+        <!--Favorite producer feature-->
+        <% if current_user %>
+          <%= link_to "favorite",   favorite_producer_path(@producer, type: "favorite"), method: :put %>
+          <%= link_to "unfavorite", favorite_producer_path(@producer, type: "unfavorite"), method: :put %>
+        <% end %>
       </div>
     </div>
     <div class="row description-box" style="margin-top: 50px">

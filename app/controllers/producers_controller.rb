@@ -35,6 +35,23 @@ class ProducersController < ApplicationController
     end
   end
 
+  # Add and remove favorite producers for current_user
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @producer
+      redirect_to :back, notice: 'You favorited #{@producer.email}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@producer)
+      redirect_to :back, notice: 'Unfavorited #{@producer.email}'
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+  end
+
 
   private
 
