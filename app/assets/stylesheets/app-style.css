@@ -164,6 +164,10 @@ input[class*='form-control'] {
 
 /* Custom CSS for indexproducers */
 
+.box-testimony {
+padding-left:20px ;
+}
+
 .box-testimony blockquote {
   padding-left: 0;
   border-left: none;
@@ -186,18 +190,17 @@ input[class*='form-control'] {
   margin-right: 20px;
 }
 
-.container_card {
-  height: 100vh;
+#map{
+  height:100vh;
   position: fixed;
-  right: 0;
-  top: 0;
 }
+
+/* Custom CSS for indexproducers no_sign_in */
 
 .index_producers_background {
   height: 100vh;
   background-size: cover;
   display: flex;
-
 }
 
 .hello {

@@ -1,13 +1,19 @@
 <% if user_signed_in? || producer_signed_in? %>
-  <div class= "content flex"> 
-    <div class= " col-lg-8 col-md-6 col-sm-6 col-xs-6">  
-      <div class="row flex-wrap justify-content-around px-4">
+  <div class= "row "> 
+    <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
+      <div class="row">
 
         <% @producer.each do |producer| %>
           <div class="col-lg-6 col-md-6"> 
             <div class="box-testimony">
               <blockquote class="to-animate-2 fadeInDown animated">
-                <p>Localisation : <%= producer.city.city_name %></p>
+
+                <%if producer.city.nil? %>
+                  <i>Pas d'adresse enregistrée pour le moment</i>
+                  <%else%>
+                  <p>Localisation : <%= producer.city.city_name %></p>     
+                <%end%>
+
                 <p><%= producer.description %></p>
               </blockquote>
               <div class="author to-animate fadeInUp animated">
@@ -24,8 +30,11 @@
     </div>
 
     <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
-      <img class="" src="<%= asset_path('indexproducers/monde.jpg') %>" style="float: left">>
-    </div>
+      <%= map(:center => {
+      :latlng => [48.0833, -1.6833],
+      :zoom => 12
+      }) %>   
+    </div> 
   </div>  
 
 
@@ -34,7 +43,7 @@
     <section class="index_producers_background"  style="background-image: url(&quot;/assets/homepage/field-79c6d10a0166fb50aee94e9861201fa726e84e31301b844f36c97e0c2fcc6719.jpg&quot;); ">	
        
 							<div class="hello fh5co">
-                <%= link_to "S'enregistrez", new_user_registration_path, :type => "button", :class => 'btn btn-primary to-animate fadeInUp animated'  %>
+                <%= link_to "S'enregistrer", new_user_registration_path, :type => "button", :class => 'btn btn-primary to-animate fadeInUp animated'  %>
                 <%= link_to "Connexion", new_user_session_path, :type => "button",  :class => 'btn btn-primary to-animate fadeInUp animated' %>
 								<h1 class="to-animate fadeInUp animated" style="color:white" >Tout commence là.</h1>
 								<h2 class="to-animate fadeInUp animated" style="color:white" ><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
