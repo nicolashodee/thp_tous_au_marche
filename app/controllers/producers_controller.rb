@@ -1,5 +1,5 @@
 class ProducersController < ApplicationController
-  before_action :deny_to_visitors, only: [:show]
+  before_action :deny_to_visitors, only: [:show, :edit]
 
   def index
     @producer = Producer.all
@@ -17,7 +17,7 @@ class ProducersController < ApplicationController
     @producer = Producer.find(params[:id])
     @producer.destroy
     if @producer.destroy
-      flash[:notice] = 'Vous avez supprimé votre compte producteur. A bientôt !'
+      flash[:notice] = 'Vous avez supprimé votre compte producteur. À bientôt !'
       redirect_to root_url
     else 
       flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
@@ -29,7 +29,7 @@ class ProducersController < ApplicationController
   def update
     @producer = Producer.find(params[:id])
     if @producer.update(producer_params)
-      flash[:notice] = 'Infos producteur mises a jour !'
+      flash[:notice] = 'Vos informations ont été mises à jour !'
       redirect_to root_url
     else
       render :edit
@@ -40,7 +40,7 @@ class ProducersController < ApplicationController
   private
 
   def producer_params
-    params.require(:producer).permit(:email, :password)
+    params.require(:producer).permit(:email, :password, :first_name, :last_name, :description, :address, :phone_number, :website)
   end
 
   def deny_to_visitors
