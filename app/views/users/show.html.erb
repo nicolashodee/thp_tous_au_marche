@@ -38,6 +38,7 @@
     <%if user_signed_in?%>
       <div class="row box-edit">
         <%= link_to "Modifier ces informations", edit_user_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
+        <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn btn-jumbo2 mr-5 p-3 my-5" %>
       </div>
     <%end%>
   </div>

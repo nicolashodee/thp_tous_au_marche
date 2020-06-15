@@ -31,7 +31,7 @@ end
     password_confirmation: 'azerty',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    description: Faker::TvShows::Simpsons.quote,
+    description: Faker::GreekPhilosophers.quote,
     city: City.all[rand(0..9)],
     address: Faker::Address.street_address,
     phone_number: Faker::PhoneNumber.cell_phone,

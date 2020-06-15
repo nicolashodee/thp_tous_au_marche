@@ -44,8 +44,11 @@ class ProducersController < ApplicationController
   end
 
   def deny_to_visitors
-    flash[:danger] = 'Vous devez vous connecter !'
-    redirect_to root_path unless user_signed_in? or producer_signed_in?
+    if  user_signed_in? || producer_signed_in?
+    else
+      flash[:danger] = 'Vous devez vous connecter !'
+      redirect_to root_path
+    end
   end
 
 end
