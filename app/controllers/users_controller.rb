@@ -27,10 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = 'Vos informations ont été mises à jour !'
-      redirect_to root_url
-    elsif @user.update(user_params_profile)
-      flash[:notice] = 'Vos informations ont été mises à jour !'
-      redirect_to root_url
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
@@ -45,11 +42,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
-  end
-
-  def user_params_profile
-    params.require(:user).permit(:first_name, :last_name, :phone_number)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :phone_number)
   end
 
 end
