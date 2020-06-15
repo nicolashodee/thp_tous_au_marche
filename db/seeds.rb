@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Producer.destroy_all
+Category.destroy_all
 City.destroy_all
+User.destroy_all
 
 require 'faker'
 
@@ -36,5 +38,16 @@ end
     address: Faker::Address.street_address,
     phone_number: Faker::PhoneNumber.cell_phone,
     website: Faker::Internet.url,
+  )
+end
+
+10.times do
+  User.create(
+    email: Faker::Internet.email,
+    password: 'azerty',
+    password_confirmation: 'azerty',
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    phone_number: Faker::PhoneNumber.cell_phone,
   )
 end
