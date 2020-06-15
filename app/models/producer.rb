@@ -23,3 +23,6 @@ class Producer < ApplicationRecord
   # end
   
 end
+
+
+
