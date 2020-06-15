@@ -204,3 +204,7 @@ input[class*='form-control'] {
   margin: auto;
   text-align: center;
 }
+
+#map{
+  height:100vh;
+}

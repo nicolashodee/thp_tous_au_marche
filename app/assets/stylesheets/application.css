@@ -16,6 +16,7 @@
  *= require bootstrap
  *= require style
  *= require app-style
+ *= require leaflet
  */
 
  
