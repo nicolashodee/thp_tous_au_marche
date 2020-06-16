@@ -7,6 +7,7 @@ class Producer < ApplicationRecord
   
   has_many :join_table_product_categories
   has_many :categories, through: :join_table_product_category
+  has_one_attached :avatar
 
   private
 

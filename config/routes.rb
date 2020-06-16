@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :producers, :path => "profil_producteur"
   get '/contact', to: 'static_pages#contact'
   root 'welcome#home'
+
+  resources :producers, only: [:show] do
+    resources :avatars, only: [:create]
+  end
 end
