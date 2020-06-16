@@ -78,16 +78,26 @@ footer a .fa-arrow-up {
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
-    list-style-type: none;
-    padding-inline-start: 0px;
 }
 
 .fh5co-contact-info:hover {
     border: 1px solid white;
 }
 
+.fh5co-contact-info ul {
+    padding-top: 1%;
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
 .fh5co-contact-info li {
-    padding: 4%;
+    padding: 2%;
+}
+
+.fh5co-contact-info .icon {
+    color: seagreen;
+    position: absolute;
+    left: 91%;
 }
 
 #fh5co-work .col-md-6 {
@@ -95,6 +105,11 @@ footer a .fa-arrow-up {
     display: flex;
     flex-direction: column;
     align-content: space-between;
+}
+
+#fh5co-work a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .description-box {
