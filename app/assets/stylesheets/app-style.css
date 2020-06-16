@@ -90,14 +90,22 @@ footer a .fa-arrow-up {
     padding-inline-start: 0px;
 }
 
-.fh5co-contact-info li {
-    padding: 2%;
-}
-
 .fh5co-contact-info .icon {
     color: seagreen;
     position: absolute;
     left: 91%;
+}
+
+.box-user {
+    height: 100%;
+}
+
+.box-user li {
+    padding: 6%;
+}
+
+.box-producer li {
+    padding: 2%;
 }
 
 #fh5co-work .col-md-6 {
