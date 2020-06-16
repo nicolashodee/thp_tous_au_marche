@@ -24,14 +24,16 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-6 text-center">
-        <a href="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" class="fh5co-project-item image-popup to-animate">
-          <img src="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" alt="Image" class="img-responsive" style="height: 350px">
+    <div class="d-flex flex-wrap justify-content-between ">
+
+      <div class="col-md-6 px-0 text-center">
+        <a href="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" class="fh5co-project-item image-popup to-animate mb-0">
+          <img src="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" alt="Image" class="img-responsive" style="height: 350px;">
         </a>
       </div>
+
       <div class="fh5co-contact-info box-producer col-md-6">
-        <table class="table table-borderless">
+        <table class="table table-borderless text-white">
           <tbody>
             <tr>
               <td><i class="fas fa-home"></i></td>
@@ -50,7 +52,7 @@
             </tr>
             <tr>
               <td><i class="fas fa-at"></i></td>
-              <td><%= @producer.email%></td>
+              <td><a href="mailto:<%= @producer.email%>"><%= @producer.email%></td>
             </tr>
             <tr>
               <td><i class="fas fa-globe"></i></td>
@@ -58,13 +60,12 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
 
-    <div class="description-box" style="margin-top: 50px">
-      <blockquote>
-        <p><%= @producer.description %></p>
-      </blockquote>
+          <blockquote>
+            <p><%= @producer.description %></p>
+          </blockquote>
+
+      </div>
     </div>
 
     <section id="fh5co-about-bis" data-section="about" class="animated">

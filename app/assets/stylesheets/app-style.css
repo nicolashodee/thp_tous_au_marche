@@ -70,7 +70,6 @@ footer a .fa-arrow-up {
     border: 1px solid rgba(255, 255, 255, 0.13);
     overflow: hidden;
     z-index: 9;
-    margin-bottom: 30px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
@@ -94,6 +93,10 @@ footer a .fa-arrow-up {
     color: seagreen;
     position: absolute;
     left: 91%;
+}
+
+.fh5co-contact-info table td {
+  padding: 8px;
 }
 
 .box-user {
