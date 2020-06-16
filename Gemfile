@@ -69,3 +69,4 @@ gem 'dotenv-rails'
 gem 'dotenv'
 gem 'bootstrap-email'
 gem 'leaflet-rails'
+gem 'recaptcha', '~> 5.5', require: "recaptcha/rails"

@@ -2,6 +2,16 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :is_current_user_showing?, only: [:show]
 
+
+  def create 
+    @user = User.new(user_params)
+    if verify_recaptcha(model: @user) && @user.save
+      redirect_to @user
+    else
+      render 'new'
+    end
+  end 
+
   def show
     @user = User.find(params[:id])
   end
