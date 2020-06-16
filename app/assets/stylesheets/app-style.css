@@ -126,7 +126,8 @@ footer a .fa-arrow-up {
 
 .box-edit {
     margin-top: 4%;
-    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 input[class*='form-control'] {
