@@ -4,9 +4,10 @@ class Producer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :join_table_product_categories
   has_many :categories, through: :join_table_product_category
+  has_many :comments
 
   private
 
@@ -17,12 +18,15 @@ class Producer < ApplicationRecord
   # end
 
   ### sending an email when a producer is deleted
+
+  before_destroy :goodbye_send
+  def goodbye_send
+    ProducerMailer.goodbye_email(self).deliver_now
+  end
+
   # before_destroy :goodbye_send
   # def goodbye_send
   #   ProducerMailer.goodbye_email(self).deliver_now
   # end
-  
+
 end
-
-
-

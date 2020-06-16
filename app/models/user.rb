@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  private 
+  has_many :comments
+
+  private
 
   ### Sending an email when a user is created
   # after_create :welcome_send
@@ -13,6 +15,11 @@ class User < ApplicationRecord
   # end
 
   ### sending an email when a user is deleted
+  before_destroy :goodbye_send
+  def goodbye_send
+    UserMailer.goodbye_email(self).deliver_now
+  end
+
   # before_destroy :goodbye_send
   # def goodbye_send
   #   UserMailer.goodbye_email(self).deliver_now
