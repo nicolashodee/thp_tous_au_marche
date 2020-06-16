@@ -16,12 +16,6 @@
 
 <section id="fh5co-work" data-section="work" class="animated">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 section-heading text-center" style="padding: 0">
-        <h2 class="to-animate fadeInUp animated">Informations</h2>
-      </div>
-    </div>
-
     <div class="row row-bottom-padded-sm">
       <div class="col-md-6 text-center to-animate fadeInUp animated">
         <a href="https://cdn.pixabay.com/photo/2016/07/27/20/03/berries-1546125_1280.jpg" class="fh5co-project-item image-popup to-animate fadeInUp animated">
@@ -38,6 +32,45 @@
           </ul>
         </div>
       </div>
+    </div>
+    <div class="container">
+      <!--MY FAVORITE PRODUCERS-->
+      <div class="col text-center to-animate fadeInUp animated">
+        <p class="text-center">
+          <strong>Mes producteurs favoris !</strong> 
+        </p>
+      </div>
+      <!--TABLE-->
+      <div class="col fh5co-contact-info box-user">
+        <table class="table text-light table-hover table-borderless table-responsive">
+          <thead>
+            <tr class="border-bottom">
+              <th scope="col" style="width: 20%; overflow: hidden;">Nom</th>
+              <th scope="col" style="width: 20%; overflow: hidden;">Prénom</th>
+              <th scope="col" style="width: 20%; overflow: hidden;">Téléphone</th>
+              <th scope="col" style="width: 20%; overflow: hidden;">Email</th>
+              <th scope="col" style="width: 10%; overflow: hidden;">Profil</th>
+              <th scope="col" style="width: 10%; overflow: hidden;">Retirer</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% current_user.favorites.each do |producer| %>
+            <tr>
+              <td class="align-left py-2"><%= link_to producer.last_name, producer_path(producer.id) %></td>
+              <td class="align-left py-2"><%= link_to producer.first_name, producer_path(producer.id) %></td>
+              <td class="align-left py-2"><%= tel_to producer.phone_number, producer.phone_number %></td>
+              <td class="align-left py-2"><%= mail_to producer.email, producer.email %> </a></td>
+              <td class="align-center py-2"><%= link_to "Voir", producer_path(producer.id) %></td>
+              <td class="align-center py-2">
+                <%= link_to favorite_producer_path(producer, type: "unfavorite-from-user-profile"), method: :put do %>
+                  <span style="color: red;"><i class="fas fa-trash"></i></span>
+                <%end%>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div> 
     </div>
   </div>
   <div class="slant"></div>

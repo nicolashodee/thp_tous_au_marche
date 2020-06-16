@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   private
 
+  has_many :comments
+  has_many :favorite_producers
+  has_many :favorites, through: :favorite_producers, source: :producer
+
   ### Sending an email when a user is created
   # after_create :welcome_send
   # def welcome_send
