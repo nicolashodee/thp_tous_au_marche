@@ -8,13 +8,11 @@ class Producer < ApplicationRecord
   has_many :join_table_product_categories
   has_many :categories, through: :join_table_product_category
   has_many :comments
-
+  
   # returns the users that favorite a producer
   belongs_to :producer, optional: true
   has_many :favorite_producers  
   has_many :favorited_by, through: :favorite_producers, source: :user  
-
-  private
 
   ### Sending an email when a producer is created
   # after_create :welcome_send

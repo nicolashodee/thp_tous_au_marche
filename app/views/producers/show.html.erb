@@ -31,9 +31,29 @@
           <img src="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" alt="Image" class="img-responsive" style="height: 350px;">
         </a>
       </div>
+        <table class="table table-borderless text-white">
+          <tbody>
+            <tr>
+              <td><i class="fas fa-home"></i></td>
+              <td>
+                <% if @producer.city.nil? %>
+                  <i>Pas d'adresse enregistrée pour le moment</i>
+                <% else %>
+                  <%= @producer.address%><br />
+                  <%= @producer.city.city_name%> <%= @producer.city.zip_code %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-phone-alt"></i></td>
+              <td><%= @producer.phone_number %></td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-at"></i></td>
+              <td><a href="mailto:<%= @producer.email%>"><%= @producer.email%></td>
+            </tr>
             <tr>
               <td><i class="fas fa-globe"></i></td>
-              <td><%= link_to @producer.website, @producer.website %></td>
             </tr>
           </tbody>
         </table>
@@ -41,16 +61,12 @@
           <blockquote>
             <p><%= @producer.description %></p>
           </blockquote>
-        <!--Favorite producer feature--> 
         <% if current_user && @favorited %>
           <%= link_to "unfavorite", favorite_producer_path(@producer, type: "unfavorite"), method: :put, :type => "button",  :class => 'btn btn-danger rounded-pill'  %>
         <% else %>
           <%= link_to "favorite",   favorite_producer_path(@producer, type: "favorite"), method: :put, :type => "button",  :class => 'btn btn-success rounded-pill'  %>
         <% end %>
       </div>
-    </div>
-
-    <section id="fh5co-about-bis" data-section="about" class="animated">
       <% if producer_signed_in? %>
         <div class="row box-edit">
           <%= link_to "Modifier mes identifiants", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
@@ -70,9 +86,7 @@
             <%= submit_tag "Commenter", class: "btn btn-secondary btn-lg" %>
           </div>
         <% end %>
-
       <section id='comments' class='mt-5'>
-        <% if @producer.comments.count == 0 %>
 
           <p class="text-center mb-0" style='font-size: 28px;'>
             Il n'y a pas encore de commentaire concernant ce producteur <i class="fa fa-smile-o fa-x3" aria-hidden="true"></i>

@@ -37,7 +37,6 @@ class ProducersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   # Add and remove favorite producers for current_user
   def favorite
     @producer = Producer.find(params[:id])
@@ -61,9 +60,6 @@ class ProducersController < ApplicationController
     end
   end
 
-
-=======
->>>>>>> development
   private
 
   def producer_params

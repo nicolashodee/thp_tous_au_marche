@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  private 
+  has_many :comments
+
+  private
 
   has_many :comments
   has_many :favorite_producers
