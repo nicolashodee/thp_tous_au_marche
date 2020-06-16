@@ -80,14 +80,6 @@ footer a .fa-arrow-up {
     transition: 0.3s;
 }
 
-.box-user {
-    height: 100%;
-}
-
-.box-user li {
-    padding: 8%;
-}
-
 .fh5co-contact-info:hover {
     border: 1px solid white;
 }
@@ -98,14 +90,22 @@ footer a .fa-arrow-up {
     padding-inline-start: 0px;
 }
 
-.box-producer li {
-    padding: 2%;
-}
-
 .fh5co-contact-info .icon {
     color: seagreen;
     position: absolute;
     left: 91%;
+}
+
+.box-user {
+    height: 100%;
+}
+
+.box-user li {
+    padding: 8%;
+}
+
+.box-producer li {
+    padding: 2%;
 }
 
 #fh5co-work .col-md-6 {
