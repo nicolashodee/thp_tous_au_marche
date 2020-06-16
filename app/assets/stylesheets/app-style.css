@@ -189,6 +189,15 @@ input[class*='form-control'] {
 
 
 /* Custom CSS for the HOME PAGE */
+.btn-jumbotron {
+    border: 2px solid #fff !important;
+    background: transparent;
+}
+.btn-jumbotron:hover {
+    background: #A4D792 !important;
+    border: 2px solid #A4D792 !important;
+}
+
 
 .buttons-intro-homepage {
     display: flex;

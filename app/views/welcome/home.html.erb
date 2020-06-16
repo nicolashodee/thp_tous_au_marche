@@ -9,6 +9,9 @@
 								<h1 class="to-animate">Tout commence là.</h1>
 								<h2 class="to-animate"><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
 							</div>
+							<div class="col-md-8 col-md-offset-2 to-animate FadeInBottom mt-3">
+								<%= link_to "Voir la carte", producers_path(@producer), { :type => "button",  :class => 'in btn btn-lg btn-jumbotron' } %>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -29,7 +32,17 @@
               </span>
 							<h2>Je cherche un producteur local</h2>
 							<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, on est allés le demander pour vous !</p>
-							<p><a href="#" class="btn btn-primary">Voir la carte</a></p>
+							<p>
+								<% if user_signed_in? %>
+									<%= link_to "Voir la carte", producers_path(@producer), { :type => "button",  :class => 'in btn btn-primary' } %>
+									<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
+								<% else %>
+										<p>
+											<%= link_to "S'inscrire", new_user_registration_path, :type => "button", :class => 'in btn btn-primary' %>
+											<%= link_to "Se connecter", new_user_session_path, :type => "button",  :class => 'in btn btn-primary' %>
+										</p>
+								<% end %>
+							</p>
 						</div>
 					</div>
 					<!--I AM A PRODUCER-->
@@ -41,56 +54,38 @@
 							  <i class="fas fa-hands-helping"></i>
               </span>
 							<h2>Je suis un producteur</h2>
-              <p>Les passionnés le savent : tout est une question de pratique et de persévérance.<br>
+              <p>Tout est une question de pratique et de persévérance.<br>
               Vous avez le savoir-faire, maintenant faites le savoir !</p>
-							<p><a href="#" class="btn btn-primary">S'inscrire</a></p>
+							<p>
+								<% if producer_signed_in? %>
+									<%= link_to "Mon profil", producer_path(current_producer), { :type => "button",  :class => 'in btn btn-primary' } %>
+									<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
+								<% else %>
+										<%= link_to "S'inscrire", new_producer_registration_path, :type => "button", :class => 'in btn btn-primary' %>
+										<%= link_to "Se connecter", new_producer_session_path, :type => "button",  :class => 'in btn btn-primary' %>
+								<% end %>
+							</p>
 						</div>
 					</div>
+				</div>
+				
+				<!--DESCRIPTION OF THE WEBSITE-->
+				<div class="section-heading text-center" style="padding: 0">
+					<h2 class="to-animate fadeInUp animated">Trouvez enfin<br> les producteurs locaux de votre région</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						Sed non dignissim nibh. Pellentesque accumsan accumsan eros nec suscipit. 
+						Aenean vel lobortis ligula, eu eleifend dui. Sed dapibus nisl leo, 
+						ut consectetur ipsum maximus a. Vestibulum nisl nisi, finibus non fermentum non, 
+						scelerisque at sem. Maecenas finibus dapibus leo sit amet. 
+					</p>
 				</div>
 				<!--VIDEO-->
         <div class="row watch-video text-center to-animate">
-					<span>Watch the video</span>
+					<span>Regarder la video</span>
 					<a href="#" class="popup-vimeo"><span style="font-size: 5em; color: #339966;"><i class="far fa-play-circle"></i></span></a>
 				</div>
-        <!--THIS TESTING BLOCK IS FOR NAVIGATION THROUGH THE WEBSITE UNTIL WE GET A DECENT NAVBAR-->
-        <div class="test">
-					<div class="row justify-content-center align-items-">
-						<% if user_signed_in? %>
-							<div class="col text-center mt-1">
-								<%= link_to "Mon profil utilisateur", user_path(current_user), { :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>>
-						<% else %>
-							<div class="col text-center mt-1">
-								<%= link_to "Signup utilisateur", new_user_registration_path, :type => "button", :class => 'in btn btn-primary' %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Login utilisateurs", new_user_session_path, :type => "button",  :class => 'in btn btn-primary' %>
-							</div>
-						<% end %>
-						<% if producer_signed_in? %>
-							<div class="col text-center mt-1">
-								<%= link_to "Mon profil producteur", producer_path(current_producer), { :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>
-						<% else %>
-							<div class="col text-center mt-1">
-								<%= link_to "Signup producteur", new_producer_registration_path, :type => "button", :class => 'in btn btn-primary' %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Signin producteur", new_producer_session_path, :type => "button",  :class => 'in btn btn-primary' %>
-							</div>
-						<% end %>
-						<div class="col text-center mt-1">
-							<%= link_to "Liste des producteurs", producers_path(@producer), { :type => "button",  :class => 'in btn btn-primary' } %>
-						</div>
-					</div>
-				</div>
-        <!--END OF TESTING BLOCK-->
+        
 			</div>
 		</section>
 		<!--VALUES-->

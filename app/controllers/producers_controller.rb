@@ -8,7 +8,7 @@ class ProducersController < ApplicationController
 
   def show
     @producer = Producer.find(params[:id])
-    @favorited = FavoriteProducer.find_by(user_id: current_user.id, producer_id: @producer.id).present?
+    @favorited = FavoriteProducer.find_by(producer_id: @producer.id).present?
   end
 
   def edit
