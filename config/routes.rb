@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :producers, :path => "profil_producteur"
   resources :comments
   get '/contact', to: 'static_pages#contact'
-
+  namespace :admin do
+    resources :producers, :comments, :users
+  end
 end
