@@ -5,7 +5,7 @@
       <div class="text-inner">
         <div class="row text-center">
           <div class="col-md-8 col-md-offset-2">
-            <h1 class="to-animate fadeInUp animated"><%= @producer.first_name %> <%= @producer.last_name.upcase %></h1>
+            <h1 class="to-animate fadeInUp animated"><%= @producer.first_name %> <%= @producer.last_name %></h1>
           </div>
         </div>
       </div>
@@ -24,9 +24,19 @@
 
     <div class="row row-bottom-padded-sm">
       <div class="col-md-6 text-center to-animate fadeInUp animated">
-        <a href="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" class="fh5co-project-item image-popup to-animate fadeInUp animated">
-          <img src="https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg" alt="Image" class="img-responsive" style="height: 350px">
-        </a>
+        <%if @producer.avatar.attached?%>
+          <%= image_tag @producer.avatar, alt: 'avatar', style:'height: 350px' %>
+        <%else%>
+          <p>=== Il n'y a pas encore d'avatar lié à ce producteur ===</p>
+        <%end%>
+        <%if producer_signed_in?%>
+          <div id='buttons-avatar'>
+            <%= form_tag producer_avatars_path(@producer), multipart: true do %>
+              <%= file_field_tag :avatar %>
+              <%= submit_tag "mettre à jour", class:'btn btn-primary btn-lg' %>
+            <% end %>
+          </div>
+        <%end%>
       </div>
 
       <div class="col-md-6 text-center to-animate fadeInUp animated">
