@@ -13,7 +13,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-
+    comment = Comment.find(params[:id])
+    comment.destroy
+    flash[:notice] = "Le commentaire a été supprimé."
+    redirect_back(fallback_location: @producer)
   end
 
 end

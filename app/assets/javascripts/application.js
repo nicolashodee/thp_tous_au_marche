@@ -20,5 +20,6 @@
 //= require jquery.countTo
 //= require jquery.magnific-popup.min
 //= require magnific-popup-options
-//= require main 
 //= require leaflet
+//= require main
+//= require app-main 
