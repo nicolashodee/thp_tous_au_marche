@@ -1,100 +1,152 @@
 html,
 body {
- height: 100%;
- position: relative;
+    height: 100%;
+    position: relative;
 }
 
 .main-container {
-  min-height: 100vh;
-  overflow: hidden;
-  display: block;
-  position: relative;
-  padding: 55px 0px 150px 0px;
-  margin: 0 auto;
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding: 55px 0px 150px 0px;
+    margin: 0 auto;
 }
 
 #navbar {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 @media screen and (max-width: 992px) {
-  #navbar {
-    border-top: 1px solid #A4D792;
-    justify-content: flex-start;
-  }
-
-  #navbar ul {
-    margin: 8px 0 8px 8px;
-  }
+    #navbar {
+        border-top: 1px solid #A4D792;
+        justify-content: flex-start;
+    }
+    #navbar ul {
+        margin: 8px 0 8px 8px;
+    }
 }
 
 #footer {
-  position: absolute;
-  bottom: 0px;
-  padding: 0px 20px;
+    position: absolute;
+    bottom: 0px;
+    padding: 0px 20px;
 }
 
 footer .hr {
-  align-items: center;
-  display: flex;
-  text-align: center;
-  position: relative;
-  top: -10px;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    position: relative;
+    top: -10px;
 }
 
 footer .hr::before,
 footer .hr::after {
-  border-top: 1px #A4D792 solid;
-  content: "";
-  flex: 1;
-  margin: 0 .5em;
+    border-top: 1px #A4D792 solid;
+    content: "";
+    flex: 1;
+    margin: 0 .5em;
 }
 
 footer a {
-  max-height: 40px;
+    max-height: 40px;
 }
 
 footer a .fa-arrow-up {
-  position: relative;
-  top: -10px;
+    position: relative;
+    top: -10px;
 }
 
-.fh5co-contact-info li {
-  padding: 4%;
+
+/* Custom CSS for the SHOW PAGE */
+
+.fh5co-contact-info {
+    display: block;
+    width: 100%;
+    position: relative;
+    top: 0;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    overflow: hidden;
+    z-index: 9;
+    margin-bottom: 30px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.fh5co-contact-info:hover {
+    border: 1px solid white;
+}
+
+.fh5co-contact-info ul {
+    padding-top: 1%;
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+.fh5co-contact-info .icon {
+    color: seagreen;
+    position: absolute;
+    left: 91%;
+}
+
+.box-user {
+    height: 100%;
+}
+
+.box-user li {
+    padding: 6%;
+}
+
+.box-producer li {
+    padding: 2%;
+}
+
+#fh5co-work .col-md-6 {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+#fh5co-work a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .description-box {
-  background-color: #fff;
-  color: #777777;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
-  padding: 3% 1% 1% 1%;
-}
-
-.description-box:hover {
-  background-image: url(https://cdn.pixabay.com/photo/2015/12/08/01/00/carrots-1082251_1280.jpg);
-  opacity: .3;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
-  padding: 3% 1% 1% 1%;
-}
-
-.description-box:hover blockquote {
-  opacity: 100%;
-  color: #fff;
+    background-color: rgba(255, 255, 255, 0.13);
+    color: rgba(255, 255, 255, 0.8);
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    border-radius: 7px;
+    padding: 5% 1% 1% 1%;
+    border-left: 10px solid;
+    border-left-color: #fff;
 }
 
 .box-edit {
-  margin-top: 4%;
-  text-align: center;
+    margin: 4% 4% 6% 4%;
+    display: flex;
+    justify-content: space-evenly;
 }
 
+#fh5co-about-bis {
+    padding-top: 0%;
+}
+
+
+/* Custom CSS for FORM */
+
 input[class*='form-control'] {
-  height: 40px;
+    height: 40px;
 }
 
 .form-control, list-group-item {
@@ -103,107 +155,111 @@ input[class*='form-control'] {
 }
 
 .form-control::-webkit-input-placeholder {
-  opacity: 0.5;
-  font-weight: lighter;
+    opacity: 0.5;
+    font-weight: lighter;
 }
 
 .form-control::-moz-input-placeholder {
-  opacity: 0.5;
-  font-weight: lighter;
+    opacity: 0.5;
+    font-weight: lighter;
 }
 
 .form-control::-ms-input-placeholder {
-  opacity: 0.5;
-  font-weight: lighter;
+    opacity: 0.5;
+    font-weight: lighter;
 }
 
 .form-control::-o-input-placeholder {
-  opacity: 0.5;
-  font-weight: lighter;
+    opacity: 0.5;
+    font-weight: lighter;
 }
 
+
 /* Custom CSS for the HOME PAGE */
+
 .buttons-intro-homepage {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 .test-links {
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
 }
 
 #fh5co-home .gradient {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  opacity: 0.15;
-  -webkit-backface-visibility: hidden;
-  background-color:linear-gradient(315deg, transparent 0%, #f9d976 74%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    opacity: 0.15;
+    -webkit-backface-visibility: hidden;
+    background-color: linear-gradient(315deg, transparent 0%, #f9d976 74%);
 }
 
 .portraits {
-  display: flex;
-  justify-content: space-evenly;
-  align-content: space-between;
-  height: 100%;
-  margin-top: 100px;
-  flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-between;
+    height: 100%;
+    margin-top: 100px;
+    flex-wrap: nowrap;
 }
 
 .counter-homepage {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
+
 
 /* Custom CSS for indexproducers */
 
 .box-testimony {
-padding-left:20px ;
+    padding-left: 20px;
 }
 
 .box-testimony blockquote {
-  padding-left: 0;
-  border-left: none;
-  padding: 30px;
-  background: #fff;
-  background: #A4D792;
-  font-size: 20px;
-  font-weight: 300;
-  position: relative;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
+    padding-left: 0;
+    border-left: none;
+    padding: 30px;
+    background: #fff;
+    background: #A4D792;
+    font-size: 20px;
+    font-weight: 300;
+    position: relative;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    border-radius: 7px;
 }
 
 .user_picture {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
 }
 
-#map{
-  height:100vh;
-  position: fixed;
+#map {
+    height: 100vh;
+    position: fixed;
 }
+
 
 /* Custom CSS for indexproducers no_sign_in */
 
 .index_producers_background {
-  height: 100vh;
-  background-size: cover;
-  display: flex;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
 }
 
 .hello {
-  margin: auto;
-  text-align: center;
+    margin: auto;
+    text-align: center;
 }
