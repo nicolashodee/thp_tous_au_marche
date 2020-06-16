@@ -91,17 +91,40 @@
       </section>
 
       <section id='rating' class='mt-5 d-flex justify-content-between'>
-        <div id='producer-rating'>
-          <i class='fa fa-star unchecked' id='p-one'></i>
-          <i class='fa fa-star unchecked' id='p-two'></i>
-          <i class='fa fa-star unchecked' id='p-three'></i>
-          <i class='fa fa-star unchecked' id='p-four'></i>
-          <i class='fa fa-star unchecked' id='p-five'></i>
+
+        <div id='producer-rating' class='d-flex justify-content-between' style='width: 230px;'>
+          <div class="stars">
+            <% if @producer.rating == nil %>
+              <% 5.times do %>
+                <i class='fa fa-star align-middle'></i>
+              <% end %>
+            <% else %>
+              <% number_star = @producer.rating.truncate %>
+              <% number_star.times do %>
+                <i class='fa fa-star align-middle checked'></i>
+              <% end %>
+              <% (5 - number_star).times do %>
+                <i class='fa fa-star align-middle'></i>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="rating align-middle" style='color: yellow; font-size: 25px;'>
+            <% if @producer.rating == nil %>
+              <span>Non noté</span>
+            <% else %>
+              <strong><%= @producer.rating.round(1) %></strong>
+            <% end %>
+          </div>
         </div>
 
         <div id='user-rating'>
-          <strong>Noter : </strong>
-          <i class='fa fa-star unchecked' id='u-one'></i><i class='fa fa-star unchecked' id='u-two'></i><i class='fa fa-star unchecked' id='u-three'></i><i class='fa fa-star unchecked' id='u-four'></i><i class='fa fa-star unchecked' id='u-five'></i>
+          <strong class='align-middle'>Noter : </strong>
+          <%= link_to ratings_path(rating: 1, producer_id: @producer.id), :method => :post do %><i title='Très mauvais' class='fa fa-star align-middle unchecked' id='u-one'>
+          </i><% end %><%= link_to ratings_path(rating: 2, producer_id: @producer.id), :method => :post do %><i title='Mauvais' class='fa fa-star align-middle unchecked' id='u-two'>
+          </i><% end %><%= link_to ratings_path(rating: 3, producer_id: @producer.id), :method => :post do %><i title='Moyen' class='fa fa-star align-middle unchecked' id='u-three'>
+          </i><% end %><%= link_to ratings_path(rating: 4, producer_id: @producer.id), :method => :post do %><i title='Bon' class='fa fa-star align-middle unchecked' id='u-four'>
+          </i><% end %><%= link_to ratings_path(rating: 5, producer_id: @producer.id), :method => :post do %><i title='Très bon' class='fa fa-star align-middle unchecked' id='u-five'></i><% end %>
         </div>
       </section>
 
