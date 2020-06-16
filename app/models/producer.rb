@@ -8,6 +8,7 @@ class Producer < ApplicationRecord
   has_many :join_table_product_categories
   has_many :categories, through: :join_table_product_category
   has_many :comments
+  has_many :ratings
 
   private
 
