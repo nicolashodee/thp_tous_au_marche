@@ -1,0 +1,46 @@
+<section id="fh5co-connection" data-section="connection" class='pt-5'>
+  <div class="col-8 offset-2 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4 to-animate fadeInUp animated text-center">
+    <h1 class='display-4 mb-5'>Édition du profil</h1>
+    <%= form_for(@user, as: current_user, url: user_path(current_user), html: { method: :put }) do |f| %>
+
+      <div class="form-group text-left mb-4">
+        <%= f.label :first_name, 'Prénom' %><br />
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-address-card"></i></span>
+          </div>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , placeholder:"Prénom", class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
+        <%= f.label :last_name, 'Nom de famille' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="far fa-address-card"></i></span>
+          </div>
+          <%= f.text_field :last_name, autocomplete: "last_name", placeholder:"Nom de famille", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
+        <%= f.label :phone_number, 'Numéro de téléphone' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-mobile-alt"></i></span>
+          </div>
+          <%= f.text_field :phone_number, autocomplete: "phone_number ", placeholder:"0601020304", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="actions mt-4">
+        <%= f.submit "Mettre à jour", class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+
+    <div class="row justify-content-center mt-4 mb-5">
+      <%= link_to "Retour", :back, class: 'mx-3' %>
+    </div>
+
+  </div>
+</section>

@@ -26,14 +26,15 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = 'Infos utilisateur mises a jour !'
-      redirect_to root_url
+      flash[:notice] = 'Vos informations ont été mises à jour !'
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
   end
 
   private
+  
   def is_current_user_showing?
     unless current_user.id.to_s == params[:id].to_s
       flash[:danger] = "Vous ne pouvez pas afficher un profil utilisateur qui n'est pas le votre !"
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :phone_number)
   end
 
 end

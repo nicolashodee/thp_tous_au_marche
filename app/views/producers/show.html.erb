@@ -35,7 +35,7 @@
             <%if @producer.city.nil?%>
               <i>Pas d'adresse enregistrée pour le moment</i>
             <%else%>
-              <%= @producer.city.city_name%> <%= @producer.city.zip_code%>
+              <%= @producer.city.zip_code%> <%= @producer.city.city_name%>
             <%end%>
           </li>
           <li><i class="fas fa-phone-alt"></i> <%= @producer.phone_number %></li>
@@ -52,6 +52,7 @@
     <%if producer_signed_in?%>
       <div class="row box-edit">
         <%= link_to "Modifier mes informations", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
+        <%= link_to "Éditer mon profil", edit_producer_path(current_producer), class: "btn btn-jumbo2 mr-5 p-3 my-5" %>
       </div>
     <%end%>
   </div>
