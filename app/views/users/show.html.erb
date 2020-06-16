@@ -38,6 +38,33 @@
           </ul>
         </div>
       </div>
+
+      <p class="text-center">Mes producteurs favoris </p>
+
+        <table class="table text-light table-sm table-hover">
+          <thead>
+            <tr class="bg-green">
+              <th scope="col" style="width: 25%">Nom</th>
+              <th scope="col" style="width: 25%">Prenom</th>
+              <th scope="col" style="width: 25%">Ville</th>
+              <th scope="col" style="width: 25%">email</th>
+              <th scope="col" style="width: 25%">profil</th>
+              <th scope="col" style="width: 25%">supprimer</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="align-middle py-3"></td>
+              
+            </tr>
+          </tbody>
+        </table>
+        <p>Total :<%= current_user.favorites.all.count %></p>
+
+
+
+
     </div>
   </div>
   <div class="slant"></div>

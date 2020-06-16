@@ -44,13 +44,13 @@ class ProducersController < ApplicationController
     if type == "favorite"
       current_user.favorites << @producer
       flash[:success] = "Vous avez ajouté #{@producer.first_name} #{@producer.last_name} à votre liste de producteurs favoris."
-      redirect_to producers_path(@producer)
+      redirect_to producer_path
       
 
     elsif type == "unfavorite"
       current_user.favorites.delete(@producer)
       flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
-      redirect_to producers_path(@producer)
+      redirect_to producer_path
 
     else
       # Type missing, nothing happens

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   
   devise_for :producers
   resources :producers, :path => "profil_producteur"
+  
+  resources :producers do
     put :favorite, on: :member
   end
 
