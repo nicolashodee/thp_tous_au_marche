@@ -52,6 +52,11 @@ class ProducersController < ApplicationController
       flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
       redirect_to producer_path
 
+    elsif type == "unfavorite-from-user-profile"
+      current_user.favorites.delete(@producer)
+      flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
+      redirect_to user_path
+
     else
       # Type missing, nothing happens
       flash[:notice] = 'Nothing happened.'
@@ -59,6 +64,7 @@ class ProducersController < ApplicationController
       
     end
   end
+
 
   private
 
