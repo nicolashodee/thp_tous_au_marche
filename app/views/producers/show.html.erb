@@ -100,7 +100,45 @@
         <% end %>
       </section>
 
-      <section id='comments' class='mt-5'>
+      <section id='rating' class='mt-5 d-flex justify-content-between'>
+
+        <div id='producer-rating' class='d-flex justify-content-between' style='width: 230px;'>
+          <div class="stars">
+            <% if @producer.rating == nil %>
+              <% 5.times do %>
+                <i class='fa fa-star align-middle'></i>
+              <% end %>
+            <% else %>
+              <% number_star = @producer.rating.truncate %>
+              <% number_star.times do %>
+                <i class='fa fa-star align-middle checked'></i>
+              <% end %>
+              <% (5 - number_star).times do %>
+                <i class='fa fa-star align-middle'></i>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="rating align-middle" style='color: yellow; font-size: 25px;'>
+            <% if @producer.rating == nil %>
+              <span>Non noté</span>
+            <% else %>
+              <strong><%= @producer.rating.round(1) %></strong>
+            <% end %>
+          </div>
+        </div>
+
+        <div id='user-rating'>
+          <strong class='align-middle'>Noter : </strong>
+          <%= link_to ratings_path(rating: 1, producer_id: @producer.id), :method => :post do %><i title='Très mauvais' class='fa fa-star align-middle unchecked' id='u-one'>
+          </i><% end %><%= link_to ratings_path(rating: 2, producer_id: @producer.id), :method => :post do %><i title='Mauvais' class='fa fa-star align-middle unchecked' id='u-two'>
+          </i><% end %><%= link_to ratings_path(rating: 3, producer_id: @producer.id), :method => :post do %><i title='Moyen' class='fa fa-star align-middle unchecked' id='u-three'>
+          </i><% end %><%= link_to ratings_path(rating: 4, producer_id: @producer.id), :method => :post do %><i title='Bon' class='fa fa-star align-middle unchecked' id='u-four'>
+          </i><% end %><%= link_to ratings_path(rating: 5, producer_id: @producer.id), :method => :post do %><i title='Très bon' class='fa fa-star align-middle unchecked' id='u-five'></i><% end %>
+        </div>
+      </section>
+
+      <section id='comments' class='mt-2'>
         <% if @producer.comments.count == 0 %>
 
           <p class="text-center mb-0" style='font-size: 28px;'>
@@ -120,7 +158,12 @@
                   <div class="col-10 col-md-11 d-flex flex-column">
                     <div class="d-flex justify-content-between pr-4">
                       <h5 class="mb-1"><%= comment.user.first_name %>, <%= comment.user.last_name.upcase %></h5>
-                      <small class="text-muted"><%= comment.created_at.strftime("%d/%m/%y, à %H:%M") %></small>
+                      <small class="text-muted">
+                        <% if comment.user == current_user %>
+                          <%= link_to "Supprimer", comment_path(comment.id, producer_id: @producer.id), :type => "button", :method => :delete, :class => 'btn btn-sm btn-danger mr-5' %>
+                        <% end %>
+                        <%= comment.created_at.strftime("%d/%m/%y, à %H:%M") %>
+                      </small>
                       <!-- 20/11/2015, 09:00 am -->
                     </div>
                     <p class="text-break mb-1 pr-4"><%= comment.content %></p>
@@ -138,3 +181,19 @@
 
   <div class="slant"></div>
 </section>
+
+<script>
+  list = ["#u-one", "#u-two", "#u-three", "#u-four", "#u-five"]
+  for (let id of list) {
+    $(`${id}`).mouseover(function() {
+      for (let i = 0; i <= list.indexOf(id); i++) {
+        $(`${list[i]}`).addClass("checked").removeClass("unchecked");
+      };
+    });
+    $(`${id}`).mouseout(function() {
+      for (let i = 0; i <= list.indexOf(id); i++) {
+        $(`${list[i]}`).addClass("unchecked").removeClass("checked");
+      };
+    });
+  }
+</script>

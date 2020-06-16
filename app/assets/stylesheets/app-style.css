@@ -1,3 +1,5 @@
+/* Main tags */
+
 html,
 body {
     height: 100%;
@@ -59,7 +61,15 @@ footer a .fa-arrow-up {
 }
 
 
-/* Custom CSS for the SHOW PAGE */
+/* Show pages */
+
+.checked {
+  color: yellow;
+}
+
+.unchecked {
+  color: white;
+}
 
 .fh5co-contact-info {
     display: block;

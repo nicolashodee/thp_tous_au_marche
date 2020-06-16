@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
 
   resources :comments
+  resources :ratings
   get '/contact', to: 'static_pages#contact'
-
+  namespace :admin do
+    resources :producers, :comments, :users
+  end
 end

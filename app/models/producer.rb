@@ -13,6 +13,9 @@ class Producer < ApplicationRecord
   belongs_to :producer, optional: true
   has_many :favorite_producers  
   has_many :favorited_by, through: :favorite_producers, source: :user  
+  has_many :ratings
+
+  private
 
   ### Sending an email when a producer is created
   # after_create :welcome_send
