@@ -59,14 +59,15 @@
         <p><%= @producer.description%></p>
       </blockquote>
     </div>
-
-    <%if producer_signed_in?%>
-      <div class="row box-edit">
-        <%= link_to "Modifier mes identifiants", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
-        <%= link_to "Modifier mes informations", edit_producer_path(current_producer), class: "btn btn-primary btn-lg" %>
-      </div>
-    <%end%>
-
   </div>
+</section>
+
+<section id="fh5co-about-bis" data-section="about" class="animated">
+  <%if producer_signed_in?%>
+    <div class="row box-edit">
+      <%= link_to "Modifier mes identifiants", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
+      <%= link_to "Modifier mes informations", edit_producer_path(current_producer), class: "btn btn-primary btn-lg" %>
+    </div>
+  <%end%>
 
 </section>

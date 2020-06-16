@@ -125,10 +125,17 @@ footer a .fa-arrow-up {
 }
 
 .box-edit {
-    margin-top: 4%;
+    margin: 4% 4% 6% 4%;
     display: flex;
     justify-content: space-evenly;
 }
+
+#fh5co-about-bis {
+    padding-top: 0%;
+}
+
+
+/* Custom CSS for FORM */
 
 input[class*='form-control'] {
     height: 40px;
