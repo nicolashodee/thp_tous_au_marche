@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     @producer = Producer.find(params[:producer_id])
-    @comment = Comment.new(user: current_user, producer: @producer, content: params[:content])
+    @comment = Comment.new(user: current_user, producer: @producer, content: params[:content][0])
     if @comment.save
       flash[:success] = "Le commentaire a été posté !"
       redirect_back(fallback_location: @producer)
