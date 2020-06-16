@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :producers
   resources :producers, :path => "profil_producteur"
   resources :comments
+  resources :ratings
   get '/contact', to: 'static_pages#contact'
 
 end
