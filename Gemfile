@@ -72,3 +72,4 @@ gem 'leaflet-rails'
 gem 'recaptcha'
 gem 'tel_to_helper'
 gem 'mail_form', '~> 1.8'
+gem "letter_opener", :group => :development
