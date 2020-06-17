@@ -6,13 +6,8 @@
       <div class="text-inner">
         <div class="row text-center">
           <div class="col-md-8 col-md-offset-2">
-<<<<<<< HEAD
             <h1 class="to-animate fadeInUp animated"><%= @producer.first_name %> <%= @producer.last_name %></h1>
           </div>
-=======
-            <h1 class="to-animate fadeInUp animated"><%= @producer.first_name %> <%= @producer.last_name %></h1><br>
-          </div>          
->>>>>>> fd457a2e831f3840cac605aac51fd079e78811e4
         </div>
       </div>
     </div>
@@ -49,9 +44,11 @@
     <div class="row row-bottom-padded-sm">
       <div class="col-md-6 text-center to-animate fadeInUp animated">
         <%if @producer.avatar.attached?%>
-          <%= image_tag @producer.avatar, alt: 'avatar', style:'height: 350px' %>
+          <a href='<%=@producer.avatar%>' class='fh5co-project-item image-popup to-animate fadeInUp animated'>
+            <%= image_tag @producer.avatar, alt: 'avatar', class:'img-responsive', style:'height: 400px' %>
+          </a>
         <%else%>
-          <p>=== Il n'y a pas encore d'avatar lié à ce producteur ===</p>
+          <p class="table table-borderless text-white">=== Il n'y a pas encore d'avatar lié à ce producteur ===</p>
         <%end%>
         <%if producer_signed_in?%>
           <div id='buttons-avatar'>
