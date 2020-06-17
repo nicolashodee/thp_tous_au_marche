@@ -9,28 +9,34 @@
       </ul>
     </div>
   <% end %>
-  
-  <%= form_for(@contact) do |f| %>
-    <h2 class="form-title" id="login-title">Contact Us</h2>
-
-    <div class="form-section">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-
-    <div class="form-section">
-      <%= f.label :subject %>
-      <%= f.select :subject, options_for_select(@subject_options, 
-          @contact.subject), include_blank: "Select Issue" %>
-    </div>
-
-    <div class="form-section">
-      <%= f.label :message %>
-      <%= f.text_area :message %>
-    </div>
-    
-    <div class="submit" id="login-submit">
-      <%= submit_tag "Send" %>
-    </div>
-  <% end %>
 </div>
+
+<section id="fh5co-contact" data-section="contact" class='pt-5'>
+  <div class="to-animate col-10 offset-1 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 text-center">
+
+    <h1 class='display-4 mb-5'>Contactez-nous</h1>
+      <%= form_for(@contact) do |f| %>
+        <div class="form-group text-left mb-4">
+          <%= f.label :email, 'Votre email' %>
+          <%= f.text_field :email, class:"form-control" %>
+        </div>
+
+        <div class="form-group text-left mb-4">
+          <%= f.label :subject, 'Sujet' %>
+          <%= f.select :subject, options_for_select(@subject_options, 
+              @contact.subject), include_blank: "Choisissez " %>
+        </div>
+
+        <div class="form-group text-left mb-4">
+          <%= f.label :message, "Votre message" %>
+          <%= f.text_area :message, class:"form-control" %>
+        </div>
+        
+        <div class="form-group mt-4 mb-5 submit" id="login-submit">
+          <%= submit_tag "Send", class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</section>
