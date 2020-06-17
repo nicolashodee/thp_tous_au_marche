@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_012812) do
+ActiveRecord::Schema.define(version: 2020_06_17_083849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,9 +42,19 @@ ActiveRecord::Schema.define(version: 2020_06_16_012812) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.string "city_name"
-    t.integer "zip_code"
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "producer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_comments_on_producer_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorite_producers", force: :cascade do |t|
+    t.integer "producer_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,13 +79,24 @@ ActiveRecord::Schema.define(version: 2020_06_16_012812) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
-    t.bigint "city_id"
     t.string "address"
     t.string "phone_number"
     t.string "website"
-    t.index ["city_id"], name: "index_producers_on_city_id"
+    t.float "rating"
+    t.string "city_name"
+    t.string "zip_code"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.float "rating"
+    t.bigint "user_id"
+    t.bigint "producer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_ratings_on_producer_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,10 +110,14 @@ ActiveRecord::Schema.define(version: 2020_06_16_012812) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "producers", "cities"
+=======
+>>>>>>> fd457a2e831f3840cac605aac51fd079e78811e4
 end

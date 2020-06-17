@@ -1,3 +1,5 @@
+/* Main tags */
+
 html,
 body {
     height: 100%;
@@ -59,7 +61,15 @@ footer a .fa-arrow-up {
 }
 
 
-/* Custom CSS for the SHOW PAGE */
+/* Show pages */
+
+.checked {
+  color: yellow;
+}
+
+.unchecked {
+  color: white;
+}
 
 .fh5co-contact-info {
     display: block;
@@ -70,7 +80,6 @@ footer a .fa-arrow-up {
     border: 1px solid rgba(255, 255, 255, 0.13);
     overflow: hidden;
     z-index: 9;
-    margin-bottom: 30px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
@@ -94,6 +103,10 @@ footer a .fa-arrow-up {
     color: seagreen;
     position: absolute;
     left: 91%;
+}
+
+.fh5co-contact-info table td {
+  padding: 8px;
 }
 
 .box-user {
@@ -153,9 +166,9 @@ input[class*='form-control'] {
     height: 40px;
 }
 
-.form-control {
-    border-radius: 7px;
-    border: 1px solid #A6A6A6;
+.form-control, list-group-item {
+  border-radius: 7px;
+  border: 1px solid #A6A6A6;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -180,6 +193,15 @@ input[class*='form-control'] {
 
 
 /* Custom CSS for the HOME PAGE */
+.btn-jumbotron {
+    border: 2px solid #fff !important;
+    background: transparent;
+}
+.btn-jumbotron:hover {
+    background: #A4D792 !important;
+    border: 2px solid #A4D792 !important;
+}
+
 
 .buttons-intro-homepage {
     display: flex;
@@ -267,3 +289,11 @@ input[class*='form-control'] {
     margin: auto;
     text-align: center;
 }
+
+/* Custom CSS for Producer show */
+
+.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+.btn { margin-bottom:10px; }

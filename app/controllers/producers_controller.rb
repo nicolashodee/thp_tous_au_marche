@@ -8,6 +8,7 @@ class ProducersController < ApplicationController
 
   def show
     @producer = Producer.find(params[:id])
+    @favorited = FavoriteProducer.find_by(producer_id: @producer.id).present?
   end
 
   def edit
@@ -36,10 +37,39 @@ class ProducersController < ApplicationController
     end
   end
 
+  # Add and remove favorite producers for current_user
+  def favorite
+    @producer = Producer.find(params[:id])
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @producer
+      flash[:success] = "Vous avez ajouté #{@producer.first_name} #{@producer.last_name} à votre liste de producteurs favoris."
+      redirect_to producer_path
+      
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@producer)
+      flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
+      redirect_to producer_path
+
+    elsif type == "unfavorite-from-user-profile"
+      current_user.favorites.delete(@producer)
+      flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
+      redirect_to user_path
+
+    else
+      # Type missing, nothing happens
+      flash[:notice] = 'Nothing happened.'
+      redirect_to root_url
+      
+    end
+  end
+
+
   private
 
   def producer_params
-    params.require(:producer).permit(:email, :password, :first_name, :last_name, :description, :address, :phone_number, :website)
+    params.require(:producer).permit(:email, :password, :first_name, :last_name, :description, :address, :phone_number, :website, :city_name, :zip_code)
   end
 
   def deny_to_visitors

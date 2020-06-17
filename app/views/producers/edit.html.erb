@@ -30,7 +30,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-history"></i></span>
           </div>
-          <%= f.text_field :description, autocomplete: "description", placeholder:"Vos horaires, vos jours d'ouverture, les informations pertinentes, votre histoire, ...", class:"form-control" %>
+          <%= f.text_area :description, autocomplete: "description", placeholder:"Vos horaires, vos jours d'ouverture, les informations pertinentes, votre histoire, ...", class:"form-control" %>
         </div>
       </div>
 
@@ -45,22 +45,22 @@
       </div>
 
       <div class="form-group text-left mb-4">
-        <%= f.label :city, 'Ville' %>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-map-marker-alt"></i></span>
-          </div>
-          <%= text_field :city, :city_name, autocomplete: "city_name", placeholder:"Ville", class:"form-control" %>
-        </div>
-      </div>
-
-      <div class="form-group text-left mb-4">
-        <%= label :city, :zip_code, 'Ville' %>
+        <%= f.label :zip_code, 'Code Postal' %>
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-map-marker"></i></span>
           </div>
-          <%= text_field :city, :zip_code, autocomplete: "zip_code", placeholder:"Code Postal", class:"form-control" %>
+          <%= f.text_field :zip_code, autocomplete: "zip_code", placeholder:"Code Postal", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group text-left mb-4">
+        <%= f.label :city_name, 'Ville' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-map-marker-alt"></i></span>
+          </div>
+          <%= f.text_field :city_name, autocomplete: "city_name", placeholder:"Ville", class:"form-control" %>
         </div>
       </div>
 

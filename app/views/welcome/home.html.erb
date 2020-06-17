@@ -9,6 +9,9 @@
 								<h1 class="to-animate">Tout commence là.</h1>
 								<h2 class="to-animate"><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
 							</div>
+							<div class="col-md-8 col-md-offset-2 to-animate FadeInBottom mt-3">
+								<%= link_to "Voir la carte", producers_path(@producer), { :type => "button",  :class => 'in btn btn-lg btn-jumbotron' } %>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -29,7 +32,17 @@
               </span>
 							<h2>Je cherche un producteur local</h2>
 							<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, on est allés le demander pour vous !</p>
-							<p><a href="#" class="btn btn-primary">Voir la carte</a></p>
+							<p>
+								<% if user_signed_in? %>
+									<%= link_to "Voir la carte", producers_path(@producer), { :type => "button",  :class => 'in btn btn-primary' } %>
+									<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
+								<% else %>
+										<p>
+											<%= link_to "S'inscrire", new_user_registration_path, :type => "button", :class => 'in btn btn-primary' %>
+											<%= link_to "Se connecter", new_user_session_path, :type => "button",  :class => 'in btn btn-primary' %>
+										</p>
+								<% end %>
+							</p>
 						</div>
 					</div>
 					<!--I AM A PRODUCER-->
@@ -41,56 +54,34 @@
 							  <i class="fas fa-hands-helping"></i>
               </span>
 							<h2>Je suis un producteur</h2>
-              <p>Les passionnés le savent : tout est une question de pratique et de persévérance.<br>
+              <p>Tout est une question de pratique et de persévérance.<br>
               Vous avez le savoir-faire, maintenant faites le savoir !</p>
-							<p><a href="#" class="btn btn-primary">S'inscrire</a></p>
+							<p>
+								<% if producer_signed_in? %>
+									<%= link_to "Mon profil", producer_path(current_producer), { :type => "button",  :class => 'in btn btn-primary' } %>
+									<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
+								<% else %>
+										<%= link_to "S'inscrire", new_producer_registration_path, :type => "button", :class => 'in btn btn-primary' %>
+										<%= link_to "Se connecter", new_producer_session_path, :type => "button",  :class => 'in btn btn-primary' %>
+								<% end %>
+							</p>
 						</div>
 					</div>
+				</div>
+				
+				<!--DESCRIPTION OF THE WEBSITE-->
+				<div class="section-heading text-center" style="padding: 0">
+					<h2 class="to-animate fadeInUp animated">Trouvez enfin<br> les producteurs locaux de votre région</h2>
+					<p>
+						Avec notre carte interactive et communautaire, il n'a jamais été aussi facile de rassembler producteurs et consommateurs. Inscris-toi et participe à la révolution verte ! 
+					</p>
 				</div>
 				<!--VIDEO-->
         <div class="row watch-video text-center to-animate">
-					<span>Watch the video</span>
+					<span>Regarder la video</span>
 					<a href="#" class="popup-vimeo"><span style="font-size: 5em; color: #339966;"><i class="far fa-play-circle"></i></span></a>
 				</div>
-        <!--THIS TESTING BLOCK IS FOR NAVIGATION THROUGH THE WEBSITE UNTIL WE GET A DECENT NAVBAR-->
-        <div class="test">
-					<div class="row justify-content-center align-items-">
-						<% if user_signed_in? %>
-							<div class="col text-center mt-1">
-								<%= link_to "Mon profil utilisateur", user_path(current_user), { :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>>
-						<% else %>
-							<div class="col text-center mt-1">
-								<%= link_to "Signup utilisateur", new_user_registration_path, :type => "button", :class => 'in btn btn-primary' %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Login utilisateurs", new_user_session_path, :type => "button",  :class => 'in btn btn-primary' %>
-							</div>
-						<% end %>
-						<% if producer_signed_in? %>
-							<div class="col text-center mt-1">
-								<%= link_to "Mon profil producteur", producer_path(current_producer), { :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
-							</div>
-						<% else %>
-							<div class="col text-center mt-1">
-								<%= link_to "Signup producteur", new_producer_registration_path, :type => "button", :class => 'in btn btn-primary' %>
-							</div>
-							<div class="col text-center mt-1">
-								<%= link_to "Signin producteur", new_producer_session_path, :type => "button",  :class => 'in btn btn-primary' %>
-							</div>
-						<% end %>
-						<div class="col text-center mt-1">
-							<%= link_to "Liste des producteurs", producers_path(@producer), { :type => "button",  :class => 'in btn btn-primary' } %>
-						</div>
-					</div>
-				</div>
-        <!--END OF TESTING BLOCK-->
+        
 			</div>
 		</section>
 		<!--VALUES-->
@@ -155,8 +146,8 @@
 						<div class="fh5co-person text-center to-animate">
 							<figure><img src="<%= asset_path('homepage/portraits/nicolas.jpg') %>" alt="Image"></figure>
 							<h3>Nicolas Hodée</h3>
-							<span class="fh5co-position">Photographe / Retoucheur</span>
-							<p>Expert des pixels et de la couleur, je partage mon temps entre le debug, le debug, et le debug. Et vous ?</p>
+							<span class="fh5co-position">CEO</span>
+							<p>C'est en voyant la malbouffe outre manche que Nicolas réalise qu'il n'y a pas de communauté entre consommateurs et producteurs</p>
 							<ul class="social social-circle">
 								<li><a href="https://www.instagram.com/nicolas_hodee_photography/"><i class="fab fa-instagram"></i></a></li>
 								<li><a href="https://www.facebook.com/photos.nicolashodee"><i class="fab fa-facebook-f"></i></a></li>
@@ -169,8 +160,8 @@
 						<div class="fh5co-person text-center to-animate">
 							<figure><img src="<%= asset_path('homepage/portraits/jordan.jpg') %>" alt="Image"></figure>
 							<h3>Jordan Tournerie</h3>
-							<span class="fh5co-position">expert Asset Pipeline</span>
-							<p>Expert en magie noire, je ne suis pas sûr de pouvoir invoquer Bootstrap 4 sur ce site, alors prenez garde ! </p>
+							<span class="fh5co-position">CTO</span>
+							<p>Diplomé en aéronautique, Jordan est notre expert tech en charge du développement de la plateforme</p>
 							<ul class="social social-circle">
 								<li><a href="#"><i class="icon-twitter"></i></a></li>
 								<li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -183,8 +174,8 @@
 						<div class="fh5co-person text-center to-animate">
 							<figure><img src="<%= asset_path('homepage/portraits/aurore.jpg') %>" alt="Image"></figure>
 							<h3>Aurore Carrière</h3>
-							<span class="fh5co-position">Web designer</span>
-							<p>Ma flemme est une source d'inspiration ! T'as mieux que ça à dire ? </p>
+							<span class="fh5co-position">COO</span>
+							<p>Diplomé en management de la qualité, Aurore est en charge du sourcing des meilleurs producteurs de votre région et des opérations chez tous au marché!</p>
 							<ul class="social social-circle">
 								<li><a href="#"><i class="icon-twitter"></i></a></li>
 								<li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -197,8 +188,8 @@
 						<div class="fh5co-person text-center to-animate">
 							<figure><img src="<%= asset_path('homepage/portraits/marvin.jpg') %>" alt="Image"></figure>
 							<h3>Marvin Pierrat</h3>
-							<span class="fh5co-position">Expert Linux & Rails</span>
-							<p>Ce que je touche sur Rails se transforme en or, alors ne tardez plus et envoyez moi une app!</p>
+							<span class="fh5co-position">Head of Partnerships</span>
+							<p>Ancien commercial, Marvin a rejoint le projet pour développer la communauté et gérer les partenariats avec les institutions régionales</p>
 							<ul class="social social-circle">
 								<li><a href="#"><i class="icon-twitter"></i></a></li>
 								<li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -211,8 +202,8 @@
 						<div class="fh5co-person text-center to-animate">
 							<figure><img src="<%= asset_path('homepage/portraits/clement.jpg') %>" alt="Image"></figure>
 							<h3>Clément Facco</h3>
-							<span class="fh5co-position">Trello Manager</span>
-							<p>Grand amoureux de Trello, des épis de blé et des croziflettes. Si ça te pose un problème, vas voir ailleurs. </p>
+							<span class="fh5co-position">CMO</span>
+							<p>Diplomé en marketing, Clément est en charge du green marketing chez Tous au marché </p>
 							<ul class="social social-circle">
 								<li><a href="#"><i class="icon-twitter"></i></a></li>
 								<li><a href="#"><i class="icon-facebook"></i></a></li>

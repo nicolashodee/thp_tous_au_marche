@@ -1,12 +1,26 @@
 Rails.application.routes.draw do
+  root 'welcome#home'
   devise_for :users
   resources :users, :path => "mon_profil"
+  
   devise_for :producers
   resources :producers, :path => "profil_producteur"
+  
+  resources :producers do
+    put :favorite, on: :member
+  end
+
+  resources :comments
+  resources :ratings
   get '/contact', to: 'static_pages#contact'
+
   root 'welcome#home'
 
   resources :producers, only: [:show] do
     resources :avatars, only: [:create]
+  end
+  
+  namespace :admin do
+    resources :producers, :comments, :users
   end
 end
