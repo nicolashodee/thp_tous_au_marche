@@ -1,18 +1,33 @@
 class ContactsController < ApplicationController
-
-  def new 
+  def new
     @contact = Contact.new
+    set_subject_options
   end
 
   def create
-    @contact = Contact.new(params[:contact])
-    @contact.request = request
-    if @contact.deliver
-      flash.now[:error] = nil
-      redirect_to root_path, notice: 'Message sent successfully'
+    @contact = Contact.new(contact_params)
+    if @contact.valid?
+      @contact.send_message
+      flash[:notice] = "Message successfully sent"
+      redirect_to root_path
     else
-      flash.now[:error] = 'Cannot send message'
+      set_subject_options
       render :new
     end
   end
+
+  private
+
+  def contact_params
+    params.require(:contact).permit(:email, :subject, :message)
+  end
+
+  def set_subject_options
+    @subject_options = [
+    "General Inquiry", 
+    "Technical Support", 
+    "Account Problem", 
+    "Other"]
+  end
 end
+

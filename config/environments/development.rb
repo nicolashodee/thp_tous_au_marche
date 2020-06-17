@@ -60,9 +60,19 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   #### Mailer settings ####
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => 'https://tous-au-marche.herokuapp.com/' } 
   config.action_mailer.delivery_method = :smtp
-  #### end of Mailer ####
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'heroku.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+ 
 
+  
 end
