@@ -15,6 +15,13 @@ class Producer < ApplicationRecord
   has_many :favorited_by, through: :favorite_producers, source: :user  
   has_many :ratings
 
+  geocoded_by :geocode_address
+  after_validation :geocode
+
+  def geocode_address
+    [address].compact.join(', ')
+  end
+  
   private
 
   ### Sending an email when a producer is created
@@ -25,10 +32,10 @@ class Producer < ApplicationRecord
 
   ### sending an email when a producer is deleted
 
-  before_destroy :goodbye_send
-  def goodbye_send
-    ProducerMailer.goodbye_email(self).deliver_now
-  end
+  # before_destroy :goodbye_send
+  # def goodbye_send
+  #   ProducerMailer.goodbye_email(self).deliver_now
+  # end
 
   # before_destroy :goodbye_send
   # def goodbye_send

@@ -39,7 +39,27 @@
     </div>
 
     <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
-      <div class= map id=map>
+      <%=
+   
+    map(:center => {
+        :latlng => [51.52238797921441, -0.08366235665359283],
+        :zoom => 18
+      },
+       :markers => [
+           {
+               :latlng => [51.52238797921441, -0.08366235665359283],
+               :popup => "Hello!",
+               :icon => @icon_options
+           },
+           {
+               :latlng => [51.54238797921441, -0.08566235665359283],
+               :popup => "Farewell!",
+               :icon => @icon_options
+           }
+       ])
+
+      %>   
+    </div> >
   </div>  
 
 
