@@ -56,11 +56,11 @@
             <tr>
               <td><i class="fas fa-home"></i></td>
               <td>
-                <% if @producer.city.nil? %>
+                <% if @producer.city_name.nil? %>
                   <i>Pas d'adresse enregistrée pour le moment</i>
                 <% else %>
                   <%= @producer.address%><br />
-                  <%= @producer.city.city_name%> <%= @producer.city.zip_code %>
+                  <%= @producer.zip_code%> <%= @producer.city_name %>
                 <% end %>
               </td>
             </tr>

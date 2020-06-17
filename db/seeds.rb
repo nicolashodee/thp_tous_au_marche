@@ -27,6 +27,8 @@ end
     last_name: Faker::Name.last_name,
     description: Faker::GreekPhilosophers.quote,
     address: Faker::Address.street_address,
+    city_name: Faker::Games::Pokemon.location,
+    zip_code: Faker::Address.zip_code,
     phone_number: Faker::PhoneNumber.cell_phone,
     website: Faker::Internet.url,
   )
