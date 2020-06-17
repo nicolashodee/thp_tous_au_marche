@@ -1,0 +1,2 @@
+class JoinTableProducerLabel < ApplicationRecord
+end

@@ -53,3 +53,20 @@ User.create(email: 'aa@aa.com', password: 'azerty', first_name: 'John', last_nam
     phone_number: Faker::PhoneNumber.cell_phone,
   )
 end
+
+Category.create(product_category: 'Viande')
+Category.create(product_category: 'Poisson')
+Category.create(product_category: 'Fruits & légumes')
+Category.create(product_category: 'Crèmerie')
+Category.create(product_category: 'Oeufs')
+Category.create(product_category: 'Boulangerie')
+Category.create(product_category: 'Épicerie')
+Category.create(product_category: 'Boisson')
+Category.create(product_category: 'Traiteur')
+
+Label.create(title: 'Agriculture Biologique')
+Label.create(title: 'Label Rouge')
+Label.create(title: "Appellation d'Origine Contrôlée")
+Label.create(title: "Appellation d'Origine Protégée")
+Label.create(title: 'Pêche durable')
+Label.create(title: 'Fairtrade')

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FavoriteProducerTest < ActiveSupport::TestCase
+class LabelsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
