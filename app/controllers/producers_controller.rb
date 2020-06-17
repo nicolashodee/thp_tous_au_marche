@@ -69,7 +69,7 @@ class ProducersController < ApplicationController
   private
 
   def producer_params
-    params.require(:producer).permit(:email, :password, :first_name, :last_name, :description, :address, :phone_number, :website)
+    params.require(:producer).permit(:email, :password, :first_name, :last_name, :description, :address, :phone_number, :website, :city_name, :zip_code)
   end
 
   def deny_to_visitors
