@@ -1,3 +1,12 @@
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+</head>
+
 <% if user_signed_in? || producer_signed_in? %>
   <div class= "row "> 
     <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
@@ -30,11 +39,7 @@
     </div>
 
     <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
-      <%= map(:center => {
-      :latlng => [48.0833, -1.6833],
-      :zoom => 12
-      }) %>   
-    </div> 
+      <div class= map id=map>
   </div>  
 
 
@@ -53,3 +58,6 @@
 	</div>			
 					
 <% end %>
+
+
+<script src="assets/map"></script>

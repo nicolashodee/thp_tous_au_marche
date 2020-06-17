@@ -23,3 +23,4 @@
 //= require leaflet
 //= require main
 //= require app-main 
+//= require map

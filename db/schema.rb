@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_06_16_152504) do
     t.string "address"
     t.string "phone_number"
     t.string "website"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.float "rating"
     t.index ["city_id"], name: "index_producers_on_city_id"
     t.index ["email"], name: "index_producers_on_email", unique: true
