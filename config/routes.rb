@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     put :favorite, on: :member
   end
 
+  resources :contacts, only: [:new, :create]
+
   resources :comments
   resources :ratings
   get '/contact', to: 'static_pages#contact'
