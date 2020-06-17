@@ -10,20 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_152504) do
+ActiveRecord::Schema.define(version: 2020_06_17_083849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "product_category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cities", force: :cascade do |t|
-    t.string "city_name"
-    t.integer "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,12 +58,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_152504) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
-    t.bigint "city_id"
     t.string "address"
     t.string "phone_number"
     t.string "website"
     t.float "rating"
-    t.index ["city_id"], name: "index_producers_on_city_id"
+    t.string "city_name"
+    t.string "zip_code"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
   end
@@ -101,5 +94,4 @@ ActiveRecord::Schema.define(version: 2020_06_16_152504) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "producers", "cities"
 end
