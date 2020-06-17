@@ -8,19 +8,19 @@
 </head>
 
 <% if user_signed_in? || producer_signed_in? %>
-  <div class= "row "> 
-    <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
+  <div class= "row ">
+    <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">
       <div class="row">
 
         <% @producer.each do |producer| %>
-          <div class="col-lg-6 col-md-6"> 
+          <div class="col-lg-6 col-md-6">
             <div class="box-testimony">
               <blockquote class="to-animate-2 fadeInDown animated">
 
                 <%if producer.city.nil? %>
                   <i>Pas d'adresse enregistrée pour le moment</i>
                   <%else%>
-                  <p>Localisation : <%= producer.city.city_name %></p>     
+                  <p>Localisation : <%= producer.city.city_name %></p>
                 <%end%>
 
                 <p><%= producer.description %></p>
@@ -38,46 +38,39 @@
       </div>
     </div>
 
-    <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
-      <%=
-   
-    map(:center => {
-        :latlng => [51.52238797921441, -0.08366235665359283],
-        :zoom => 18
-      },
-       :markers => [
-           {
-               :latlng => [51.52238797921441, -0.08366235665359283],
-               :popup => "Hello!",
-               :icon => @icon_options
-           },
-           {
-               :latlng => [51.54238797921441, -0.08566235665359283],
-               :popup => "Farewell!",
-               :icon => @icon_options
-           }
-       ])
+    <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">
+    <div class="map" id='map'></div>
 
-      %>   
+
+
     </div> >
-  </div>  
+  </div>
 
 
 <% else %>
   <div class="content">
-    <section class="index_producers_background"  style="background-image: url(&quot;/assets/homepage/field-79c6d10a0166fb50aee94e9861201fa726e84e31301b844f36c97e0c2fcc6719.jpg&quot;); ">	
-       
+    <section class="index_producers_background"  style="background-image: url(&quot;/assets/homepage/field-79c6d10a0166fb50aee94e9861201fa726e84e31301b844f36c97e0c2fcc6719.jpg&quot;); ">
+
 							<div class="hello fh5co">
                 <%= link_to "S'enregistrer", new_user_registration_path, :type => "button", :class => 'btn btn-primary to-animate fadeInUp animated'  %>
                 <%= link_to "Connexion", new_user_session_path, :type => "button",  :class => 'btn btn-primary to-animate fadeInUp animated' %>
 								<h1 class="to-animate fadeInUp animated" style="color:white" >Tout commence là.</h1>
 								<h2 class="to-animate fadeInUp animated" style="color:white" ><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
 							</div>
-				
+
 		</section>
-	</div>			
-					
+	</div>
+
 <% end %>
 
+<script>
+  var map = L.map('map').setView([51.505, -0.09], 13);
 
-<script src="assets/map"></script>
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  L.marker([51.5, -0.09]).addTo(map)
+      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+      .openPopup();
+</script>

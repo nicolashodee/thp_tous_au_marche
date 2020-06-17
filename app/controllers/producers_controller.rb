@@ -6,8 +6,8 @@ class ProducersController < ApplicationController
   def index
     @producer = Producer.all
     @icon_options = { :name => 'house',
-                     :icon_url => 'images/house.png',
-                     :shadow_url => 'images/house_shadow.png',
+                     :icon_url => 'assets/images/homepage/buyer.jpg',
+                     :shadow_url => 'assets/images/homepage/field.jpg',
                      :icon_size => [38, 95],
                      :shadow_size => [50, 64],
                      :icon_anchor => [22, 94],
@@ -30,7 +30,7 @@ class ProducersController < ApplicationController
     if @producer.destroy
       flash[:notice] = 'Vous avez supprimé votre compte producteur. À bientôt !'
       redirect_to root_url
-    else 
+    else
       flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
       redirect_to root_url
     end
@@ -54,7 +54,7 @@ class ProducersController < ApplicationController
       current_user.favorites << @producer
       flash[:success] = "Vous avez ajouté #{@producer.first_name} #{@producer.last_name} à votre liste de producteurs favoris."
       redirect_to producer_path
-      
+
 
     elsif type == "unfavorite"
       current_user.favorites.delete(@producer)
@@ -70,7 +70,7 @@ class ProducersController < ApplicationController
       # Type missing, nothing happens
       flash[:notice] = 'Nothing happened.'
       redirect_to root_url
-      
+
     end
   end
 

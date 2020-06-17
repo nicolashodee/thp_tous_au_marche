@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_152504) do
+ActiveRecord::Schema.define(version: 2020_06_17_155450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_06_16_152504) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "join_table_producer_labels", force: :cascade do |t|
+    t.bigint "producer_id"
+    t.bigint "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_join_table_producer_labels_on_label_id"
+    t.index ["producer_id"], name: "index_join_table_producer_labels_on_producer_id"
+  end
+
   create_table "join_table_product_categories", force: :cascade do |t|
     t.bigint "category_id"
     t.bigint "producer_id"
@@ -52,6 +61,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_152504) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_join_table_product_categories_on_category_id"
     t.index ["producer_id"], name: "index_join_table_product_categories_on_producer_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "producers", force: :cascade do |t|
@@ -69,9 +84,9 @@ ActiveRecord::Schema.define(version: 2020_06_16_152504) do
     t.string "address"
     t.string "phone_number"
     t.string "website"
+    t.float "rating"
     t.decimal "latitude"
     t.decimal "longitude"
-    t.float "rating"
     t.index ["city_id"], name: "index_producers_on_city_id"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
