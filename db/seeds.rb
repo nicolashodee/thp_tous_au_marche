@@ -36,6 +36,8 @@ i=0
     zip_code: zip_code[i],
     phone_number: Faker::PhoneNumber.cell_phone,
     website: Faker::Internet.url,
+    latitude: ''
+    longitude: ''
   )
   i+=1
 end
