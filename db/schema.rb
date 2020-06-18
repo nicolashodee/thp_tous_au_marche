@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_083849) do
+ActiveRecord::Schema.define(version: 2020_06_17_092504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "city_name"
+    t.integer "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -59,6 +66,15 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "join_table_producer_labels", force: :cascade do |t|
+    t.bigint "producer_id"
+    t.bigint "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_join_table_producer_labels_on_label_id"
+    t.index ["producer_id"], name: "index_join_table_producer_labels_on_producer_id"
+  end
+
   create_table "join_table_product_categories", force: :cascade do |t|
     t.bigint "category_id"
     t.bigint "producer_id"
@@ -66,6 +82,12 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_join_table_product_categories_on_category_id"
     t.index ["producer_id"], name: "index_join_table_product_categories_on_producer_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "producers", force: :cascade do |t|
@@ -79,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
+    t.bigint "city_id"
     t.string "address"
     t.string "phone_number"
     t.string "website"
@@ -87,6 +110,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
     t.float "rating"
     t.string "city_name"
     t.string "zip_code"
+    t.index ["city_id"], name: "index_producers_on_city_id"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
   end
@@ -118,4 +142,5 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "producers", "cities"
 end

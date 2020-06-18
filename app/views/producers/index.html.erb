@@ -17,20 +17,42 @@
             <div class="box-testimony">
               <blockquote class="to-animate-2 fadeInDown animated">
 
-                <%if @producer.city_name.nil? %>
+                <%if producer.city_name.nil? %>
                   <i>Pas d'adresse enregistrée pour le moment</i>
                   <%else%>
-                  <p>Localisation : <%= @producer.city_name %></p>     
+                  <p>Localisation : <%= producer.city_name %></p>     
                 <%end%>
 
                 <p><%= producer.description %></p>
               </blockquote>
+
               <div class="author to-animate fadeInUp animated">
+                <div class="stars">
+                    <span>Note : </span>
+                    <% if producer.rating == nil %>
+                      <% 5.times do %>
+                        <i class='fa fa-star align-middle'></i>
+                      <% end %>
+                    <% else %>
+                      <% number_star = producer.rating.truncate %>
+                      <% number_star.times do %>
+                        <i class='fa fa-star align-middle checked'></i>
+                      <% end %>
+                      <% (5 - number_star).times do %>
+                        <i class='fa fa-star align-middle'></i>
+                      <% end %>
+                    <% end %>
+                  </div>
                 <figure>
                   <img class="user_picture" src="<%= asset_path('indexproducers/ble.jpg') %>" style="float: left">
                 </figure>
                   <p><%= producer.first_name %> <%= producer.last_name %><br>
                   <span class="subtext"><%= producer.email %></a> </span></p>
+          
+                  
+
+                  <%= link_to "Afficher", producer_path(producer.id), class: 'btn btn-sm btn-outline-secondary mb-2 my-1' %>
+
               </div>
             </div>
           </div>
@@ -70,16 +92,11 @@
   }).addTo(map);
 
 
-  L.marker([51.5, -0.09]).addTo(map)
-      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
-
-
   <% @producer.each do |producer| %>
     <% if producer.latitude != nil && producer.longitude != nil %>
 
       L.marker([<%= producer.latitude %>, <%= producer.longitude %>]).addTo(map)
-          .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+          .bindPopup('<%= producer.city_name %> <%= producer.address %><br /> <%= producer.description %>')
           .openPopup();
 
     <% end %>
