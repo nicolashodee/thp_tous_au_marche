@@ -137,11 +137,12 @@
         <!-- Gallery zoom -->
         <div class="zoom-gallery">
           <% @producer.images.each_with_index do |image, n| %>
-            <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive pictures-gallery'), image %>
-            <%= link_to 'Remove', delete_image_attachment_producer_path(image.id),
-                method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-            <i class="fas fa-trash-alt"></i>
+            <div>
+              <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive pictures-gallery'), image %>
+              <%= link_to delete_image_attachment_producer_path(image.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="fas fa-trash-alt trash-red"></i>
+              <%end%>
+            </div>
           <% end %>
         </div>
 
