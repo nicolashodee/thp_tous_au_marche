@@ -15,13 +15,25 @@
 </section>
 
 <section id="fh5co-work" data-section="work" class="animated">
-  <div class="container">
+  <div class='container'>
     <div class="row row-bottom-padded-sm">
       <div class="col-md-6 text-center to-animate fadeInUp animated">
-        <a href="https://cdn.pixabay.com/photo/2016/07/27/20/03/berries-1546125_1280.jpg" class="fh5co-project-item image-popup to-animate fadeInUp animated">
-          <img src="https://cdn.pixabay.com/photo/2016/07/27/20/03/berries-1546125_1280.jpg" alt="Image" class="img-responsive" style="height: 400px">
-        </a>
-      </div>
+        <%if @user.avatar_user.attached?%>
+          <%= link_to image_tag(@user.avatar_user, alt: 'avatar_user', class:'img-responsive height-400'), @user.avatar_user, class:'fh5co-project-item image-popup to-animate fadeInUp animated' %>
+        <%else%>
+          <p class='height-400 font-italic box-avatar'> Il n'y a pas encore d'avatar lié à cet utilisateur </p>
+        <%end%>
+        <%if user_signed_in?%>
+          <div class='text-center'>
+            <div id='buttons-avatar'>
+              <%= form_tag user_avatar_users_path(@user), multipart: true do %>
+                <%= file_field_tag :avatar_user %>
+                <%= submit_tag "mettre à jour", class:'btn btn-primary btn-lg' %>
+              <% end %>
+            </div>
+          </div>
+        <%end%>
+       </div>
 
       <div class="col-md-6 text-center to-animate fadeInUp animated">
         <div class="fh5co-contact-info box-user">

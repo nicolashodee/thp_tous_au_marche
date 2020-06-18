@@ -23,4 +23,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :producers, :comments, :users
   end
+
+  resources :users, only: [:show] do
+    resources :avatar_users, only: [:create]
+  end
 end
