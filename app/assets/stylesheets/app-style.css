@@ -187,7 +187,7 @@ footer a .fa-arrow-up {
     margin: 1%;
 }
 
-.gallery-images {
+.gallery-div {
     position: relative;
 }
 
@@ -198,13 +198,22 @@ footer a .fa-arrow-up {
 
 .trash-red {
     position: absolute;
-    top: 6px;
-    left: 20px;
-    color: rgba(204, 58, 58);
+    bottom: -8px;
+    right: -12px;
+    color: white;
+    background-color: yellowgreen;
+    padding: 3%;
 }
 
 .trash-red:hover {
-    color: white;
+    color: rgba(204, 58, 58);
+    background-color: white;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 
