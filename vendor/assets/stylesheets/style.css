@@ -378,6 +378,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   overflow: hidden;
 }
+
 #fh5co-home .gradient {
   position: absolute;
   top: 0;
@@ -423,11 +424,13 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   border-bottom: 1px dashed white;
 }
+
 #fh5co-home .text-inner h1 {
   font-size: 50px;
   color: white;
   margin: 0 0 20px 0;
 }
+
 #fh5co-home .text-inner h2 {
   font-size: 28px;
   line-height: 38px;
