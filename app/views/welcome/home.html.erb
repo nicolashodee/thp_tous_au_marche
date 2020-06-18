@@ -1,255 +1,209 @@
-		<!--JUMBOTRON-->
-		<section id="fh5co-home" data-section="home" style="background-image: url(<%= asset_path('homepage/field.jpg') %>);" data-stellar-background-ratio="0.5">
-			<div class="gradient"></div>
-			<div class="container">
-				<div class="text-wrap">
-					<div class="text-inner">
-						<div class="row justify-content-center">
-							<div class="col-md-8 col-md-offset-2 to-animate">
-								<h1 class="to-animate">Tout commence là.</h1>
-								<h2 class="to-animate"><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
-							</div>
-							<div class="col-md-8 col-md-offset-2 to-animate FadeInBottom mt-3">
-								<%= link_to "Voir la carte", producers_path(@producer), { :type => "button",  :class => 'in btn btn-lg btn-jumbotron' } %>
-							</div>
-						</div>
+<!--JUMBOTRON-->
+<section id="fh5co-home" data-section="home" style="background-image: url(<%= asset_path('homepage/field.jpg') %>);">
+	<div class="gradient"></div>
+	<div class="container">
+		<div class="text-wrap">
+			<div class="text-inner">
+				<div class="row justify-content-center">
+					<div class="col-md-8 col-md-offset-2 to-animate">
+						<h1 class="to-animate">Tout commence là.</h1>
+						<h2 class="to-animate"><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
+					</div>
+					<div class="col-md-8 col-md-offset-2 to-animate FadeInBottom mt-3">
+						<%= link_to "Voir la carte", producers_path(@producer), {  :class => 'in btn btn-lg btn-jumbotron' } %>
 					</div>
 				</div>
 			</div>
-			<div class="slant"></div>
-		</section>
-		<!--PRODUCER CHOICE-->
-		<section id="fh5co-intro">
-			<div class="container">
-				<div class="row row-bottom-padded-lg buttons-intro-homepage mx-auto">
-					<!-- I AM LOOKING FOR A PRODUCER-->
-					<div class="fh5co-block to-animate mt-2" style="background-image: url(<%= asset_path('homepage/buyer.jpg')%>);">
-						<div class="overlay-darker"></div>
-						<div class="overlay"></div>
-						<div class="fh5co-text">
-              <span style="font-size: 8em; color: green;">
-							  <i class="fas fa-seedling"></i>
-              </span>
-							<h2>Je cherche un producteur local</h2>
-							<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, on est allés le demander pour vous !</p>
-							<p>
-								<% if user_signed_in? %>
-									<%= link_to "Voir la carte", producers_path(@producer), { :type => "button",  :class => 'in btn btn-primary' } %>
-									<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
-								<% else %>
-										<p>
-											<%= link_to "S'inscrire", new_user_registration_path, :type => "button", :class => 'in btn btn-primary' %>
-											<%= link_to "Se connecter", new_user_session_path, :type => "button",  :class => 'in btn btn-primary' %>
-										</p>
-								<% end %>
-							</p>
-						</div>
-					</div>
-					<!--I AM A PRODUCER-->
-					<div class="fh5co-block to-animate mt-2" style="background-image: url(<%= asset_path('homepage/seeding.jpg')%>);">
-						<div class="overlay-darker"></div>
-						<div class="overlay"></div>
-						<div class="fh5co-text">
-              <span style="font-size: 8em; color: #ff9900;">
-							  <i class="fas fa-hands-helping"></i>
-              </span>
-							<h2>Je suis un producteur</h2>
-              <p>Tout est une question de pratique et de persévérance.<br>
-              Vous avez le savoir-faire, maintenant faites le savoir !</p>
-							<p>
-								<% if producer_signed_in? %>
-									<%= link_to "Mon profil", producer_path(current_producer), { :type => "button",  :class => 'in btn btn-primary' } %>
-									<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button",  :class => 'in btn btn-primary' } %>
-								<% else %>
-										<%= link_to "S'inscrire", new_producer_registration_path, :type => "button", :class => 'in btn btn-primary' %>
-										<%= link_to "Se connecter", new_producer_session_path, :type => "button",  :class => 'in btn btn-primary' %>
-								<% end %>
-							</p>
-						</div>
-					</div>
-				</div>
-				
-				<!--DESCRIPTION OF THE WEBSITE-->
-				<div class="section-heading text-center" style="padding: 0">
-					<h2 class="to-animate fadeInUp animated">Trouvez enfin<br> les producteurs locaux de votre région</h2>
+		</div>
+	</div>
+	<div class="slant"></div>
+</section>
+<!--NAVIGATION CHOICE-->
+<section id="fh5co-intro">
+	<div class="container">
+		<div class="row row-bottom-padded-lg buttons-intro-homepage mx-auto">
+			<!-- I AM LOOKING FOR A PRODUCER-->
+			<div class="fh5co-block to-animate mt-2" style="background-image: url(<%= asset_path('homepage/buyer.jpg')%>);">
+				<div class="overlay-darker"></div>
+				<div class="overlay"></div>
+				<div class="fh5co-text">
+					<span style="font-size: 8em; color: green;">
+						<i class="fas fa-seedling"></i>
+					</span>
+					<h2>Je cherche un producteur local</h2>
+					<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, on est allés le demander pour vous !</p>
 					<p>
-						Avec notre carte interactive et communautaire, il n'a jamais été aussi facile de rassembler producteurs et consommateurs. Inscris-toi et participe à la révolution verte ! 
+						<% if user_signed_in? %>
+							<%= link_to "Voir la carte", producers_path(@producer), { :class => 'in btn btn-primary' } %>
+							<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
+						<% else %>
+								<p>
+									<%= link_to "S'inscrire", new_user_registration_path, :class => 'in btn btn-primary' %>
+									<%= link_to "Se connecter", new_user_session_path, :class => 'in btn btn-primary' %>
+								</p>
+						<% end %>
 					</p>
 				</div>
-				<!--VIDEO-->
-        <div class="row watch-video text-center to-animate">
-					<span>Regarder la video</span>
-					<a href="#" class="popup-vimeo"><span style="font-size: 5em; color: #339966;"><i class="far fa-play-circle"></i></span></a>
-				</div>
-        
 			</div>
-		</section>
-		<!--VALUES-->
-		<section id="fh5co-services">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 section-heading text-left">
-						<h2 class=" left-border to-animate">Nos valeurs</h2>
-						<div class="row">
-							<div class="col-md-8 subtext to-animate">
-								<h3>L'autosuffisance alimentaire pour tous, face à l'urgence climatique.</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<!--COVID-->
-					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-						<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: red;"><i class="fas fa-virus-slash"></i></span>
-						<h3>COVID-19 Proof</h3>
-						<p>La pandémie de Sars-cov-2 nous a prouvé l'importance des circuits courts et résilients. En vous reliant directement à vos producteurs, Tous au Marché contribue à votre indépendance alimentaire. </p>
-					</div>
-					<!--FRESHNESS & QUALITY-->
-					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-						<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: yellow;"><i class="fas fa-lemon"></i></span>
-						<h3>Fraicheur &amp; qualité</h3>
-						<p>Un esprit sain dans un corps sain. Rien de nouveau sous le soleil ! Mais n'est-ce pas encore meilleur en sachant ce qui se cache derrière votre assiette ?</p>
-					</div>
-					<!--MADE IN CHEZ VOUS-->
-					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-						<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: #FFC107;"><i class="fas fa-hand-sparkles"></i></span>
-						<h3>Made in chez vous</h3>
-						<p>Découvrez comment travaille votre producteur local, quels sont ses labels, et comment le contacter.</p>
-					</div>
-					<!--GOOD FOR THE PLANET-->
-					<div class="col-md-6 col-sm-6 fh5co-service to-animate">
-            <span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: #00ff33;"><i class="fas fa-globe-americas"></i></span>
-						<h3>Bon pour la planète</h3>
-						<p>Parce qu'il y a urgence à repenser nos modes de consommation, pour notre avenir et celui de nos enfants.</p>
-					</div>
-
+			<!--I AM A PRODUCER-->
+			<div class="fh5co-block to-animate mt-2" style="background-image: url(<%= asset_path('homepage/seeding.jpg')%>);">
+				<div class="overlay-darker"></div>
+				<div class="overlay"></div>
+				<div class="fh5co-text">
+					<span style="font-size: 8em; color: #ff9900;">
+						<i class="fas fa-hands-helping"></i>
+					</span>
+					<h2>Je suis un producteur</h2>
+					<p>Tout est une question de pratique et de persévérance.<br>
+					Vous avez le savoir-faire, maintenant faites le savoir !</p>
+					<p>
+						<% if producer_signed_in? %>
+							<%= link_to "Mon profil", producer_path(current_producer), { :class => 'in btn btn-primary' } %>
+							<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
+						<% else %>
+								<%= link_to "S'inscrire", new_producer_registration_path,  :class => 'in btn btn-primary' %>
+								<%= link_to "Se connecter", new_producer_session_path, :class => 'in btn btn-primary' %>
+						<% end %>
+					</p>
 				</div>
 			</div>
-		</section>
-		<!--ABOUT-->
-		<section id="fh5co-about" data-section="about">
-			<div class="container to-animate">
-				<!--ONCE UPON A TIME 5 MILLENIALS-->
+		</div>
+		
+		<!--DESCRIPTION OF THE WEBSITE-->
+		<div class="section-heading text-center" style="padding: 0">
+			<h2 class="to-animate fadeInUp animated">La carte de vos producteurs locaux</h2>
+			<div class="m-3">
+				<span><img src="<%= asset_path('homepage/fruit.png') %>" alt="Image" style="height: 100px;" class="to-animate fadeInRight animated m-"></span>
+				<span><img src="<%= asset_path('homepage/meat.png') %>" alt="Image" style="height: 100px;" class="to-animate fadeInRight animated m-2"></span>
+				<span><img src="<%= asset_path('homepage/fish.png') %>" alt="Image" style="height: 100px;" class="to-animate fadeInRight animated m-2"></span>
+			</div>
+			<div class="hidden">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+			<p>
+				Entre gestes barrières et règles de distanciation sociale, le confinement a bouleversé la manière de consommer.<br> 
+				Naturellement, la limitation des déplacements a favorisé les circuits courts, le drive, et boosté les ventes en ligne.<br>
+				<br>
+				<span>Pour autant, savez vous vraiment qui sont les producteurs autour de chez vous ?</span><br>
+				<br><b>Avec notre <%= link_to "carte", producers_path(@producer) %> intéractive et communautaire, retrouvez vos maraichers et producteurs favoris directement en ligne !</b>
+			</p>
+		</div>
+	
+	</div>
+</section>
+<!--VALUES-->
+<section id="fh5co-services">
+	<div class="container">
+		<!--header-->
+		<div class="row">
+			<div class="col-md-12 section-heading text-left">
+				<h2 class=" left-border to-animate">Nos valeurs</h2>
+				<div class="row">
+					<div class="col-md-8 subtext to-animate">
+						<h3>L'autosuffisance alimentaire pour tous, face à l'urgence climatique.</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!--COVID-->
+			<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+				<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: red;"><i class="fas fa-virus-slash"></i></span>
+				<h3>COVID-19 Proof</h3>
+				<p>La pandémie de Sars-cov-2 nous a prouvé l'importance des circuits courts et résilients. En vous reliant directement à vos producteurs, Tous au Marché contribue à votre indépendance alimentaire. </p>
+			</div>
+			<!--FRESHNESS & QUALITY-->
+			<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+				<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: yellow;"><i class="fas fa-lemon"></i></span>
+				<h3>Fraicheur &amp; qualité</h3>
+				<p>Un esprit sain dans un corps sain. Rien de nouveau sous le soleil ! Mais n'est-ce pas encore meilleur en sachant ce qui se cache derrière votre assiette ?</p>
+			</div>
+			<!--MADE IN CHEZ VOUS-->
+			<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+				<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: #FFC107;"><i class="fas fa-hand-sparkles"></i></span>
+				<h3>Made in chez vous</h3>
+				<p>Découvrez comment travaille votre producteur local, quels sont ses labels, et comment le contacter.</p>
+			</div>
+			<!--GOOD FOR THE PLANET-->
+			<div class="col-md-6 col-sm-6 fh5co-service to-animate">
+				<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: #00ff33;"><i class="fas fa-globe-americas"></i></span>
+				<h3>Bon pour la planète</h3>
+				<p>Parce qu'il y a urgence à repenser nos modes de consommation, pour notre avenir et celui de nos enfants.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!--ABOUT-->
+<section id="fh5co-about" data-section="about">
+	<div class="container to-animate">
+		<!--ONCE UPON A TIME 5 MILLENIALS-->
+		<div class="row justify-content-center">
+			<div class="col-md-12 section-heading text-center">
+				<h2 class="to-animate">A propos</h2>
 				<div class="row justify-content-center">
-					<div class="col-md-12 section-heading text-center">
-						<h2 class="to-animate">A propos</h2>
-						<div class="row justify-content-center">
-							<div class="col-md-8 col-md-offset-2 subtext to-animate text-center">
-								<h3>Il était une fois 5 millénials, qui voulaient changer le monde...</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center">
-					<!--NICOLAS PORTRAIT-->
-        	<div class="col-lg-4 col-md-6 col-sm-12 my-5 h-100">
-						<div class="fh5co-person text-center to-animate">
-							<figure><img src="<%= asset_path('homepage/portraits/nicolas.jpg') %>" alt="Image"></figure>
-							<h3>Nicolas Hodée</h3>
-							<span class="fh5co-position">CEO</span>
-							<p>C'est en voyant la malbouffe outre manche que Nicolas réalise qu'il n'y a pas de communauté entre consommateurs et producteurs</p>
-							<ul class="social social-circle">
-								<li><a href="https://www.instagram.com/nicolas_hodee_photography/"><i class="fab fa-instagram"></i></a></li>
-								<li><a href="https://www.facebook.com/photos.nicolashodee"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="http://www.nicolashodee.com/"><i class="fas fa-code"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!--JORDAN PORTRAIT-->
-					<div class="col-lg-4 col-md-6 col-sm-12 my-5 h-100">
-						<div class="fh5co-person text-center to-animate">
-							<figure><img src="<%= asset_path('homepage/portraits/jordan.jpg') %>" alt="Image"></figure>
-							<h3>Jordan Tournerie</h3>
-							<span class="fh5co-position">CTO</span>
-							<p>Diplomé en aéronautique, Jordan est notre expert tech en charge du développement de la plateforme</p>
-							<ul class="social social-circle">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-github"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!--AURORE PORTRAIT-->
-					<div class="col-lg-4 col-md-6 col-sm-12 my-5 h-100">
-						<div class="fh5co-person text-center to-animate">
-							<figure><img src="<%= asset_path('homepage/portraits/aurore.jpg') %>" alt="Image"></figure>
-							<h3>Aurore Carrière</h3>
-							<span class="fh5co-position">COO</span>
-							<p>Diplomé en management de la qualité, Aurore est en charge du sourcing des meilleurs producteurs de votre région et des opérations chez tous au marché!</p>
-							<ul class="social social-circle">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-dribbble"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!--MARVIN PORTRAIT-->
-          <div class="col-lg-4 col-md-6 col-sm-12 my-5 h-100">
-						<div class="fh5co-person text-center to-animate">
-							<figure><img src="<%= asset_path('homepage/portraits/marvin.jpg') %>" alt="Image"></figure>
-							<h3>Marvin Pierrat</h3>
-							<span class="fh5co-position">Head of Partnerships</span>
-							<p>Ancien commercial, Marvin a rejoint le projet pour développer la communauté et gérer les partenariats avec les institutions régionales</p>
-							<ul class="social social-circle">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-dribbble"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!--CLEMENT PORTRAIT-->
-          <div class="col-lg-4 col-md-6 col-sm-12 my-5 h-100">
-						<div class="fh5co-person text-center to-animate">
-							<figure><img src="<%= asset_path('homepage/portraits/clement.jpg') %>" alt="Image"></figure>
-							<h3>Clément Facco</h3>
-							<span class="fh5co-position">CMO</span>
-							<p>Diplomé en marketing, Clément est en charge du green marketing chez Tous au marché </p>
-							<ul class="social social-circle">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-dribbble"></i></a></li>
-							</ul>
-						</div>
-					</div>
-			</div>
-		</section>
-		<!--COUNTERS-->
-		<section id="fh5co-counters" style="background-image: url(<%= asset_path('homepage/full_image_1.jpg') %>);" data-stellar-background-ratio="0.5">
-			<div class="fh5co-overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 section-heading text-center to-animate">
-						<h2>Tous au Marché en chiffres</h2>
-					</div>
-				</div>
-				<div class="row counter-homepage">
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="fh5co-counter to-animate">
-              <span style="font-size: 3em; color: #white;">
-							  <i class="fas fa-user-friends"></i>
-              </span>
-							<span class="fh5co-counter-number js-counter" data-from="0" data-to="89" data-speed="5000" data-refresh-interval="50">89</span>
-							<span class="fh5co-counter-label">producteurs inscrits</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="fh5co-counter to-animate">
-              <span style="font-size: 3em; color: #white;">
-                <i class="fas fa-terminal"></i>
-              </span>
-							<span class="fh5co-counter-number js-counter" data-from="0" data-to="2343409" data-speed="5000" data-refresh-interval="50">2343409</span>
-							<span class="fh5co-counter-label">Lignes de code</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="fh5co-counter to-animate">
-              <span style="font-size: 3em; color: #white;">
-                <i class="fas fa-coffee"></i>
-              </span>
-							<span class="fh5co-counter-number js-counter" data-from="0" data-to="1302" data-speed="5000" data-refresh-interval="50">1302</span>
-							<span class="fh5co-counter-label">Verres de café</span>
-						</div>
+					<div class="col-md-8 col-md-offset-2 subtext to-animate text-center">
+						<h3>Il était une fois 5 millénials, qui voulaient changer le monde...</h3>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+		<div class="row d-flex align-items-stretch justify-content-center">
+			<!--NICOLAS PORTRAIT-->
+			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
+				<figure><img src="<%= asset_path('homepage/portraits/nicolas.jpg') %>" alt="Image"></figure>
+				<h3>Nicolas Hodée</h3>
+				<span class="fh5co-position">CEO</span>
+				<p>C'est en voyant la malbouffe outre manche que Nicolas réalise qu'il n'y a pas de communauté entre consommateurs et producteurs</p>
+				<ul class="social social-circle">
+					<li><a href="https://www.instagram.com/nicolas_hodee_photography/"><i class="fab fa-instagram"></i></a></li>
+					<li><a href="https://www.facebook.com/photos.nicolashodee"><i class="fab fa-facebook-f"></i></a></li>
+					<li><a href="https://github.com/nicolashodee"><i class="fas fa-code"></i></a></li>
+					<li><a href="https://www.nicolashodee.com/"><i class="fas fa-globe-americas"></i></a></li>
+				</ul>
+			</div>
+			<!--JORDAN PORTRAIT-->
+			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
+				<figure><img src="<%= asset_path('homepage/portraits/jordan.jpg') %>" alt="Image"></figure>
+				<h3>Jordan Tournerie</h3>
+				<span class="fh5co-position">CTO</span>
+				<p>Diplomé en aéronautique, Jordan est notre expert tech en charge du développement de la plateforme</p>
+				<ul class="social social-circle">
+					<li><a href="https://www.linkedin.com/in/jordan-tournerie-a978a6b7/"><i class="fab fa-linkedin-in"></i></a></li>
+					<li><a href="https://github.com/JordanT2310"><i class="fas fa-code"></i></a></li>
+				</ul>
+			</div>
+			<!--AURORE PORTRAIT-->
+			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
+				<figure><img src="<%= asset_path('homepage/portraits/aurore.jpg') %>" alt="Image"></figure>
+				<h3>Aurore Carrière</h3>
+				<span class="fh5co-position">COO</span>
+				<p>Diplomée en management de la qualité, Aurore est en charge du sourcing des meilleurs producteurs de votre région et des opérations chez tous au marché!</p>
+				<ul class="social social-circle">
+					<li><a href="https://www.linkedin.com/in/aurore-carriere-230856131/"><i class="fab fa-linkedin-in"></i></a></li>
+					<li><a href="https://github.com/Titpioupiou"><i class="fas fa-code"></i></a></li>
+				</ul>
+			</div>
+			<!--MARVIN PORTRAIT-->
+			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
+				<figure><img src="<%= asset_path('homepage/portraits/marvin.jpg') %>" alt="Image"></figure>
+				<h3>Marvin Pierrat</h3>
+				<span class="fh5co-position">Head of Partnerships</span>
+				<p>Ancien commercial, Marvin a rejoint le projet pour développer la communauté et gérer les partenariats avec les institutions régionales</p>
+				<ul class="social social-circle">
+					<li><a href="https://www.linkedin.com/in/pierrat-marvin-387937118/"><i class="fab fa-linkedin-in"></i></a></li>
+					<li><a href="https://github.com/Homarv"><i class="fas fa-code"></i></a></li>
+				</ul>
+			</div>
+			<!--CLEMENT PORTRAIT-->
+			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
+				<figure><img src="<%= asset_path('homepage/portraits/clement.jpg') %>" alt="Image"></figure>
+				<h3>Clément Facco</h3>
+				<span class="fh5co-position">CMO</span>
+				<p>Diplomé en marketing, Clément est en charge du green marketing chez Tous au marché </p>
+				<ul class="social social-circle">
+					<li><a href="https://www.linkedin.com/in/clementfacco/"><i class="fab fa-linkedin-in"></i></a></li>
+					<li><a href="https://github.com/cfacco1"><i class="fas fa-code"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+		

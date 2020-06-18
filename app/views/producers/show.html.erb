@@ -100,10 +100,10 @@
               <% if user_signed_in? %>
                 <% if current_user && @favorited %>
                     <td><span style="color: red;"><i class="fas fa-heart"></i></span></td>
-                    <td><b><%= link_to "Retirer de mes favoris", favorite_producer_path(@producer, type: "unfavorite"), method: :put, :type => "button", :style => "text: bold;" %></b></td>
+                    <td><b><%= link_to "Retirer de mes favoris", favorite_producer_path(@producer, type: "unfavorite"), method: :put, :style => "text: bold;" %></b></td>
                 <% else %>
                   <td><i class="fas fa-heart"></i></td>
-                  <td><%= link_to "Ajouter à mes favoris", favorite_producer_path(@producer, type: "favorite"), method: :put, :type => "button"  %></td>  
+                  <td><%= link_to "Ajouter à mes favoris", favorite_producer_path(@producer, type: "favorite"), method: :put %></td>  
                 <% end %>
               <% end %>
             </tr>
