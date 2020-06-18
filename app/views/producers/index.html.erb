@@ -39,26 +39,7 @@
     </div>
 
     <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
-      <%=
-   
-    map(:center => {
-        :latlng => [51.52238797921441, -0.08366235665359283],
-        :zoom => 18
-      },
-       :markers => [
-           {
-               :latlng => [51.52238797921441, -0.08366235665359283],
-               :popup => "Hello!",
-               :icon => @icon_options
-           },
-           {
-               :latlng => [51.54238797921441, -0.08566235665359283],
-               :popup => "Farewell!",
-               :icon => @icon_options
-           }
-       ])
-
-      %>   
+     <div class ="map" id="map"> 
     </div> >
   </div>  
 
@@ -80,4 +61,28 @@
 <% end %>
 
 
-<script src="assets/map"></script>
+<script>
+
+  var map = L.map('map').setView([51.505, -0.09], 9);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+
+  L.marker([51.5, -0.09]).addTo(map)
+      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+      .openPopup();
+
+
+  <% @producer.each do |producer| %>
+    <% if producer.latitude != nil && producer.longitude != nil %>
+
+      L.marker([<%= producer.latitude %>, <%= producer.longitude %>]).addTo(map)
+          .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+          .openPopup();
+
+    <% end %>
+  <% end %>
+
+</script>
