@@ -206,7 +206,7 @@ footer a .fa-arrow-up {
 }
 
 .trash-red:hover {
-    color: rgba(204, 58, 58);
+    color: rgba(204, 58, 58, 0.952);
     background-color: white;
 }
 
