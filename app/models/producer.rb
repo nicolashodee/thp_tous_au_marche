@@ -20,7 +20,7 @@ class Producer < ApplicationRecord
   after_validation :geocode
 
   def geocode_address
-    [city_name ].compact.join(', ')
+    [address,city_name, zip_code].compact.join(', ')
   end
   
   private
