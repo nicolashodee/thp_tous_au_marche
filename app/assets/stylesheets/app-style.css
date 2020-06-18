@@ -283,9 +283,7 @@ list-group-item {
     left: 0;
     right: 0;
     z-index: 2;
-    opacity: 0.15;
-    -webkit-backface-visibility: hidden;
-    background-color: linear-gradient(315deg, transparent 0%, #f9d976 74%);
+    opacity: 0.8;
 }
 
 .portraits {
