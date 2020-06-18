@@ -250,6 +250,10 @@ list-group-item {
 
 /* Custom CSS for the HOME PAGE */
 
+.hidden {
+    display: none;
+}
+
 .btn-jumbotron {
     border: 2px solid #fff !important;
     background: transparent;

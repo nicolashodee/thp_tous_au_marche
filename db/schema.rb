@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "city_name"
+    t.integer "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -79,12 +86,14 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
+    t.bigint "city_id"
     t.string "address"
     t.string "phone_number"
     t.string "website"
     t.float "rating"
     t.string "city_name"
     t.string "zip_code"
+    t.index ["city_id"], name: "index_producers_on_city_id"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
   end
@@ -116,4 +125,5 @@ ActiveRecord::Schema.define(version: 2020_06_17_083849) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "producers", "cities"
 end
