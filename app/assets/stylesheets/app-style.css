@@ -15,6 +15,12 @@ body {
     margin: 0 auto;
 }
 
+.banner {
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+}
+
 #navbar {
     justify-content: flex-end;
 }
@@ -348,3 +354,5 @@ list-group-item {
     margin: auto;
     text-align: center;
 }
+
+/*

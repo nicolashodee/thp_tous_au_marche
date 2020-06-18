@@ -55,7 +55,7 @@ class ProducersController < ApplicationController
     elsif type == "unfavorite-from-user-profile"
       current_user.favorites.delete(@producer)
       flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
-      redirect_to user_path
+      redirect_to user_path(current_user.id)
 
     else
       # Type missing, nothing happens
