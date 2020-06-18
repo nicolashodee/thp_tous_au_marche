@@ -17,30 +17,31 @@
 
 <section id="fh5co-work" data-section="work">
   <div class="container">
-      <div class="row justify-content-between py-4 d-flex mx-auto" >
-        <% if current_producer == @producer %>
-          <div class="fadeInRight animated"><i class="fa fa-code-fork"></i> Vous êtes suivi par <%= @producer.favorited_by.count %> utilisateurs</div>
-        <% else %>
-          <div class="fadeInRight animated"><i class="fa fa-code-fork"></i> Producteur suivi par <%= @producer.favorited_by.count %> utilisateurs</div>
-        <% end %>
-        <div class="stars">
-            <span>Note : </span>
-            <% if @producer.rating == nil %>
-              <% 5.times do %>
-                <i class='fa fa-star align-middle'></i>
-              <% end %>
-            <% else %>
-              <% number_star = @producer.rating.truncate %>
-              <% number_star.times do %>
-                <i class='fa fa-star align-middle checked'></i>
-              <% end %>
-              <% (5 - number_star).times do %>
-                <i class='fa fa-star align-middle'></i>
-              <% end %>
+    <div class="row justify-content-between py-4 d-flex mx-auto" >
+      <% if current_producer == @producer %>
+        <div class="fadeInRight animated"><i class="fa fa-code-fork"></i> Vous êtes suivi par <%= @producer.favorited_by.count %> utilisateurs</div>
+      <% else %>
+        <div class="fadeInRight animated"><i class="fa fa-code-fork"></i> Producteur suivi par <%= @producer.favorited_by.count %> utilisateurs</div>
+      <% end %>
+      <div class="stars">
+          <span>Note : </span>
+          <% if @producer.rating == nil %>
+            <% 5.times do %>
+              <i class='fa fa-star align-middle'></i>
             <% end %>
-          </div>
-      </div>
+          <% else %>
+            <% number_star = @producer.rating.truncate %>
+            <% number_star.times do %>
+              <i class='fa fa-star align-middle checked'></i>
+            <% end %>
+            <% (5 - number_star).times do %>
+              <i class='fa fa-star align-middle'></i>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
 
+    <!-- Avatars and description -->
     <div class="row row-bottom-padded-sm">
       <div class="col-md-6 text-center to-animate fadeInUp animated">
         <%if @producer.avatar.attached?%>
@@ -58,7 +59,7 @@
             </div>
           </div>
         <%end%>
-       </div>
+      </div>
     
       <div class="fh5co-contact-info box-producer col-md-6 to-animate fadeInUp animated">
         <table class="table table-borderless text-white">
@@ -99,13 +100,61 @@
             </tr>
           </tbody>
         </table>
-
-          <blockquote>
-            <p><%= @producer.description %></p>
-          </blockquote>
+        <blockquote>
+          <p><%= @producer.description %></p>
+        </blockquote>
       </div>
-
     </div>
+
+    <!-- Pictures of products - Carousel -->
+    <div >
+      <div >
+        <%if @producer.images.attached?%>
+          <div class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <% @producer.images.each_with_index do |image, n| %>
+                <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+              <% end %>
+            </ol>
+            
+            <!-- The slideshow -->
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active carousel-images">
+                <%= image_tag @producer.images.first %>
+              </div>
+              <% @producer.images.drop(1).each do |photo| %>
+                <div class="carousel-item carousel-images">
+                  <%= image_tag photo %>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        <%else%>
+          <p class='height-400 font-italic box-avatar'> Il n'y a pas encore d'images des produits </p>
+        <%end%>
+
+        <%if producer_signed_in?%>
+          <div class='text-center'>
+            <div id='buttons-avatar'>
+              <%= form_tag producer_images_path(@producer), multipart: true do %>
+                <%= file_field_tag :images, multiple: true %>
+                <%= submit_tag "mettre à jour", class:'btn btn-primary btn-lg' %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
     <% if current_producer == @producer && current_producer.favorited_by.count > 0 %>
       <!--MY FAVORITE PRODUCERS-->
       <div class="container">

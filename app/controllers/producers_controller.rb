@@ -80,7 +80,8 @@ class ProducersController < ApplicationController
       :website,
       :city_name,
       :zip_code,
-      :avatar)
+      :avatar,
+      images: [])
   end
 
   def deny_to_visitors

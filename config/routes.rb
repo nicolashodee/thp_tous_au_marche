@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :producers, only: [:show] do
     resources :avatars, only: [:create]
+    resources :images, only: [:create]
   end
   
   namespace :admin do
