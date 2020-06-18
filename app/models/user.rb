@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :ratings
+  has_one_attached :avatar_user
 
   private
 

@@ -74,3 +74,4 @@ gem 'tel_to_helper'
 gem 'mail_form'
 gem 'letter_opener'
 gem 'sendgrid-ruby'
+gem "aws-sdk-s3", require: false
