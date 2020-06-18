@@ -112,7 +112,9 @@
             </tr>
             <tr>
               <td><i class="fas fa-globe"></i></td>
-              <td><%= link_to @producer.website, @producer.website %></td>
+              <% if @producer.website%>
+                <td><%= link_to @producer.website, @producer.website %></td>
+              <%end%>
             </tr>
             <tr>
               <% if user_signed_in? %>
@@ -134,6 +136,7 @@
           </tbody>
         </table>
         <% if @producer.description %>
+          <hr class='my-2 style-one'>
           <blockquote>
             <p class='mb-1'><%= @producer.description %></p>
           </blockquote>
@@ -143,7 +146,7 @@
 
     <!-- Pictures of products -->
   <div class='container'>
-    <hr class='my-5 bg-white'>
+    <hr class='my-5 style-one'>
     <div class="pictures">
       <% if current_producer == @producer %>
         <h1 class="to-animate">Vos images</h1>
@@ -199,7 +202,7 @@
       <% end %>
     </div>
 
-    <hr class='my-5 bg-white'>
+    <hr class='my-5 style-one'>
 
     <% if current_producer == @producer && current_producer.favorited_by.count > 0 %>
       <!-- MY FAVORITE USERS -->

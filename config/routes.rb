@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   
   resources :producers do
     put :favorite, on: :member
-  end
-
-  resources :producers do
     member do
       delete :delete_image_attachment
     end

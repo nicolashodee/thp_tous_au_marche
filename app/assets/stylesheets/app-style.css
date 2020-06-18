@@ -216,6 +216,12 @@ footer a .fa-arrow-up {
     display: block;
 }
 
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
 
 /* Custom CSS for FORM */
 
