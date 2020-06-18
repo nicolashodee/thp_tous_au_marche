@@ -17,10 +17,10 @@
             <div class="box-testimony">
               <blockquote class="to-animate-2 fadeInDown animated">
 
-                <%if producer.city.nil? %>
+                <%if @producer.city_name.nil? %>
                   <i>Pas d'adresse enregistrée pour le moment</i>
                   <%else%>
-                  <p>Localisation : <%= producer.city.city_name %></p>     
+                  <p>Localisation : <%= @producer.city_name %></p>     
                 <%end%>
 
                 <p><%= producer.description %></p>

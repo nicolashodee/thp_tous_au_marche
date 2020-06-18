@@ -22,5 +22,4 @@
 //= require magnific-popup-options
 //= require leaflet
 //= require main
-//= require app-main 
-//= require map
+//= require app-main

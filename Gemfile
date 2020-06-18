@@ -72,3 +72,7 @@ gem 'leaflet-rails'
 gem 'recaptcha'
 gem 'tel_to_helper'
 gem 'geocoder', '~> 1.6', '>= 1.6.3'
+gem 'mail_form'
+gem 'letter_opener'
+gem 'sendgrid-ruby'
+gem "aws-sdk-s3", require: false

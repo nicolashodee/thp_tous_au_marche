@@ -1,5 +1,4 @@
 class Producer < ApplicationRecord
-  belongs_to :city, optional: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,6 +6,8 @@ class Producer < ApplicationRecord
 
   has_many :join_table_product_categories
   has_many :categories, through: :join_table_product_category
+  has_one_attached :avatar
+  has_many_attached :images
   has_many :comments
   
   # returns the users that favorite a producer
