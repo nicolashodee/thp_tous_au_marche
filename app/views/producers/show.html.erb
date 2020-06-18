@@ -107,10 +107,13 @@
     </div>
 
     <!-- Pictures of products - Carousel -->
-    <div >
-      <div >
+    <div>
+      <p>Images concercant ce producteur</p>
+    </div>
+    <div>
+      <div>
         <%if @producer.images.attached?%>
-          <div class="carousel slide" data-ride="carousel">
+        <div class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
               <% @producer.images.each_with_index do |image, n| %>
@@ -121,7 +124,7 @@
             <!-- The slideshow -->
             <div class="carousel-inner" role="listbox">
               <div class="carousel-item active carousel-images">
-                <%= image_tag @producer.images.first %>
+                <%= image_tag @producer.images.first, alt: 'image', class:'img-responsive'%>
               </div>
               <% @producer.images.drop(1).each do |photo| %>
                 <div class="carousel-item carousel-images">
@@ -129,6 +132,7 @@
                 </div>
               <% end %>
             </div>
+              
 
             <!-- Left and right controls -->
             <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -137,6 +141,11 @@
             <a class="carousel-control-next" href="#demo" data-slide="next">
               <span class="carousel-control-next-icon"></span>
             </a>
+          </div>
+          <div class="zoom-gallery">
+            <% @producer.images.each_with_index do |image, n| %>
+              <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive height-100'), image %>
+            <% end %>
           </div>
         <%else%>
           <p class='height-400 font-italic box-avatar'> Il n'y a pas encore d'images des produits </p>
@@ -154,6 +163,8 @@
         <% end %>
       </div>
     </div>
+
+
 
     <% if current_producer == @producer && current_producer.favorited_by.count > 0 %>
       <!--MY FAVORITE PRODUCERS-->
