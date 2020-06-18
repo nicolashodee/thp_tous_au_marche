@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
   root 'welcome#home'
   devise_for :users
   resources :users, :path => "mon_profil"
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   resources :producers do
     put :favorite, on: :member
   end
+
+  resources :contacts, only: [:new, :create]
 
   resources :comments
   resources :ratings
