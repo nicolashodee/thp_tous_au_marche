@@ -1,6 +1,12 @@
-<header role="banner" id="fh5co-header" class='navbar-fixed-top fh5co-animated slideInDown'>
+<header role="banner" id="fh5co-header" class='navbar-fixed-top'>
   <nav class="navbar navbar-expand-lg navbar-light py-0">
-    <%= link_to "Tous au marché !", root_path, { :type => "button", :class => "navbar-brand" } %>
+
+    <!-- <%= link_to "Tous au marché !", root_path, :class => "navbar-brand bg-transparent border-0" %> -->
+    <%= link_to root_path , { :class => 'navbar-brand bg-transparent border-0' } do %>
+      <div>
+        <span style="color: green;">tous</span><span style="color: #8BC34A;" class="">au</span><span style="color: #ff9900;" class="">marché<span style="color: #CCCCCC;" class="">.fr</span>
+      </div> 
+    <% end %>
     <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle border-0 mr-2" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <i></i>
     </button>
@@ -8,7 +14,7 @@
     <div id="navbar" class="collapse navbar-collapse row mx-1">
       <ul class="navbar-nav ml-2">
         <li class='nav-item'>
-          <%= link_to root_path(anchor: "fh5co-home"), { :'data-nav-section' => 'home', :class => 'nav-link external' } do %>
+          <%= link_to root_path(anchor: "accueil"), { :'data-nav-section' => 'home', :class => 'nav-link external' } do %>
             <span>Accueil</span>
           <% end %>
         </li>
@@ -24,7 +30,7 @@
             <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :type => "button", :class => 'nav-link external' } %>
+            <%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :class => 'nav-link external' } %>
           </li>
         <% elsif producer_signed_in? %>
           <li class='nav-item'>
@@ -33,7 +39,7 @@
             <% end %>
           </li>
           <li class='nav-item'>
-            <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :type => "button", :class => 'nav-link external' } %>
+            <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :class => 'nav-link external' } %>
           </li>
         <% end %>
       </ul>
