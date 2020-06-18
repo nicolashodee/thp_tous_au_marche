@@ -16,9 +16,9 @@ body {
 }
 
 .banner {
-    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
-    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
-    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.73);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.73);
+    box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.73);
 }
 
 #navbar {
@@ -209,10 +209,14 @@ footer a .fa-arrow-up {
 }
 
 .pictures-gallery {
-    height: 200px;
+    height: 180px;
     width: 250px;
     border-radius: 7px;
     margin: 1%;
+}
+
+.gallery-images {
+    position: relative;
 }
 
 .pictures h1 {
@@ -220,8 +224,15 @@ footer a .fa-arrow-up {
     text-align: center;
 }
 
+.trash-red {
+    position: absolute;
+    top: 6px;
+    left: 20px;
+    color: rgba(204, 58, 58);
+}
+
 .trash-red:hover {
-    color: rgba(204, 58, 58, 0.849);
+    color: white;
 }
 
 

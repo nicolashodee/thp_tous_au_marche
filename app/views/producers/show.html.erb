@@ -121,8 +121,10 @@
         <%= link_to "Modifier mes informations", edit_producer_path(current_producer), class: "btn btn-primary btn-lg" %>
       </div>
     <% end %>
+  </div>
 
     <!-- Pictures of products -->
+  <div class='container'>
     <hr>
     <div class="pictures">
       <% if current_producer == @producer %>
@@ -135,15 +137,17 @@
     <div>
       <%if @producer.images.attached?%>
         <!-- Gallery zoom -->
-        <div class="zoom-gallery">
-          <% @producer.images.each_with_index do |image, n| %>
-            <div>
-              <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive pictures-gallery'), image %>
-              <%= link_to delete_image_attachment_producer_path(image.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <i class="fas fa-trash-alt trash-red"></i>
-              <%end%>
-            </div>
-          <% end %>
+          <div class="zoom-gallery row">
+            <% @producer.images.each_with_index do |image, n| %>
+              <div class="gallery-images col-md-3">
+                <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive pictures-gallery'), image %>
+                <%if producer_signed_in?%>
+                  <%= link_to delete_image_attachment_producer_path(image.id), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette photo ?' } do %>
+                    <i class="fas fa-trash-alt trash-red"></i>
+                  <%end%>
+                <%end%>
+              </div>
+            <% end %>
         </div>
 
         <!-- If there is no picture -->
