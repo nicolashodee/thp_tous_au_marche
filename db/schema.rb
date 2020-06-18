@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 2020_06_17_092504) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.float "rating"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.string "city_name"
     t.string "zip_code"
     t.index ["city_id"], name: "index_producers_on_city_id"
