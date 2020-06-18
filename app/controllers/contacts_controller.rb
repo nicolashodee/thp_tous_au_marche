@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.valid?
       @contact.send_message
-      flash[:notice] = "Message successfully sent"
+      flash[:notice] = "Votre message a bien été envoyé, nous vous recontacterons au plus vite !"
       redirect_to root_path
     else
       set_subject_options
@@ -24,9 +24,9 @@ class ContactsController < ApplicationController
 
   def set_subject_options
     @subject_options = [
-    "General Inquiry", 
-    "Technical Support", 
-    "Account Problem", 
+    "Demande de renseignements", 
+    "Support technique", 
+    "Problème avec votre compte", 
     "Other"]
   end
 end
