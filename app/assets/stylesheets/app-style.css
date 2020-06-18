@@ -73,19 +73,15 @@ footer a .fa-arrow-up {
     color: yellow;
 }
 
-.unchecked {
-    color: white;
-}
-
 .fh5co-contact-info {
-    display: block;
-    width: 100%;
+    /* display: block;
     position: relative;
-    top: 0;
+    width: 100%;
+    top: 0; */
     background: rgba(255, 255, 255, 0.13);
     border: 1px solid rgba(255, 255, 255, 0.13);
     overflow: hidden;
-    z-index: 9;
+    /* z-index: 9; */
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
@@ -115,20 +111,8 @@ footer a .fa-arrow-up {
     padding: 8px;
 }
 
-.box-user {
-    height: 100%;
-}
-
-.box-user li {
-    padding: 6%;
-}
-
-.box-producer li {
-    padding: 2%;
-}
-
 #fh5co-work .col-md-6 {
-    height: 450px;
+    /* height: 450px; */
     display: flex;
     flex-direction: column;
     align-content: space-between;
@@ -139,7 +123,7 @@ footer a .fa-arrow-up {
     color: rgba(255, 255, 255, 0.8);
 }
 
-#fh5co-work a:hover {
+#user-producer-information a:hover {
     color: #343a40;
 }
 
@@ -162,17 +146,13 @@ footer a .fa-arrow-up {
 }
 
 .box-edit {
-    margin: 2% 4% 4% 4%;
+    margin: 2% 4% 6% 4%;
     display: flex;
     justify-content: space-evenly;
 }
 
 #fh5co-about-bis {
     padding-top: 0%;
-}
-
-#buttons-avatar {
-    margin-top: 2%;
 }
 
 .btn-glyphicon {
@@ -198,14 +178,6 @@ footer a .fa-arrow-up {
 .btn-labeled {
     padding-top: 0;
     padding-bottom: 0;
-}
-
-.btn {
-    margin-bottom: 10px;
-}
-
-.height-400 {
-    height: 400px;
 }
 
 .pictures-gallery {
@@ -266,6 +238,10 @@ list-group-item {
 .form-control::-o-input-placeholder {
     opacity: 0.5;
     font-weight: lighter;
+}
+
+.custom-file-input~.custom-file-label::after {
+    content: "Chercher";
 }
 
 
