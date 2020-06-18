@@ -37,7 +37,7 @@ i=0
     phone_number: Faker::PhoneNumber.cell_phone,
     website: Faker::Internet.url,
     latitude: '',
-    longitude: ''
+    longitude: '',
   )
   i+=1
 end
