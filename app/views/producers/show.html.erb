@@ -44,23 +44,23 @@
     <div class="row row-bottom-padded-sm">
       <div class="col-md-6 text-center to-animate fadeInUp animated">
         <%if @producer.avatar.attached?%>
-          <a href='<%=@producer.avatar%>' class='fh5co-project-item image-popup to-animate fadeInUp animated'>
-            <%= image_tag @producer.avatar, alt: 'avatar', class:'img-responsive', style:'height: 400px' %>
-          </a>
+          <%= link_to image_tag(@producer.avatar, alt: 'avatar', class:'img-responsive height-400'), @producer.avatar, class:'fh5co-project-item image-popup to-animate fadeInUp animated' %>
         <%else%>
-          <p class="table table-borderless text-white">=== Il n'y a pas encore d'avatar lié à ce producteur ===</p>
+          <p class='height-400 font-italic box-avatar'> Il n'y a pas encore d'avatar lié à ce producteur </p>
         <%end%>
         <%if producer_signed_in?%>
-          <div id='buttons-avatar'>
-            <%= form_tag producer_avatars_path(@producer), multipart: true do %>
-              <%= file_field_tag :avatar %>
-              <%= submit_tag "mettre à jour", class:'btn btn-primary btn-lg' %>
-            <% end %>
+          <div class='text-center'>
+            <div id='buttons-avatar'>
+              <%= form_tag producer_avatars_path(@producer), multipart: true do %>
+                <%= file_field_tag :avatar %>
+                <%= submit_tag "mettre à jour", class:'btn btn-primary btn-lg' %>
+              <% end %>
+            </div>
           </div>
         <%end%>
-      </div>
-      
-      <div class="fh5co-contact-info box-producer col-md-6">
+       </div>
+    
+      <div class="fh5co-contact-info box-producer col-md-6 to-animate fadeInUp animated">
         <table class="table table-borderless text-white">
           <tbody>
             <tr>
@@ -104,6 +104,7 @@
             <p><%= @producer.description %></p>
           </blockquote>
       </div>
+
     </div>
     <% if current_producer == @producer && current_producer.favorited_by.count > 0 %>
       <!--MY FAVORITE PRODUCERS-->
