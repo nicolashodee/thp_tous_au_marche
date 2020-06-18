@@ -47,7 +47,15 @@
         <%if @producer.avatar.attached?%>
           <%= link_to image_tag(@producer.avatar, alt: 'avatar', class:'img-responsive height-400'), @producer.avatar, class:'fh5co-project-item image-popup to-animate fadeInUp animated' %>
         <%else%>
-          <p class='height-400 font-italic box-avatar'> Il n'y a pas encore d'avatar lié à ce producteur </p>
+          <% if current_producer == @producer %>
+            <p class='height-400 font-italic box-avatar'>
+              Vous n'avez pas encore ajouté d'avatar à votre profil
+            </p>
+          <% else %>
+            <p class='height-400 font-italic box-avatar'>
+              Il n'y a pas encore d'avatar lié à ce producteur
+            </p>
+          <% end %>
         <%end%>
         <%if producer_signed_in?%>
           <div class='text-center'>
@@ -60,6 +68,7 @@
           </div>
         <%end%>
       </div>
+
     
       <div class="fh5co-contact-info box-producer col-md-6 to-animate fadeInUp animated">
         <table class="table table-borderless text-white">
@@ -106,64 +115,52 @@
       </div>
     </div>
 
-    <!-- Pictures of products - Carousel -->
-    <div>
-      <p>Images concercant ce producteur</p>
+    <% if producer_signed_in? && current_producer == @producer %>
+      <div class="row box-edit">
+        <%= link_to "Modifier mes identifiants", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
+        <%= link_to "Modifier mes informations", edit_producer_path(current_producer), class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+
+    <!-- Pictures of products -->
+    <hr>
+    <div class="pictures">
+      <h1 class="to-animate fadeInUp animated">Images concercant ce producteur</h1>
     </div>
     <div>
-      <div>
-        <%if @producer.images.attached?%>
-        <div class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <% @producer.images.each_with_index do |image, n| %>
-                <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-              <% end %>
-            </ol>
-            
-            <!-- The slideshow -->
-            <div class="carousel-inner" role="listbox">
-              <div class="carousel-item active carousel-images">
-                <%= image_tag @producer.images.first, alt: 'image', class:'img-responsive'%>
-              </div>
-              <% @producer.images.drop(1).each do |photo| %>
-                <div class="carousel-item carousel-images">
-                  <%= image_tag photo %>
-                </div>
-              <% end %>
-            </div>
-              
+      <%if @producer.images.attached?%>
+        <!-- Gallery zoom -->
+        <div class="zoom-gallery">
+          <% @producer.images.each_with_index do |image, n| %>
+            <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive pictures-gallery'), image %>
+          <% end %>
+        </div>
 
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-              <span class="carousel-control-next-icon"></span>
-            </a>
-          </div>
-          <div class="zoom-gallery">
-            <% @producer.images.each_with_index do |image, n| %>
-              <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive height-100'), image %>
+        <!-- If there is no picture -->
+      <%else%>
+        <% if current_producer == @producer %>
+          <p class='height-400 box-avatar'>
+            Vous n'avez pas encore ajouté d'image à votre profil  <i class="fa fa-smile-o fa-x3" aria-hidden="true"></i>
+          </p>
+        <% else %>
+          <p class='height-400 box-avatar'>
+            Il n'y a pas encore d'image pour ce producteur  <i class="fa fa-smile-o fa-x3" aria-hidden="true"></i>
+          </p>
+        <% end %>
+      <%end%>
+
+      <%if producer_signed_in?%>
+        <div class='text-center'>
+          <div id='buttons-avatar'>
+            <%= form_tag producer_images_path(@producer), multipart: true do %>
+              <%= file_field_tag :images, multiple: true %>
+              <%= submit_tag "mettre à jour", class:'btn btn-primary btn-lg' %>
             <% end %>
           </div>
-        <%else%>
-          <p class='height-400 font-italic box-avatar'> Il n'y a pas encore d'images des produits </p>
-        <%end%>
-
-        <%if producer_signed_in?%>
-          <div class='text-center'>
-            <div id='buttons-avatar'>
-              <%= form_tag producer_images_path(@producer), multipart: true do %>
-                <%= file_field_tag :images, multiple: true %>
-                <%= submit_tag "mettre à jour", class:'btn btn-primary btn-lg' %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-
+    <hr>
 
 
     <% if current_producer == @producer && current_producer.favorited_by.count > 0 %>
@@ -199,16 +196,6 @@
         </div> 
       </div>
     <% end %>
-
-
-    <section id="fh5co-about-bis" data-section="about" class="animated">
-      <% if producer_signed_in? && current_producer == @producer %>
-        <div class="row box-edit">
-          <%= link_to "Modifier mes identifiants", edit_producer_registration_path, { :type => "button",  :class => "btn btn-primary btn-lg" } %>
-          <%= link_to "Modifier mes informations", edit_producer_path(current_producer), class: "btn btn-primary btn-lg" %>
-        </div>
-      <% end %>
-    </section>
     
     <% if user_signed_in? %>
       <section id='comment' class='mt-5'>
