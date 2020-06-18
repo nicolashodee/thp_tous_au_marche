@@ -125,7 +125,12 @@
     <!-- Pictures of products -->
     <hr>
     <div class="pictures">
-      <h1 class="to-animate fadeInUp animated">Images concercant ce producteur</h1>
+      <% if current_producer == @producer %>
+        <h1 class="to-animate fadeInUp animated">Vos images</h1>
+      <% else %>
+        <h1 class="to-animate fadeInUp animated">Images concercant ce producteur</h1>
+      <% end %>
+      
     </div>
     <div>
       <%if @producer.images.attached?%>

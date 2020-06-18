@@ -71,3 +71,4 @@ gem 'bootstrap-email'
 gem 'leaflet-rails'
 gem 'recaptcha'
 gem 'tel_to_helper'
+gem "aws-sdk-s3", require: false
