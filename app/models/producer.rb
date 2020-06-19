@@ -22,12 +22,6 @@ class Producer < ApplicationRecord
   def geocode_address
     [address,city_name, zip_code].compact.join(', ')
   end
-
-  def images=(array = [])
-    array.each do |f|
-      images.create image: f
-    end
-  end
   
   private
 
