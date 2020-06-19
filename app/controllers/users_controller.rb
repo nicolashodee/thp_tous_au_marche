@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :is_current_user_showing?, only: [:show]
-
+  
   def show
     @user = User.find(params[:id])
   end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   
   def is_current_user_showing?
     unless current_user.id.to_s == params[:id].to_s
-      flash[:danger] = "Vous ne pouvez pas afficher un profil utilisateur qui n'est pas le votre !"
+      flash[:danger] = "Vous ne pouvez pas afficher un profil utilisateur qui n'est pas le vôtre !"
       redirect_to user_path(current_user.id)
     end
   end

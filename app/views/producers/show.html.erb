@@ -34,9 +34,9 @@
     <div class="row py-4" >
       <div id="follow" class="col-md-6">
         <% if current_producer == @producer %>
-          <div class="fadeInRight animated"><i class="fa fa-code-fork"></i> Vous êtes suivi par <%= @producer.favorited_by.count %> utilisateur(s)</div>
+          <div><i class="fa fa-code-fork"></i> Vous êtes suivi par <%= @producer.favorited_by.count %> utilisateur(s)</div>
         <% else %>
-          <div class="fadeInRight animated"><i class="fa fa-code-fork"></i> Producteur suivi par <%= @producer.favorited_by.count %> utilisateur(s)</div>
+          <div><i class="fa fa-code-fork"></i> Producteur suivi par <%= @producer.favorited_by.count %> utilisateur(s)</div>
         <% end %>
       </div>
       <div id="stars" class="col-md-5 text-right px-0 mx-3">
@@ -60,14 +60,14 @@
 
     <!-- Avatars and description -->
     <div class="row">
-      <div class="col-md-6 text-center to-animate h-100 align-self-center mt-3" style='max-height: 500px;'>
+      <div class="col-md-6 text-center h-100 align-self-center mt-3" style='max-height: 500px;'>
         <% if @producer.avatar.attached? %>
-          <%= link_to image_tag(@producer.avatar, alt: 'avatar', class:'img-responsive avatar'), @producer.avatar, class:'fh5co-project-item image-popup to-animate' %>
+          <%= link_to image_tag(@producer.avatar, alt: 'avatar', class:'img-responsive avatar to-animate'), @producer.avatar, class:'fh5co-project-item image-popup to-animate' %>
         <% else %>
           <% if current_producer == @producer %>
-            <p class='font-italic box-avatar'>Vous n'avez pas encore ajouté d'avatar à votre profil</p>
+            <p class='font-italic box-avatar to-animate'>Vous n'avez pas encore ajouté d'avatar à votre profil</p>
           <% else %>
-            <p class='font-italic box-avatar'>Il n'y a pas encore d'avatar lié à ce producteur</p>
+            <p class='font-italic box-avatar to-animate'>Il n'y a pas encore d'avatar lié à ce producteur</p>
           <% end %>
         <% end %>
         <% if producer_signed_in? %>
@@ -112,7 +112,9 @@
             </tr>
             <tr>
               <td><i class="fas fa-globe"></i></td>
-              <td><%= link_to @producer.website, @producer.website %></td>
+              <% if @producer.website%>
+                <td><%= link_to @producer.website, @producer.website %></td>
+              <%end%>
             </tr>
             <tr>
               <% if user_signed_in? %>
@@ -134,6 +136,7 @@
           </tbody>
         </table>
         <% if @producer.description %>
+          <hr class='my-3 style-one'>
           <blockquote>
             <p class='mb-1'><%= @producer.description %></p>
           </blockquote>
@@ -143,19 +146,19 @@
 
     <!-- Pictures of products -->
   <div class='container'>
-    <hr class='my-5 bg-white'>
+    <hr class='my-5 style-one'>
     <div class="pictures">
       <% if current_producer == @producer %>
-        <h1 class="to-animate">Vos images</h1>
+        <h1>Vos images</h1>
       <% else %>
-        <h1 class="to-animate">Images concercant ce producteur</h1>
+        <h1>Images concercant ce producteur</h1>
       <% end %>
     </div>
 
     <div id='gallery'>
       <% if @producer.images.attached? %>
         <!-- Gallery zoom -->
-          <div class="d-flex justify-content-center flex-wrap">
+          <div class="d-flex to-animate justify-content-center flex-wrap">
             <% @producer.images.each_with_index do |image, n| %>
               <div class='m-3 gallery-div'>
                 <span class="zoom-gallery">
@@ -199,7 +202,7 @@
       <% end %>
     </div>
 
-    <hr class='my-5 bg-white'>
+    <hr class='my-5 style-one'>
 
     <% if current_producer == @producer && current_producer.favorited_by.count > 0 %>
       <!-- MY FAVORITE USERS -->

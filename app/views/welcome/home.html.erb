@@ -36,11 +36,11 @@
 						<% if user_signed_in? %>
 							<%= link_to "Voir la carte", producers_path(@producer), { :class => 'in btn btn-primary' } %>
 							<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
-						<% else %>
-								<p>
-									<%= link_to "S'inscrire", new_user_registration_path, :class => 'in btn btn-primary' %>
-									<%= link_to "Se connecter", new_user_session_path, :class => 'in btn btn-primary' %>
-								</p>
+						<% elsif producer_signed_in? %>
+							<p class='btn btn-primary'>Vous êtes déjà connecté en tant que producteur</p>
+						<%else%>
+							<%= link_to "S'inscrire", new_user_registration_path, :class => 'in btn btn-primary' %>
+							<%= link_to "Se connecter", new_user_session_path, :class => 'in btn btn-primary' %>
 						<% end %>
 					</p>
 				</div>
@@ -60,9 +60,11 @@
 						<% if producer_signed_in? %>
 							<%= link_to "Mon profil", producer_path(current_producer), { :class => 'in btn btn-primary' } %>
 							<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
+						<% elsif user_signed_in? %>
+							<p class='btn btn-primary'>Vous êtes déjà connecté en tant qu'utilisateur</p>
 						<% else %>
-								<%= link_to "S'inscrire", new_producer_registration_path,  :class => 'in btn btn-primary' %>
-								<%= link_to "Se connecter", new_producer_session_path, :class => 'in btn btn-primary' %>
+							<%= link_to "S'inscrire", new_producer_registration_path,  :class => 'in btn btn-primary' %>
+							<%= link_to "Se connecter", new_producer_session_path, :class => 'in btn btn-primary' %>
 						<% end %>
 					</p>
 				</div>
