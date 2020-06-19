@@ -8,11 +8,11 @@ class User < ApplicationRecord
   has_many :ratings
   has_one_attached :avatar_user
 
-  private
-
   has_many :comments
   has_many :favorite_producers
   has_many :favorites, through: :favorite_producers, source: :producer
+
+  private
 
   ### Sending an email when a user is created
   # after_create :welcome_send
@@ -30,5 +30,5 @@ class User < ApplicationRecord
   # def goodbye_send
   #   UserMailer.goodbye_email(self).deliver_now
   # end
-  
+
 end
