@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 2020_06_18_132039) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "join_table_producer_labels", force: :cascade do |t|
+    t.bigint "producer_id"
+    t.bigint "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_join_table_producer_labels_on_label_id"
+    t.index ["producer_id"], name: "index_join_table_producer_labels_on_producer_id"
+  end
+
   create_table "join_table_product_categories", force: :cascade do |t|
     t.bigint "category_id"
     t.bigint "producer_id"
@@ -66,6 +75,12 @@ ActiveRecord::Schema.define(version: 2020_06_18_132039) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_join_table_product_categories_on_category_id"
     t.index ["producer_id"], name: "index_join_table_product_categories_on_producer_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "producers", force: :cascade do |t|
