@@ -4,8 +4,8 @@
     <!-- <%= link_to "Tous au marché !", root_path, :class => "navbar-brand bg-transparent border-0" %> -->
     <%= link_to root_path , { :class => 'navbar-brand bg-transparent border-0' } do %>
       <div>
-        <span style="color: green;">tous</span><span style="color: #8BC34A;" class="">au</span><span style="color: #ff9900;" class="">marché</span>
-      </div> 
+        <span style="color: green;">tous</span><span style="color: #8BC34A;" class="">au</span><span style="color: #ff9900;" class="">marché<span style="color: #CCCCCC;" class="">.fr</span>
+      </div>
     <% end %>
     <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle border-0 mr-2" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <i></i>
@@ -30,7 +30,7 @@
         </li>
         <% if user_signed_in? %>
           <li class='nav-item'>
-            <%= link_to user_path(current_user), { :'data-nav-section' => 'profile', :class => 'nav-link external' }  do %>
+            <%= link_to user_path(current_user), { :'data-nav-section' => 'profile-user', :class => 'nav-link external' }  do %>
               <span>Mon profil utilisateur</span>
             <% end %>
           </li>
@@ -39,7 +39,7 @@
           </li>
         <% elsif producer_signed_in? %>
           <li class='nav-item'>
-            <%= link_to producer_path(current_producer), { :'data-nav-section' => 'profile', :class => 'nav-link external' } do %>
+            <%= link_to producer_path(current_producer), { :'data-nav-section' => 'profile-producer', :class => 'nav-link external' } do %>
               <span>Mon profil producteur</span>
             <% end %>
           </li>
