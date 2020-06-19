@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :favorite_producers
   has_many :favorites, through: :favorite_producers, source: :producer
 
+
+
   private
 
   ### Sending an email when a user is created

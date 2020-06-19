@@ -3,7 +3,7 @@ class AvatarsController < ApplicationController
     @producer = Producer.find(params[:producer_id])
     avatar = params[:avatar]
     if avatar === nil
-      flash[:danger] = 'Vous ne pouvez pas uploader une image qui n\'existe pas'
+      flash[:error] = 'Vous ne pouvez pas uploader une image qui n\'existe pas'
       redirect_to(producer_path(@producer))
     else @producer.avatar.attach(params[:avatar])
       redirect_to(producer_path(@producer))

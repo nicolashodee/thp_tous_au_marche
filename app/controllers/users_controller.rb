@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Vous avez supprimé votre compte utilisateur. A bientôt !'
       redirect_to root_url
     else
-      flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
+      flash[:error] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
       redirect_to root_url
     end
   end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def is_current_user_showing?
     unless current_user.id.to_s == params[:id].to_s
-      flash[:danger] = "Vous ne pouvez pas afficher un profil utilisateur qui n'est pas le vôtre !"
+      flash[:error] = "Vous ne pouvez pas afficher un profil utilisateur qui n'est pas le vôtre !"
       redirect_to user_path(current_user.id)
     end
   end

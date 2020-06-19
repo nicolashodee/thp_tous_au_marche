@@ -10,7 +10,7 @@
 						<h2 class="to-animate"><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
 					</div>
 					<div class="col-md-8 col-md-offset-2 to-animate FadeInBottom mt-3">
-						<%= link_to "Voir la carte", producers_path(@producer), {  :class => 'in btn btn-lg btn-jumbotron' } %>
+						<%= link_to "Voir la carte", producers_path(@producer), { :class => 'in btn btn-lg btn-jumbotron' } %>
 					</div>
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 	<div class="slant"></div>
 </section>
 <!--NAVIGATION CHOICE-->
-<section id="fh5co-intro">
+<section id="fh5co-intro" class='pb-0'>
 	<div class="container">
 		<div class="row row-bottom-padded-lg buttons-intro-homepage mx-auto">
 			<!-- I AM LOOKING FOR A PRODUCER-->
@@ -32,17 +32,15 @@
 					</span>
 					<h2>Je cherche un producteur local</h2>
 					<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, nous sommes allés le demander pour vous !</p>
-					<p>
-						<% if user_signed_in? %>
-							<%= link_to "Voir la carte", producers_path(@producer), { :class => 'in btn btn-primary' } %>
-							<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
-						<% elsif producer_signed_in? %>
-							<p class='btn btn-primary'>Vous êtes déjà connecté en tant que producteur</p>
-						<%else%>
-							<%= link_to "S'inscrire", new_user_registration_path, :class => 'in btn btn-primary' %>
-							<%= link_to "Se connecter", new_user_session_path, :class => 'in btn btn-primary' %>
-						<% end %>
-					</p>
+					<% if user_signed_in? %>
+						<%= link_to "Voir la carte", producers_path(@producer), { :class => 'in btn btn-primary m-2' } %>
+						<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :class => 'in btn btn-primary m-2' } %>
+					<% elsif producer_signed_in? %>
+						<p class='btn btn-primary'>Vous êtes déjà connecté en tant que producteur</p>
+					<% else %>
+						<%= link_to "S'inscrire", new_user_registration_path, :class => 'in btn btn-primary m-2' %>
+						<%= link_to "Se connecter", new_user_session_path, :class => 'in btn btn-primary m-2' %>
+					<% end %>
 				</div>
 			</div>
 			<!--I AM A PRODUCER-->
@@ -54,41 +52,44 @@
 						<i class="fas fa-hands-helping"></i>
 					</span>
 					<h2>Je suis un producteur</h2>
-					<p>Tout est une question de pratique et de persévérance.<br>
-					Vous avez le savoir-faire, maintenant faites le savoir !</p>
 					<p>
-						<% if producer_signed_in? %>
-							<%= link_to "Mon profil", producer_path(current_producer), { :class => 'in btn btn-primary' } %>
-							<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
-						<% elsif user_signed_in? %>
-							<p class='btn btn-primary'>Vous êtes déjà connecté en tant qu'utilisateur</p>
-						<% else %>
-							<%= link_to "S'inscrire", new_producer_registration_path,  :class => 'in btn btn-primary' %>
-							<%= link_to "Se connecter", new_producer_session_path, :class => 'in btn btn-primary' %>
-						<% end %>
+						Tout est une question de pratique et de persévérance.<br>
+						Vous avez le savoir-faire, maintenant faites le savoir !
 					</p>
+					<% if producer_signed_in? %>
+						<%= link_to "Mon profil", producer_path(current_producer), { :class => 'in btn btn-primary m-2' } %>
+						<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :class => 'in btn btn-primary m-2' } %>
+					<% elsif user_signed_in? %>
+						<p class='btn btn-primary'>Vous êtes déjà connecté en tant qu'utilisateur</p>
+					<% else %>
+						<%= link_to "S'inscrire", new_producer_registration_path,  :class => 'in btn btn-primary m-2' %>
+						<%= link_to "Se connecter", new_producer_session_path, :class => 'in btn btn-primary m-2' %>
+					<% end %>
 				</div>
 			</div>
 		</div>
-		
+
 		<!--DESCRIPTION OF THE WEBSITE-->
 		<div class="section-heading text-center" style="padding: 0">
-			<h2 class="to-animate fadeInUp animated">La carte de vos producteurs locaux</h2>
+			<h2 class="to-animate">La carte de vos producteurs locaux</h2>
 			<div class="m-3">
-				<span><img src="<%= asset_path('homepage/fruit.png') %>" alt="Image" style="height: 100px;" class="to-animate fadeInRight animated m-"></span>
-				<span><img src="<%= asset_path('homepage/meat.png') %>" alt="Image" style="height: 100px;" class="to-animate fadeInRight animated m-2"></span>
-				<span><img src="<%= asset_path('homepage/fish.png') %>" alt="Image" style="height: 80px;" class="to-animate fadeInRight animated m-2"></span>
+				<span><img src="<%= asset_path('homepage/fruit.png') %>" alt="Image" style="height: 100px;" class="to-animate m-2"></span>
+				<span><img src="<%= asset_path('homepage/meat.png') %>" alt="Image" style="height: 100px;" class="to-animate m-2"></span>
+				<span><img src="<%= asset_path('homepage/fish.png') %>" alt="Image" style="height: 80px;" class="to-animate m-2"></span>
 			</div>
 			<div class="hidden">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 			<p>
-				Entre gestes barrières et règles de distanciation sociale, le confinement a bouleversé la manière de consommer.<br> 
+				Entre gestes barrières et règles de distanciation sociale, le confinement a bouleversé la manière de consommer.<br>
 				Naturellement, la limitation des déplacements a favorisé les circuits courts, le drive, et booster les ventes en ligne.<br>
-				<br>
-				<span>Pour autant, savez-vous vraiment qui sont les producteurs autour de chez vous ?</span><br>
-				<br><b>Avec notre <%= link_to "carte", producers_path(@producer) %> interactive et communautaire, retrouvez vos maraîchers et producteurs favoris directement en ligne !</b>
+			</p>
+			<p>
+				Pour autant, savez-vous vraiment qui sont les producteurs autour de chez vous ?
+			</p>
+			<p>
+				<b>Avec notre <%= link_to "carte", producers_path(@producer) %> interactive et communautaire, retrouvez vos maraîchers et producteurs favoris directement en ligne !</b>
 			</p>
 		</div>
-	
+
 	</div>
 </section>
 <!--VALUES-->
@@ -96,8 +97,8 @@
 	<div class="container">
 		<!--header-->
 		<div class="row">
-			<div class="col-md-12 section-heading text-left">
-				<h2 class=" left-border to-animate">Nos valeurs</h2>
+			<div class="col-md-12 section-heading text-left mb-0">
+				<h2 class="left-border to-animate">Nos valeurs</h2>
 				<div class="row">
 					<div class="col-md-8 subtext to-animate">
 						<h3>L'autosuffisance alimentaire pour tous, face à l'urgence climatique.</h3>
@@ -138,7 +139,7 @@
 	<div class="container to-animate">
 		<!--ONCE UPON A TIME 5 MILLENIALS-->
 		<div class="row justify-content-center">
-			<div class="col-md-12 section-heading text-center">
+			<div class="col-md-12 section-heading text-center mb-0">
 				<h2 class="to-animate">A propos</h2>
 				<div class="row justify-content-center">
 					<div class="col-md-8 col-md-offset-2 subtext to-animate text-center">
@@ -150,7 +151,7 @@
 		<div class="row d-flex align-items-stretch justify-content-center">
 			<!--AURORE PORTRAIT-->
 			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
-				<figure><img src="<%= asset_path('homepage/portraits/aurore.jpg') %>" alt="Image"></figure>
+				<figure><img src="<%= asset_path('homepage/portraits/aurore.jpg') %>" alt="portrait"></figure>
 				<h3>Aurore Carrière</h3>
 				<span class="fh5co-position">COO</span>
 				<p>Diplomée en management de la qualité, Aurore s'occupe du sourcing des meilleurs producteurs de votre région et des opérations chez Tous au Marché !</p>
@@ -161,10 +162,10 @@
 			</div>
 			<!--CLEMENT PORTRAIT-->
 			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
-				<figure><img src="<%= asset_path('homepage/portraits/clement.jpg') %>" alt="Image"></figure>
+				<figure><img src="<%= asset_path('homepage/portraits/clement.jpg') %>" alt="portrait"></figure>
 				<h3>Clément Facco</h3>
 				<span class="fh5co-position">CMO</span>
-				<p>Diplomé en marketing, Clément est en charge du green marketing chez Tous au Marché </p>
+				<p>Diplomé en marketing, Clément est en charge du green marketing chez Tous au Marché. Il a pour ambition d'amener Tous au marché au niveau national !</p>
 				<ul class="social social-circle">
 					<li><a href="https://www.linkedin.com/in/clementfacco/"><i class="fab fa-linkedin-in"></i></a></li>
 					<li><a href="https://github.com/cfacco1"><i class="fas fa-code"></i></a></li>
@@ -172,7 +173,7 @@
 			</div>
 			<!--NICOLAS PORTRAIT-->
 			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
-				<figure><img src="<%= asset_path('homepage/portraits/nicolas.jpg') %>" alt="Image"></figure>
+				<figure><img src="<%= asset_path('homepage/portraits/nicolas.jpg') %>" alt="portrait"></figure>
 				<h3>Nicolas Hodée</h3>
 				<span class="fh5co-position">CEO</span>
 				<p>C'est en voyant la malbouffe outre-Manche que Nicolas réalise qu'il n'y a pas de communauté entre consommateurs et producteurs</p>
@@ -185,7 +186,7 @@
 			</div>
 			<!--MARVIN PORTRAIT-->
 			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
-				<figure><img src="<%= asset_path('homepage/portraits/marvin.jpg') %>" alt="Image"></figure>
+				<figure><img src="<%= asset_path('homepage/portraits/marvin.jpg') %>" alt="portrait"></figure>
 				<h3>Marvin Pierrat</h3>
 				<span class="fh5co-position">Head of Partnerships</span>
 				<p>Ancien commercial, Marvin a rejoint le projet pour développer la communauté et gérer les partenariats avec les institutions régionales</p>
@@ -196,7 +197,7 @@
 			</div>
 			<!--JORDAN PORTRAIT-->
 			<div class="fh5co-person text-center to-animate col-lg-4 col-md-6 col-sm-12 my-5 mx-1">
-				<figure><img src="<%= asset_path('homepage/portraits/jordan.jpg') %>" alt="Image"></figure>
+				<figure><img src="<%= asset_path('homepage/portraits/jordan.jpg') %>" alt="portrait"></figure>
 				<h3>Jordan Tournerie</h3>
 				<span class="fh5co-position">CTO</span>
 				<p>Diplomé en aéronautique, Jordan est notre expert tech en charge du développement de la plateforme</p>
@@ -208,4 +209,3 @@
 		</div>
 	</div>
 </section>
-		
