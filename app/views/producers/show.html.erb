@@ -78,7 +78,7 @@
                 </div>
                 <div class="custom-file">
                   <%= file_field_tag :avatar, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
-                  <%= label_tag :avatar, "Choisissez...", class:'custom-file-label' %>
+                  <%= label_tag :avatar, "Sélectionner une image...", class:'custom-file-label' %>
                 </div>
               </div>
             <% end %>
@@ -127,7 +127,7 @@
                 <% else %>
                   <td><i class="fas fa-heart"></i></td>
                   <td>
-                    <%= link_to "Ajouter à mes favoris", favorite_producer_path(@producer, type: "favorite"), method: :put %>
+                    <%= link_to "Ajouter à mes favoris", favorite_producer_path(@producer, type: "favorite"), class: "font-italic", method: :put %>
                   </td>
                 <% end %>
               <% end %>
@@ -150,7 +150,7 @@
       <% if current_producer == @producer %>
         <h1>Vos images</h1>
       <% else %>
-        <h1>Images concercant ce producteur</h1>
+        <h1>Images concernant ce producteur</h1>
       <% end %>
     </div>
 
@@ -193,7 +193,7 @@
               </div>
               <div class="custom-file">
                 <%= file_field_tag :images, multiple: true, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
-                <%= label_tag :images, "Choisissez...", class:'custom-file-label text-left' %>
+                <%= label_tag :images, "Sélectionner une image...", class:'custom-file-label text-left' %>
               </div>
             </div>
           <% end %>

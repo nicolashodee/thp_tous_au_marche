@@ -27,7 +27,7 @@ class ContactsController < ApplicationController
     "Demande de renseignements", 
     "Support technique", 
     "Problème avec votre compte", 
-    "Other"]
+    "Autres"]
   end
 end
 

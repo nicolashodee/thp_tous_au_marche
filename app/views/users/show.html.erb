@@ -34,7 +34,7 @@
     <div class="row">
       <div class="col-md-6 text-center to-animate h-100 align-self-center mt-3" style='max-height: 400px;'>
         <% if @user.avatar_user.attached? %>
-          <%= link_to image_tag(@user.avatar_user, alt: 'avatar_user', class:'img-responsive'), @user.avatar_user, class:'fh5co-project-item image-popup to-animate' %>
+          <%= link_to image_tag(@user.avatar_user, alt: 'avatar_user', class:'img-responsive avatar to-animate'), @user.avatar_user, class:'fh5co-project-item image-popup to-animate' %>
         <% else %>
           <p class='font-italic box-avatar'>Il n'y a pas encore d'avatar lié à cet utilisateur</p>
         <% end %>
@@ -46,8 +46,8 @@
                   <%= submit_tag "Ajouter", class:'btn btn-primary' %>
                 </div>
                 <div class="custom-file">
-                  <%= file_field_tag :avatar_user, id: 'avatar_user', class:'custom-file-input' %>
-                  <%= label_tag :avatar_user, "Choisissez...", class:'custom-file-label' %>
+                  <%= file_field_tag :avatar_user, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
+                  <%= label_tag :avatar_user, "Sélectionner une image...", class:'custom-file-label' %>
                 </div>
               </div>
             <% end %>
@@ -89,6 +89,7 @@
 
     <div class="container my-5">
       <div class="text-center">
+        <hr class='my-5 style-one'>
         <h2 class="text-white">Mes producteurs favoris !</h2>
       </div>
       <div class="col fh5co-contact-info">

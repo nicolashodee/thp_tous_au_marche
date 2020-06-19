@@ -75,3 +75,4 @@ gem 'mail_form'
 gem 'letter_opener'
 gem 'sendgrid-ruby'
 gem "aws-sdk-s3", require: false
+gem 'devise-i18n'
