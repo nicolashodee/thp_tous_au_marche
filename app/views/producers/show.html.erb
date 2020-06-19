@@ -60,9 +60,9 @@
 
     <!-- Avatars and description -->
     <div class="row">
-      <div class="col-md-6 text-center to-animate h-100 align-self-center mt-3" style='max-height: 400px;'>
+      <div class="col-md-6 text-center to-animate h-100 align-self-center mt-3" style='max-height: 500px;'>
         <% if @producer.avatar.attached? %>
-          <%= link_to image_tag(@producer.avatar, alt: 'avatar', class:'img-responsive'), @producer.avatar, class:'fh5co-project-item image-popup to-animate' %>
+          <%= link_to image_tag(@producer.avatar, alt: 'avatar', class:'img-responsive avatar'), @producer.avatar, class:'fh5co-project-item image-popup to-animate' %>
         <% else %>
           <% if current_producer == @producer %>
             <p class='font-italic box-avatar'>Vous n'avez pas encore ajouté d'avatar à votre profil</p>
@@ -142,8 +142,8 @@
     </div>
 
     <!-- Pictures of products -->
+  <div class='container'>
     <hr class='my-5 bg-white'>
-
     <div class="pictures">
       <% if current_producer == @producer %>
         <h1 class="to-animate">Vos images</h1>
@@ -155,12 +155,19 @@
     <div id='gallery'>
       <% if @producer.images.attached? %>
         <!-- Gallery zoom -->
-        <div class="zoom-gallery d-flex justify-content-center flex-wrap">
-          <% @producer.images.each_with_index do |image, n| %>
-            <div class="m-3">
-              <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive pictures-gallery'), image %>
-            </div>
-          <% end %>
+          <div class="d-flex justify-content-center flex-wrap">
+            <% @producer.images.each_with_index do |image, n| %>
+              <div class='m-3 gallery-div'>
+                <span class="zoom-gallery">
+                  <%= link_to image_tag(image, alt: 'avatar', class:'img-responsive pictures-gallery'), image %>
+                </span>
+                <%if producer_signed_in?%>
+                  <%= link_to delete_image_attachment_producer_path(image.id), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette photo ?' } do %>
+                    <i class="fas fa-trash-alt trash-red rounded-circle"></i>
+                  <%end%>
+                <%end%>
+              </div>
+            <% end %>
         </div>
       <% else %>
         <!-- If there is no picture -->

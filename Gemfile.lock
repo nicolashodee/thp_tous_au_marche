@@ -127,7 +127,6 @@ GEM
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
-    json (2.1.0)
     launchy (2.5.0)
       addressable (~> 2.7)
     leaflet-rails (1.6.0)
@@ -199,8 +198,6 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    recaptcha (5.5.0)
-      json
     regexp_parser (1.7.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -286,7 +283,6 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.3)
-  recaptcha
   sass-rails (~> 5.0)
   selenium-webdriver
   sendgrid-ruby

@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     put :favorite, on: :member
   end
 
+  resources :producers do
+    member do
+      delete :delete_image_attachment
+    end
+  end
+
   resources :contacts, only: [:new, :create]
 
   resources :comments
