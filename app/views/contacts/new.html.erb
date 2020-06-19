@@ -18,7 +18,7 @@
 <!-- ERROR MESSAGES-->
 <% if @contact.errors.any? %>
   <div class="alert alert-danger">
-    <h3>Votre message n'a pas pu être envoyé pour la ou les raisons suivantes :</h3>
+    <h3>Votre message n'a pas pu être envoyé pour la (ou les) raison(s) suivante(s) :</h3>
     <ul>
     <% @contact.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -30,7 +30,7 @@
 <!-- FORM-->
 <section id="fh5co-contact" data-section="contact" class='pt-5'>
   <div class="to-animate col-10 offset-1 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 text-center">
-    <h3>Une question ? Un soucis ? </h3>
+    <h3>Une question ? Un souci ?</h3>
     <%= form_for(@contact) do |f| %>
       <div class="form-group text-left mb-4">
         <%= f.label :email, 'Votre email' %>
@@ -49,7 +49,7 @@
       </div>
       
       <div class="form-group mt-4 mb-5 submit" id="login-submit">
-        <%= submit_tag "Send", class: "btn btn-primary btn-lg" %>
+        <%= submit_tag "Envoyer", class: "btn btn-primary btn-lg" %>
       </div>
     <% end %>
   </div>
