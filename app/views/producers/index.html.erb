@@ -7,81 +7,66 @@
     crossorigin=""></script>
 </head>
 
-<% if user_signed_in? || producer_signed_in? %>
   <div class= "row "> 
     <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
       <div class="row">
 
         <% @producer.each do |producer| %>
           <div class="col-lg-6 col-md-6"> 
-            <div class="box-testimony">
-              <blockquote class="to-animate-2 fadeInDown animated">
+            <div class="box-testimony "> 
+              <div class= card-producer_index>
+                <blockquote class="to-animate-2 fadeInDown animated text-white">
 
-                <%if producer.city_name.nil? %>
-                  <i>Pas d'adresse enregistrée pour le moment</i>
-                  <%else%>
-                  <p>Localisation : <%= producer.city_name %></p>     
-                <%end%>
+                  <%if producer.city_name.nil? %>
+                    <i>Pas d'adresse enregistrée pour le moment</i>
+                    <%else%>
+                    <p><strong>Localisation:</strong> <%= producer.city_name %> <%= producer.address %></p>    
 
-                <p><%= producer.description %></p>
-              </blockquote>
+                  <%end%>
 
-              <div class="author to-animate fadeInUp animated">
-                <div class="stars">
-                    <span>Note : </span>
-                    <% if producer.rating == nil %>
-                      <% 5.times do %>
-                        <i class='fa fa-star align-middle'></i>
+                  <p><strong>Description: </strong><%= producer.description %></p>
+                    <div class="stars">
+                      <span>Note : </span>
+                      <% if producer.rating == nil %>
+                        <% 5.times do %>
+                          <i class='fa fa-star align-middle'></i>
+                        <% end %>
+                      <% else %>
+                        <% number_star = producer.rating.truncate %>
+                        <% number_star.times do %>
+                          <i class='fa fa-star align-middle checked'></i>
+                        <% end %>
+                        <% (5 - number_star).times do %>
+                          <i class='fa fa-star align-middle'></i>
+                        <% end %>
                       <% end %>
+                    </div>
+                     <%= link_to "Découvrir le producteur", producer_path(producer.id), class: 'btn btn-sm btn-primary mb-2 my-1' %>
+
+                </blockquote>
+
+                <div class="author to-animate fadeInUp animated mx-2">
+                  <figure>
+                     <% if producer.avatar.attached? %>
+                      <%= link_to image_tag(producer.avatar, alt: 'avatar', class:'user_picture'), producer.avatar  %>
                     <% else %>
-                      <% number_star = producer.rating.truncate %>
-                      <% number_star.times do %>
-                        <i class='fa fa-star align-middle checked'></i>
-                      <% end %>
-                      <% (5 - number_star).times do %>
-                        <i class='fa fa-star align-middle'></i>
-                      <% end %>
+                      <%= image_tag("no_avatar.png", alt: 'avatar', class:'user_picture') %>
                     <% end %>
-                  </div>
-                <figure>
-                  <img class="user_picture" src="<%= asset_path('indexproducers/ble.jpg') %>" style="float: left">
-                </figure>
+                  </figure>
                   <p><%= producer.first_name %> <%= producer.last_name %><br>
                   <span class="subtext"><%= producer.email %></a> </span></p>
-          
-                  
-
-                  <%= link_to "Afficher", producer_path(producer.id), class: 'btn btn-sm btn-outline-secondary mb-2 my-1' %>
-
+                </div>
               </div>
             </div>
           </div>
         <% end %>
       </div>
     </div>
-
+ 
     <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
      <div class ="map" id="map"> 
     </div> >
   </div>  
-
-
-<% else %>
-  <div class="content">
-    <section class="index_producers_background"  style="background-image: url(&quot;/assets/homepage/field-79c6d10a0166fb50aee94e9861201fa726e84e31301b844f36c97e0c2fcc6719.jpg&quot;); ">	
-       
-							<div class="hello fh5co">
-                <%= link_to "S'enregistrer", new_user_registration_path, :type => "button", :class => 'btn btn-primary to-animate fadeInUp animated'  %>
-                <%= link_to "Connexion", new_user_session_path, :type => "button",  :class => 'btn btn-primary to-animate fadeInUp animated' %>
-								<h1 class="to-animate fadeInUp animated" style="color:white" >Tout commence là.</h1>
-								<h2 class="to-animate fadeInUp animated" style="color:white" ><b>L'annuaire en ligne de vos producteurs locaux</b></h2>
-							</div>
-				
-		</section>
-	</div>			
-					
-<% end %>
-
 
 <script>
 

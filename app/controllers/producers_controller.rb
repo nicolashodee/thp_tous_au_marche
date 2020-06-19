@@ -5,14 +5,6 @@ class ProducersController < ApplicationController
 
   def index
     @producer = Producer.all
-    @icon_options = { :name => 'house',
-                     :icon_url => 'images/house.png',
-                     :shadow_url => 'images/house_shadow.png',
-                     :icon_size => [38, 95],
-                     :shadow_size => [50, 64],
-                     :icon_anchor => [22, 94],
-                     :shadow_anchor => [4, 62],
-                     :popup_anchor => [-3, -76]}
   end
 
   def show
