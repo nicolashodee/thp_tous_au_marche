@@ -12,10 +12,6 @@ class User < ApplicationRecord
   has_many :favorite_producers
   has_many :favorites, through: :favorite_producers, source: :producer
 
-  validates :phone_number,
-    numericality: true,
-    length: { is: 10 },
-    format: { with: /\d[0-9]\)*\z/ , message: "doit être au format : 0601020304 (pas d'espace)"}
 
 
   private
