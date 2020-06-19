@@ -3,7 +3,6 @@ $(document).ready(function() {
     var magnifPopup = function() {
         $('.image-popup').magnificPopup({
             type: 'image',
-            closeOnContentClick: true,
             removalDelay: 300,
             mainClass: 'mfp-with-zoom',
             gallery: {
@@ -43,7 +42,7 @@ $(document).ready(function() {
         $('.zoom-gallery').magnificPopup({
             delegate: 'a',
             type: 'image',
-            closeOnContentClick: true,
+            closeOnContentClick: false,
             closeBtnInside: false,
             mainClass: 'mfp-with-zoom mfp-img-mobile',
             image: {
