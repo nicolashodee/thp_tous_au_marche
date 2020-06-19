@@ -30,7 +30,7 @@ class ProducersController < ApplicationController
       flash[:notice] = 'Vous avez supprimé votre compte producteur. À bientôt !'
       redirect_to root_url
     else 
-      flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
+      flash[:error] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
       redirect_to root_url
     end
   end
@@ -41,6 +41,7 @@ class ProducersController < ApplicationController
       flash[:notice] = 'Vos informations ont été mises à jour !'
       redirect_to producer_path(current_producer.id)
     else
+      flash.now[:error] = @producer.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -66,7 +67,7 @@ class ProducersController < ApplicationController
 
     else
       # Type missing, nothing happens
-      flash[:notice] = 'Nothing happened.'
+      flash[:error] = 'Nothing happened.'
       redirect_to root_url
       
     end
@@ -100,7 +101,7 @@ class ProducersController < ApplicationController
   def deny_to_visitors
     if  user_signed_in? || producer_signed_in?
     else
-      flash[:danger] = 'Vous devez vous connecter !'
+      flash[:error] = 'Vous devez vous connecter !'
       redirect_to root_path
     end
   end
