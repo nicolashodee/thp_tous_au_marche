@@ -1,5 +1,6 @@
-<section id="fh5co-home" style="background-image: url(&quot; https://cdn.pixabay.com/photo/2019/06/16/19/10/wheat-4278543_1280.jpg &quot;); background-position: 0px 0px; height: 200px;" data-stellar-background-ratio="0.5">
-  <div class="gradient"></div>
+<div class="gradient"></div>
+
+<section id="fh5co-home" data-section='profile' style="background-image: url(&quot; https://cdn.pixabay.com/photo/2019/06/16/19/10/wheat-4278543_1280.jpg &quot;); background-position: 0px 0px; height: 200px;" data-stellar-background-ratio="0.5">
   <div class="container">
     <div class="text-wrap" style="height: 180px;">
       <div class="text-inner">
@@ -297,9 +298,8 @@
                         <% if comment.user == current_user %>
                           <%= link_to "Supprimer", comment_path(comment.id, producer_id: @producer.id), :method => :delete, :class => 'btn btn-sm btn-danger mr-5' %>
                         <% end %>
-                        <%= comment.created_at.strftime("%d/%m/%y, à %H:%M") %>
+                        <%= comment.created_at.in_time_zone("Paris").strftime("%d/%m/%y, à %H:%M") %>
                       </small>
-                      <!-- 20/11/2015, 09:00 am -->
                     </div>
                     <p class="text-break mb-1 pr-4"><%= comment.content %></p>
                   </div>
