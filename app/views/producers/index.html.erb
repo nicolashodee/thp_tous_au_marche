@@ -1,13 +1,61 @@
-<head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
-</head>
+<div class= "row "> 
+    <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
+      <div class="row">
 
-<% if user_signed_in? || producer_signed_in? %>
+        <% @producer.each do |producer| %>
+          <div class="col-lg-6 col-md-6"> 
+            <div class="box-testimony "> 
+              <div class= card-producer_index>
+                <blockquote class="to-animate-2 fadeInDown animated text-white">
+
+                  <%if producer.city_name.nil? %>
+                    <i>Pas d'adresse enregistrée pour le moment</i>
+                    <%else%>
+                    <p><strong>Localisation:</strong> <%= producer.city_name %> <%= producer.address %></p>    
+
+                  <%end%>
+
+                  <p><strong>Description: </strong><%= producer.description %></p>
+                    <div class="stars">
+                      <span>Note : </span>
+                      <% if producer.rating == nil %>
+                        <% 5.times do %>
+                          <i class='fa fa-star align-middle'></i>
+                        <% end %>
+                      <% else %>
+                        <% number_star = producer.rating.truncate %>
+                        <% number_star.times do %>
+                          <i class='fa fa-star align-middle checked'></i>
+                        <% end %>
+                        <% (5 - number_star).times do %>
+                          <i class='fa fa-star align-middle'></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                     <%= link_to "Découvrir le producteur", producer_path(producer.id), class: 'btn btn-sm btn-primary mb-2 my-1' %>
+
+                </blockquote>
+
+                <div class="author to-animate fadeInUp animated mx-2">
+                  <figure>
+                     <% if producer.avatar.attached? %>
+                      <%= link_to image_tag(producer.avatar, alt: 'avatar', class:'user_picture'), producer.avatar  %>
+                    <% else %>
+                      <%= image_tag("no_avatar.png", alt: 'avatar', class:'user_picture') %>
+                    <% end %>
+                  </figure>
+                  <p><%= producer.first_name %> <%= producer.last_name %><br>
+                  <span class="subtext"><%= producer.email %></a> </span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+ 
+    <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
+     <div class ="map" id="map"> <% if user_signed_in? || producer_signed_in? %>
   <div class= "row "> 
     <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
       <div class="row">
@@ -93,6 +141,35 @@
 
 
   <% @producer.each do |producer| %>
+    <% if producer.latitude != nil && producer.longitude != nil %>
+
+      end %>
+  <% end %>
+
+</script>
+
+    </div> >
+  </div>  
+
+<script>
+
+  var map = L.map('map').setView([ 48.0667,-0.7667], 9);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+
+ 
+      L.marker([<%= producer.latitude %>, <%= producer.longitude %>]).addTo(map)
+          .bindPopup('<%= producer.city_name %> <%= producer.address %><br /> <%= producer.description %>')
+          .openPopup();
+          
+
+    <% end %>
+  <% end %>
+
+</script> <% @producer.each do |producer| %>
     <% if producer.latitude != nil && producer.longitude != nil %>
 
       L.marker([<%= producer.latitude %>, <%= producer.longitude %>]).addTo(map)
