@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :is_current_user_showing?, only: [:show]
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.destroy
       flash[:notice] = 'Vous avez supprimé votre compte utilisateur. A bientôt !'
       redirect_to root_url
-    else 
+    else
       flash[:notice] = 'Une erreur est survenue, nous vous invitons à nous contacter directement.'
       redirect_to root_url
     end
@@ -25,7 +25,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if params[:user][:first_name].length < 1 || params[:user][:last_name].length < 1
+      puts params[:user][:first_name]
+      puts params[:user][:last_name]
+      flash.now[:error] = "Veuillez inscrire votre prénom et nom"
+      render :edit
+    elsif @user.update(user_params)
       flash[:notice] = 'Vos informations ont été mises à jour !'
       redirect_to user_path(current_user.id)
     else
@@ -34,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def is_current_user_showing?
     unless current_user.id.to_s == params[:id].to_s
       flash[:danger] = "Vous ne pouvez pas afficher un profil utilisateur qui n'est pas le vôtre !"
