@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Le commentaire a été posté !"
       redirect_back(fallback_location: @producer)
     else
+      flash.now[:error] = @comment.errors.full_messages.to_sentence
       render 'show'
     end
   end
