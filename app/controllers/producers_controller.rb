@@ -2,7 +2,6 @@ class ProducersController < ApplicationController
   before_action :authenticate_producer!, only: [:edit]
   before_action :deny_to_visitors, only: [:show, :edit]
 
-
   def index
     @producer = Producer.all
     @icon_options = { :name => 'house',
@@ -55,7 +54,6 @@ class ProducersController < ApplicationController
       flash[:success] = "Vous avez ajouté #{@producer.first_name} #{@producer.last_name} à votre liste de producteurs favoris."
       redirect_to producer_path
       
-
     elsif type == "unfavorite"
       current_user.favorites.delete(@producer)
       flash[:notice] = "Vous avez supprimé #{@producer.first_name} #{@producer.last_name} de votre liste de producteurs favoris"
@@ -74,6 +72,12 @@ class ProducersController < ApplicationController
     end
   end
 
+  # delete images products
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    redirect_to(producer_path(current_producer))
+  end
 
   private
 
