@@ -16,9 +16,9 @@ body {
 }
 
 .banner {
-    -webkit-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.73);
-    -moz-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.73);
-    box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.73);
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
 }
 
 #navbar {
@@ -249,7 +249,7 @@ list-group-item {
     font-weight: lighter;
 }
 
-.custom-file-input~.custom-file-label::after {
+.custom-file-input ~ .custom-file-label::after {
     content: "Chercher";
 }
 
