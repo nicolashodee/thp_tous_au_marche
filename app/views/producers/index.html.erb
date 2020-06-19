@@ -1,5 +1,5 @@
 <div class= "row "> 
-    <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
+    <div class= "col-lg-8 col-md-8 col-sm-6 col-xs-6 ">  
       <div class="row">
 
         <% @producer.each do |producer| %>
@@ -36,16 +36,16 @@
 
                 </blockquote>
 
-                <div class="author to-animate fadeInUp animated mx-2">
-                  <figure>
-                     <% if producer.avatar.attached? %>
-                      <%= link_to image_tag(producer.avatar, alt: 'avatar', class:'user_picture'), producer.avatar  %>
-                    <% else %>
-                      <%= image_tag("no_avatar.png", alt: 'avatar', class:'user_picture') %>
-                    <% end %>
-                  </figure>
-                  <p><%= producer.first_name %> <%= producer.last_name %><br>
-                  <span class="subtext"><%= producer.email %></a> </span></p>
+                <div class="author to-animate fadeInUp animated ">
+                    <figure>
+                       <% if producer.avatar.attached? %>
+                        <%= link_to image_tag(producer.avatar, alt: 'avatar', class:'user_picture'), producer.avatar  %>
+                      <% else %>
+                        <%= image_tag("no_avatar.png", alt: 'avatar', class:'user_picture') %>
+                      <% end %>
+                    </figure>
+                    <p><%= producer.first_name %> <%= producer.last_name %><br>
+                    <span class="subtext"><%= producer.email %></a> </span></p>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
       </div>
     </div>
  
-    <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
+    <div class= "container_card col-lg-4 col-md-4 col-sm-4 col-xs-6">  
      <div class ="map" id="map"> 
     </div> >
   </div>  
