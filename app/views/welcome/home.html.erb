@@ -31,16 +31,16 @@
 						<i class="fas fa-seedling"></i>
 					</span>
 					<h2>Je cherche un producteur local</h2>
-					<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, on est allés le demander pour vous !</p>
+					<p>Comme il n’y a rien de tel que de savoir d'où vient le contenu de notre assiette, nous sommes allés le demander pour vous !</p>
 					<p>
 						<% if user_signed_in? %>
 							<%= link_to "Voir la carte", producers_path(@producer), { :class => 'in btn btn-primary' } %>
 							<%= link_to "Déconnexion", destroy_user_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
-						<% else %>
-								<p>
-									<%= link_to "S'inscrire", new_user_registration_path, :class => 'in btn btn-primary' %>
-									<%= link_to "Se connecter", new_user_session_path, :class => 'in btn btn-primary' %>
-								</p>
+						<% elsif producer_signed_in? %>
+							<p class='btn btn-primary'>Vous êtes déjà connecté en tant que producteur</p>
+						<%else%>
+							<%= link_to "S'inscrire", new_user_registration_path, :class => 'in btn btn-primary' %>
+							<%= link_to "Se connecter", new_user_session_path, :class => 'in btn btn-primary' %>
 						<% end %>
 					</p>
 				</div>
@@ -60,9 +60,11 @@
 						<% if producer_signed_in? %>
 							<%= link_to "Mon profil", producer_path(current_producer), { :class => 'in btn btn-primary' } %>
 							<%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :class => 'in btn btn-primary' } %>
+						<% elsif user_signed_in? %>
+							<p class='btn btn-primary'>Vous êtes déjà connecté en tant qu'utilisateur</p>
 						<% else %>
-								<%= link_to "S'inscrire", new_producer_registration_path,  :class => 'in btn btn-primary' %>
-								<%= link_to "Se connecter", new_producer_session_path, :class => 'in btn btn-primary' %>
+							<%= link_to "S'inscrire", new_producer_registration_path,  :class => 'in btn btn-primary' %>
+							<%= link_to "Se connecter", new_producer_session_path, :class => 'in btn btn-primary' %>
 						<% end %>
 					</p>
 				</div>
@@ -80,10 +82,10 @@
 			<div class="hidden">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 			<p>
 				Entre gestes barrières et règles de distanciation sociale, le confinement a bouleversé la manière de consommer.<br> 
-				Naturellement, la limitation des déplacements a favorisé les circuits courts, le drive, et boosté les ventes en ligne.<br>
+				Naturellement, la limitation des déplacements a favorisé les circuits courts, le drive, et booster les ventes en ligne.<br>
 				<br>
-				<span>Pour autant, savez vous vraiment qui sont les producteurs autour de chez vous ?</span><br>
-				<br><b>Avec notre <%= link_to "carte", producers_path(@producer) %> intéractive et communautaire, retrouvez vos maraichers et producteurs favoris directement en ligne !</b>
+				<span>Pour autant, savez-vous vraiment qui sont les producteurs autour de chez vous ?</span><br>
+				<br><b>Avec notre <%= link_to "carte", producers_path(@producer) %> interactive et communautaire, retrouvez vos maraîchers et producteurs favoris directement en ligne !</b>
 			</p>
 		</div>
 	
@@ -108,12 +110,12 @@
 			<div class="col-md-6 col-sm-6 fh5co-service to-animate">
 				<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: red;"><i class="fas fa-virus-slash"></i></span>
 				<h3>COVID-19 Proof</h3>
-				<p>La pandémie de Sars-cov-2 nous a prouvé l'importance des circuits courts et résilients. En vous reliant directement à vos producteurs, Tous au Marché contribue à votre indépendance alimentaire. </p>
+				<p>La pandémie de SARS-CoV-2 nous a prouvé l'importance des circuits courts et résilients. En vous reliant directement à vos producteurs, Tous au Marché contribue à votre indépendance alimentaire. </p>
 			</div>
 			<!--FRESHNESS & QUALITY-->
 			<div class="col-md-6 col-sm-6 fh5co-service to-animate">
 				<span class='icon to-animate-2 icon-layers2' style="font-size: 3em; color: yellow;"><i class="fas fa-lemon"></i></span>
-				<h3>Fraicheur &amp; qualité</h3>
+				<h3>Fraicheur &amp; Qualité</h3>
 				<p>Un esprit sain dans un corps sain. Rien de nouveau sous le soleil ! Mais n'est-ce pas encore meilleur en sachant ce qui se cache derrière votre assiette ?</p>
 			</div>
 			<!--MADE IN CHEZ VOUS-->
@@ -151,7 +153,7 @@
 				<figure><img src="<%= asset_path('homepage/portraits/nicolas.jpg') %>" alt="Image"></figure>
 				<h3>Nicolas Hodée</h3>
 				<span class="fh5co-position">CEO</span>
-				<p>C'est en voyant la malbouffe outre manche que Nicolas réalise qu'il n'y a pas de communauté entre consommateurs et producteurs</p>
+				<p>C'est en voyant la malbouffe outre-Manche que Nicolas réalise qu'il n'y a pas de communauté entre consommateurs et producteurs</p>
 				<ul class="social social-circle">
 					<li><a href="https://www.instagram.com/nicolas_hodee_photography/"><i class="fab fa-instagram"></i></a></li>
 					<li><a href="https://www.facebook.com/photos.nicolashodee"><i class="fab fa-facebook-f"></i></a></li>
@@ -175,7 +177,7 @@
 				<figure><img src="<%= asset_path('homepage/portraits/aurore.jpg') %>" alt="Image"></figure>
 				<h3>Aurore Carrière</h3>
 				<span class="fh5co-position">COO</span>
-				<p>Diplomée en management de la qualité, Aurore est en charge du sourcing des meilleurs producteurs de votre région et des opérations chez tous au marché!</p>
+				<p>Diplomée en management de la qualité, Aurore est en charge du sourcing des meilleurs producteurs de votre région et des opérations chez Tous au Marché !</p>
 				<ul class="social social-circle">
 					<li><a href="https://www.linkedin.com/in/aurore-carriere-230856131/"><i class="fab fa-linkedin-in"></i></a></li>
 					<li><a href="https://github.com/Titpioupiou"><i class="fas fa-code"></i></a></li>
@@ -197,7 +199,7 @@
 				<figure><img src="<%= asset_path('homepage/portraits/clement.jpg') %>" alt="Image"></figure>
 				<h3>Clément Facco</h3>
 				<span class="fh5co-position">CMO</span>
-				<p>Diplomé en marketing, Clément est en charge du green marketing chez Tous au marché </p>
+				<p>Diplomé en marketing, Clément est en charge du green marketing chez Tous au Marché </p>
 				<ul class="social social-circle">
 					<li><a href="https://www.linkedin.com/in/clementfacco/"><i class="fab fa-linkedin-in"></i></a></li>
 					<li><a href="https://github.com/cfacco1"><i class="fas fa-code"></i></a></li>

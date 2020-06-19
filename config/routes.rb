@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   
   resources :producers do
     put :favorite, on: :member
+    member do
+      delete :delete_image_attachment
+    end
   end
 
   resources :contacts, only: [:new, :create]
@@ -23,12 +26,12 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
     resources :images, only: [:create]
   end
-  
-  namespace :admin do
-    resources :producers, :comments, :users
-  end
 
   resources :users, only: [:show] do
     resources :avatar_users, only: [:create]
+  end
+
+  namespace :admin do
+    resources :producers, :comments, :users
   end
 end
