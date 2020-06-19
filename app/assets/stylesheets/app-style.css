@@ -316,14 +316,8 @@ list-group-item {
 
 /* Custom CSS for indexproducers */
 
-.box-testimony {
-    padding-left: 20px;
-}
-
 .box-testimony blockquote {
-    padding-left: 0;
-    border-left: none;
-    padding: 30px;
+    padding: 20px;
     background: #fff;
     background: seagreen; 
     font-size: 20px;
@@ -344,7 +338,7 @@ list-group-item {
 }
 
 .card-producer_index{
-    margin-bottom: 20px;
+    margin: 5px;
     background: #d4facb;
     border-radius: 7px;
     border-width: 25em;
@@ -354,20 +348,13 @@ list-group-item {
     box-shadow: 10px 11px 13px 1px rgba(0,0,0,0.3);
 }
 
+@media only screen and (min-width:574px){
 #map {
     height: 100vh;
     position: fixed;
 }
-
-/* Custom CSS for indexproducers no_sign_in */
-
-.index_producers_background {
-    height: 100vh;
-    background-size: cover;
-    display: flex;
 }
-
-.hello {
-    margin: auto;
-    text-align: center;
+@media only screen and (max-width:575px){
+#map {
+    height: 100vh;
 }
