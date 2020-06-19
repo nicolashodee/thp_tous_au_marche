@@ -2,7 +2,6 @@ class ProducersController < ApplicationController
   before_action :authenticate_producer!, only: [:edit]
   before_action :deny_to_visitors, only: [:show, :edit]
 
-
   def index
     @producer = Producer.all
     @icon_options = { :name => 'house',

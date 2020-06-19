@@ -77,7 +77,7 @@
                   <%= submit_tag "Ajouter", class:'btn btn-primary' %>
                 </div>
                 <div class="custom-file">
-                  <%= file_field_tag :avatar, id: 'avatar_user', class:'custom-file-input' %>
+                  <%= file_field_tag :avatar, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
                   <%= label_tag :avatar, "Choisissez...", class:'custom-file-label' %>
                 </div>
               </div>
@@ -192,7 +192,7 @@
                 <%= submit_tag "Ajouter", class:'btn btn-primary' %>
               </div>
               <div class="custom-file">
-                <%= file_field_tag :images, multiple: true, id: 'avatar_user', class:'custom-file-input' %>
+                <%= file_field_tag :images, multiple: true, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
                 <%= label_tag :images, "Choisissez...", class:'custom-file-label text-left' %>
               </div>
             </div>

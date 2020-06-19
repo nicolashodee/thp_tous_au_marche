@@ -9,4 +9,5 @@ class ImagesController < ApplicationController
       redirect_to(producer_path(@producer))
     end
   end
+
 end
