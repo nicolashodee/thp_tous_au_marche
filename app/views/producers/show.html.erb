@@ -1,4 +1,4 @@
-<section id="fh5co-home" data-section='profile' style="background-image: url(&quot; https://cdn.pixabay.com/photo/2019/06/16/19/10/wheat-4278543_1280.jpg &quot;); background-position: 0px 0px; height: 200px;" data-stellar-background-ratio="0.5">
+<section id="fh5co-home" data-section='profile-producer' style="background-image: url(&quot; https://cdn.pixabay.com/photo/2019/06/16/19/10/wheat-4278543_1280.jpg &quot;); background-position: 0px 0px; height: 200px;" data-stellar-background-ratio="0.5">
   <div class="gradient"></div>
   <div class="container">
     <div class="text-wrap" style="height: 180px;">
@@ -144,7 +144,7 @@
     </div>
 
     <!-- Pictures of products -->
-  <div class='container'>
+  <div class='container px-0'>
     <hr class='my-5 style-one'>
     <div class="pictures">
       <% if current_producer == @producer %>
@@ -174,12 +174,12 @@
       <% else %>
         <!-- If there is no picture -->
         <% if current_producer == @producer %>
-          <p class='box-avatar'>
-            Vous n'avez pas encore ajouté d'image à votre profil &nbsp;<i class="fa fa-smile-o fa-x3" aria-hidden="true"></i>
+          <p class='box-avatar text-center'>
+            Vous n'avez pas encore ajouté d'image à votre profil
           </p>
         <% else %>
-          <p class='box-avatar'>
-            Il n'y a pas encore d'image pour ce producteur &nbsp;<i class="fa fa-smile-o fa-x3" aria-hidden="true"></i>
+          <p class='box-avatar text-center'>
+            Il n'y a pas encore d'image pour ce producteur
           </p>
         <% end %>
       <% end %>
@@ -206,33 +206,45 @@
     <% if current_producer == @producer && current_producer.favorited_by.count > 0 %>
       <!-- MY FAVORITE USERS -->
       <div class="container">
-        <div class="col text-center to-animate mt-4">
-          <p class="text-center">
-            <strong>Les utilisateurs qui me suivent !</strong>
-          </p>
+        <div class="col text-center to-animate my-4">
+          <h1 class="text-center text-white">Les utilisateurs qui me suivent !</h1>
         </div>
         <!--TABLE-->
-        <div class="col fh5co-contact-info">
-          <table class="table text-light text-center table-hover table-borderless table-responsive">
-            <thead>
-              <tr class="border-bottom">
-                <th scope="col" style="width: 20%; overflow: hidden;">Nom</th>
-                <th scope="col" style="width: 20%; overflow: hidden;">Prénom</th>
-                <th scope="col" style="width: 20%; overflow: hidden;">Email</th>
-                <th scope="col" style="width: 10%; overflow: hidden;">Profil</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% current_producer.favorited_by.each do |user| %>
-                <tr>
-                  <td class="py-2"><%= link_to user.last_name, user_path(user.id) %></td>
-                  <td class="py-2"><%= link_to user.first_name, user_path(user.id) %></td>
-                  <td class="py-2"><%= mail_to user.email, user.email %> </a></td>
-                  <td class="py-2"><%= link_to "Voir", user_path(user.id) %></td>
+        <div class="d-flex justify-content-center">
+          <div class="col fh5co-contact-info" style='max-width: 750px;'>
+            <table class="table text-light text-center table-hover table-borderless table-responsive">
+              <thead>
+                <tr class="border-bottom">
+                  <th scope="col" style="width: 20%; overflow: hidden;">Nom</th>
+                  <th scope="col" style="width: 20%; overflow: hidden;">Prénom</th>
+                  <th scope="col" style="width: 20%; overflow: hidden;">Email</th>
+                  <th scope="col" style="width: 10%; overflow: hidden;">Profil</th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <% current_producer.favorited_by.each do |user| %>
+                  <tr>
+                    <td class="py-2">
+                      <% if user.last_name %>
+                        <%= user.last_name %>
+                      <% else %>
+                        <span>Non renseigné</span>
+                      <% end %>
+                    </td>
+                    <td class="py-2">
+                      <% if user.first_name %>
+                        <%= user.first_name %>
+                      <% else %>
+                        <span>Non renseigné</span>
+                      <% end %>
+                    </td>
+                    <td class="py-2"><%= mail_to user.email, user.email %> </a></td>
+                    <td class="py-2"><%= link_to "Voir", user_path(user.id) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     <% end %>
@@ -245,11 +257,11 @@
             <%= text_area "content", nil, class: 'form-control' ,style: 'width:100%; background-color: rgba(255, 255, 255, 1.0);' %>
             <%= hidden_field_tag :producer_id, @producer.id %>
           </div>
-          <div class='d-flex justify-content-between'>
-            <div class="form-group">
+          <div class='row'>
+            <div class="text-center form-group col-10 offset-1 col-md-4 offset-md-0">
               <%= submit_tag "Commenter", class: "btn btn-secondary btn-lg" %>
             </div>
-            <div id='rating' class='d-flex justify-content-between'>
+            <div id='rating' class='text-center col-10 offset-1 col-md-4 offset-md-4'>
               <div id='user-rating'>
                 <strong class='align-middle'>Noter : </strong>
                 <%= link_to ratings_path(rating: 1, producer_id: @producer.id), :method => :post do %><i title='Très mauvais' class='fa fa-star align-middle unchecked' id='u-one'>
@@ -282,22 +294,28 @@
             <div class="list-group">
               <% @producer.comments.sort{ |x,y| y <=> x }.each do |comment| %>
 
-                <div class="list-group-item list-group-item-action d-flex justify-content-start align-items-center border-secondary pl-0">
-                  <div class="col-2 col-md-1 mx-2" style="min-width: 90px;">
+                <div class="list-group-item list-group-item-action d-flex justify-content-start align-items-center border-secondary px-0">
+                  <div class="col-4 col-sm-2 col-md-2 col-lg-1" style="min-width: 85px;">
                     <% if comment.user.avatar_user.attached? %>
                       <%= link_to image_tag(comment.user.avatar_user, alt: 'avatar_user', class:'img-responsive rounded-circle', width: '70px', height: '70px'), comment.user.avatar_user  %>
                     <% else %>
                       <%= image_tag("no_avatar.png", alt: 'avatar_user', class:'img-responsive rounded-circle', width: '70px', height: '70px') %>
                     <% end %>
                   </div>
-                  <div class="col-10 col-md-11 d-flex flex-column">
-                    <div class="d-flex justify-content-between pr-4">
+                  <div class="col-8 col-sm-10 col-md-10 col-lg-11 d-flex flex-column">
+                    <div class="d-flex justify-content-between">
                       <h5 class="mb-1"><%= comment.user.first_name %>, <%= comment.user.last_name.upcase %></h5>
-                      <small class="text-muted">
-                        <% if comment.user == current_user %>
-                          <%= link_to "Supprimer", comment_path(comment.id, producer_id: @producer.id), :method => :delete, :class => 'btn btn-sm btn-danger mr-5' %>
-                        <% end %>
-                        <%= comment.created_at.in_time_zone("Paris").strftime("%d/%m/%y, à %H:%M") %>
+                      <small class="text-muted d-flex">
+                        <div class='align-self-center'>
+                          <% if comment.user == current_user %>
+                            <%= link_to comment_path(comment.id, producer_id: @producer.id), :method => :delete, :class => 'text-danger mr-3' do %>
+                              <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <% end %>
+                          <% end %>
+                        </div>
+                        <div >
+                          <%= comment.created_at.in_time_zone("Paris").strftime("%d/%m/%y, à %H:%M") %>
+                        </div>
                       </small>
                     </div>
                     <p class="text-break mb-1 pr-4"><%= comment.content %></p>
@@ -319,6 +337,11 @@
 <script>
   list = ["#u-one", "#u-two", "#u-three", "#u-four", "#u-five"]
   for (let id of list) {
+    $(`${id}`).focus(function() {
+      for (let i = 0; i <= list.indexOf(id); i++) {
+        $(`${list[i]}`).addClass("checked");
+      };
+    });
     $(`${id}`).mouseover(function() {
       for (let i = 0; i <= list.indexOf(id); i++) {
         $(`${list[i]}`).addClass("checked");
