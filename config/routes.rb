@@ -22,11 +22,6 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  resources :producers, only: [:show] do
-    resources :avatars, only: [:create]
-    resources :images, only: [:create]
-  end
-
   resources :users, only: [:show] do
     resources :avatar_users, only: [:create]
   end

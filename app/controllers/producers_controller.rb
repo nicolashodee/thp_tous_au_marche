@@ -37,7 +37,13 @@ class ProducersController < ApplicationController
 
   def update
     @producer = Producer.find(params[:id])
-    if @producer.update(producer_params)
+    avatar = params.dig(:producer, :avatar)
+    images = params.dig(:producer, :images)
+    first_name = params.dig(:producer, :first_name)
+    if avatar.nil? && images.nil? && first_name.nil?
+      flash[:error] = 'Vous ne pouvez pas télécharger une image vide'
+      redirect_to producer_path(current_producer.id)
+    elsif @producer.update(producer_params)
       flash[:notice] = 'Vos informations ont été mises à jour !'
       redirect_to producer_path(current_producer.id)
     else
@@ -67,7 +73,7 @@ class ProducersController < ApplicationController
 
     else
       # Type missing, nothing happens
-      flash[:error] = 'Nothing happened.'
+      flash[:error] = "Rien ne s\'est produit"
       redirect_to root_url
       
     end

@@ -71,14 +71,14 @@
         <% end %>
         <% if producer_signed_in? %>
           <div class='text-left mb-3'>
-            <%= form_tag producer_avatars_path(@producer), multipart: true do %>
+            <%= form_with model: @producer, local: true do |form| %>
               <div class='input-group'>
                 <div class="input-group-prepend">
-                  <%= submit_tag "Ajouter", class:'btn btn-primary' %>
+                  <%= form.submit "Ajouter", class:'btn btn-primary' %>
                 </div>
                 <div class="custom-file">
-                  <%= file_field_tag :avatar, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
-                  <%= label_tag :avatar, "Sélectionner une image...", class:'custom-file-label' %>
+                  <%= form.file_field :avatar, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
+                  <%= form.label :avatar, "Sélectionner une image...", class:'custom-file-label' %>
                 </div>
               </div>
             <% end %>
@@ -186,14 +186,14 @@
 
       <% if producer_signed_in? %>
         <div class='text-center mt-5'>
-          <%= form_tag producer_images_path(@producer), multipart: true do %>
+          <%= form_with model: @producer, local: true do |form| %>
             <div class='input-group'>
               <div class="input-group-prepend">
-                <%= submit_tag "Ajouter", class:'btn btn-primary' %>
+                <%= form.submit "Ajouter", class:'btn btn-primary' %>
               </div>
               <div class="custom-file">
-                <%= file_field_tag :images, multiple: true, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
-                <%= label_tag :images, "Sélectionner une image...", class:'custom-file-label text-left' %>
+                <%= form.file_field :images, multiple: true, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
+                <%= form.label :images, "Sélectionner une image...", class:'custom-file-label text-left' %>
               </div>
             </div>
           <% end %>
