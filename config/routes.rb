@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'contacts/new'
   root 'welcome#home'
   devise_for :users
   resources :users, :path => "mon_profil"
@@ -18,9 +17,6 @@ Rails.application.routes.draw do
 
   resources :comments
   resources :ratings
-  get '/contact', to: 'static_pages#contact'
-
-  root 'welcome#home'
 
   namespace :admin do
     resources :producers, :comments, :users
