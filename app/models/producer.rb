@@ -19,11 +19,19 @@ class Producer < ApplicationRecord
   geocoded_by :geocode_address
   after_validation :geocode
 
+  validates :phone_number, if: :phone_number_nil?,
+  length: { is: 10 },
+  format: { with: /\d[0-9]\)*\z/ , message: "doit être au format : 0601020304 (pas d'espace)"}
+
   def geocode_address
     [address,city_name, zip_code].compact.join(', ')
   end
   
   private
+
+  def phone_number_nil?
+    phone_number != nil
+  end
 
   ### Sending an email when a producer is created
   # after_create :welcome_send

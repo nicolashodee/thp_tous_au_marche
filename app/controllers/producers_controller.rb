@@ -43,9 +43,11 @@ class ProducersController < ApplicationController
     if avatar.nil? && images.nil? && first_name.nil?
       flash[:error] = 'Vous ne pouvez pas télécharger une image vide'
       redirect_to producer_path(current_producer.id)
+
     elsif @producer.update(producer_params)
       flash[:notice] = 'Vos informations ont été mises à jour !'
       redirect_to producer_path(current_producer.id)
+
     else
       flash.now[:error] = @producer.errors.full_messages.to_sentence
       render :edit
@@ -58,7 +60,7 @@ class ProducersController < ApplicationController
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @producer
-      flash[:success] = "Vous avez ajouté #{@producer.first_name} #{@producer.last_name} à votre liste de producteurs favoris."
+      flash[:success] = "Vous avez ajouté #{@producer.first_name} #{@producer.last_name} à votre liste de producteurs favoris"
       redirect_to producer_path
       
     elsif type == "unfavorite"
@@ -83,6 +85,7 @@ class ProducersController < ApplicationController
   def delete_image_attachment
     @image = ActiveStorage::Attachment.find(params[:id])
     @image.purge
+    flash[:notice] = 'Vous avez supprimé une image de votre profil'
     redirect_to(producer_path(current_producer))
   end
 

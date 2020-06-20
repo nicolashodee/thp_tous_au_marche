@@ -40,14 +40,14 @@
         <% end %>
         <% if user_signed_in? %>
           <div class='text-left mb-3'>
-            <%= form_tag user_avatar_users_path(@user), multipart: true do %>
+          <%= form_with model: @user, local: true do |form| %>
               <div class='input-group'>
                 <div class="input-group-prepend">
-                  <%= submit_tag "Ajouter", class:'btn btn-primary' %>
+                  <%= form.submit "Ajouter", class:'btn btn-primary' %>
                 </div>
                 <div class="custom-file">
-                  <%= file_field_tag :avatar_user, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
-                  <%= label_tag :avatar_user, "Sélectionner une image...", class:'custom-file-label' %>
+                  <%= form.file_field :avatar_user, id: 'avatar_user', accept: 'image/png,image/jpeg,image/gif', class:'custom-file-input' %>
+                  <%= form.label :avatar_user, "Sélectionner une image...", class:'custom-file-label' %>
                 </div>
               </div>
             <% end %>

@@ -22,10 +22,6 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  resources :users, only: [:show] do
-    resources :avatar_users, only: [:create]
-  end
-
   namespace :admin do
     resources :producers, :comments, :users
   end
