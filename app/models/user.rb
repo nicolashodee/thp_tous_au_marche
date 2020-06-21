@@ -16,11 +16,20 @@ class User < ApplicationRecord
     length: { is: 10 },
     format: { with: /\d[0-9]\)*\z/ , message: "doit être au format : 0601020304 (pas d'espace)"}
 
+  validates :first_name, :last_name, if: :names_nil?,
+    length: { minimum: 1 }
+
   private
 
   def phone_number_nil?
     phone_number != nil
   end
+
+  def names_nil?
+    first_name != nil
+    last_name != nil
+  end
+
 
   ### Sending an email when a user is created
   after_create :welcome_send

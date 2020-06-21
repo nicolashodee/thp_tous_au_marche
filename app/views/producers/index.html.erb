@@ -2,7 +2,7 @@
     <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
       <div class="row">
 
-        <% @producer.each do |producer| %>
+        <% @producer.sort{ |x,y| y <=> x }.each do |producer| %>
           <div class="col-lg-6 col-md-6"> 
             <div class="box-testimony "> 
               <div class= card-producer_index>
@@ -44,7 +44,13 @@
                       <%= image_tag("no_avatar.png", alt: 'avatar', class:'user_picture') %>
                     <% end %>
                   </figure>
-                  <p><%= producer.first_name %> <%= producer.last_name %><br>
+                  <p>
+                    <% if producer.first_name.nil? || producer.last_name.nil? %>
+                      <em>Non enregistré</em>
+                    <% else %>
+                      <%= producer.first_name.capitalize %> <%= producer.last_name.upcase %>
+                    <% end %>
+                    <br>
                   <span class="subtext"><%= producer.email %></a> </span></p>
                 </div>
               </div>
@@ -67,7 +73,6 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
- 
    <% @producer.each do |producer| %>
     <% if producer.latitude != nil && producer.longitude != nil %>
 
@@ -75,7 +80,6 @@
           .bindPopup('<%= producer.city_name %> <%= producer.address %><br /> <%= producer.description %>')
           .openPopup();
           
-
     <% end %>
   <% end %>
 

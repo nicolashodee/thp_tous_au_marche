@@ -9,14 +9,14 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: @producer)
     else
       flash.now[:error] = @comment.errors.full_messages.to_sentence
-      render 'show'
+      render :show
     end
   end
 
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
-    flash[:notice] = "Le commentaire a été supprimé."
+    flash[:notice] = "Le commentaire a été supprimé"
     redirect_back(fallback_location: @producer)
   end
 
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
   def check_name
     if !current_user.first_name || !current_user.first_name || current_user.first_name.length <= 1 || current_user.last_name.length <= 1
-      flash[:error] = "Veuillez remplir votre prénom et nom avant de poster un commentaire."
+      flash[:error] = "Veuillez remplir vos prénom et nom avant de poster un commentaire"
       redirect_to proc { edit_user_url(current_user) }
     end
   end

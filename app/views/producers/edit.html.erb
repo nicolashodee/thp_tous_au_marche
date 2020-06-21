@@ -10,7 +10,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="email" style='width: 41px'><i class="fas fa-address-card"></i></span>
           </div>
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , placeholder:"Prénom", class:"form-control"%>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , placeholder:"Prénom", class:"form-control", style: 'text-transform: capitalize;'%>
         </div>
       </div>
 
@@ -20,7 +20,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="email" style='width: 41px'><i class="far fa-address-card"></i></span>
           </div>
-          <%= f.text_field :last_name, autocomplete: "last_name", placeholder:"Nom de famille", class:"form-control" %>
+          <%= f.text_field :last_name, autocomplete: "last_name", placeholder:"NOM DE FAMILLE", class:"form-control", style: 'text-transform: uppercase;' %>
         </div>
       </div>
 

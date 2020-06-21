@@ -64,7 +64,7 @@
                 <% if @user.first_name.nil? || @user.last_name.nil? %>
                   <em>Non enregistré</em>
                 <% else %>
-                  <%= @user.first_name %> <%= @user.last_name %>
+                  <%= @user.first_name.capitalize %> <%= @user.last_name.upcase %>
                 <% end %>
               </td>
             </tr>

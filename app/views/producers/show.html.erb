@@ -5,7 +5,12 @@
       <div class="text-inner">
         <div class="row text-center">
           <div class="col-md-8 col-md-offset-2">
-            <h1 class="to-animate"><%= @producer.first_name %> <%= @producer.last_name %></h1>
+            <h1 class="to-animate">
+              <% if @producer.first_name.nil? || @producer.last_name.nil? %>
+                <% else %>
+                  <%= @producer.first_name.capitalize %> <%= @producer.last_name.upcase %>
+                <% end %>
+            </h1>
           </div>
         </div>
       </div>
@@ -226,14 +231,14 @@
                   <tr>
                     <td class="py-2">
                       <% if user.last_name %>
-                        <%= user.last_name %>
+                        <%= user.last_name.upcase %>
                       <% else %>
                         <span>Non renseigné</span>
                       <% end %>
                     </td>
                     <td class="py-2">
                       <% if user.first_name %>
-                        <%= user.first_name %>
+                        <%= user.first_name.capitalize %>
                       <% else %>
                         <span>Non renseigné</span>
                       <% end %>
