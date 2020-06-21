@@ -4,7 +4,7 @@
     <!-- <%= link_to "Tous au marché !", root_path, :class => "navbar-brand bg-transparent border-0" %> -->
     <%= link_to root_path , { :class => 'navbar-brand bg-transparent border-0' } do %>
       <div>
-        <span style="color: green;">tous</span><span style="color: #8BC34A;" class="">au</span><span style="color: #ff9900;" class="">marché<span style="color: #CCCCCC;" class="">.fr</span>
+        <span style="color: green;">tous</span><span style="color: #8BC34A;" class="">au</span><span style="color: #ff9900;" class="">marché</span>
       </div>
     <% end %>
     <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle border-0 mr-2" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,12 +19,12 @@
           <% end %>
         </li>
         <li class='nav-item'>
-          <%= link_to producers_path(@producer) , { :'data-nav-section' => 'map', :class => 'nav-link external' } do %>
+          <%= link_to producers_path(@producer), { :'data-nav-section' => 'map', :class => 'nav-link external' } do %>
             <span>Carte</span>
           <% end %>
         </li>
         <li class='nav-item'>
-          <%= link_to new_contact_path , { :'data-nav-section' => 'contact', :class => 'nav-link external' } do %>
+          <%= link_to new_contact_path, { :'data-nav-section' => 'contact', :class => 'nav-link external' } do %>
             <span>Contact</span>
           <% end %>
         </li>
@@ -45,6 +45,20 @@
           </li>
           <li class='nav-item'>
             <%= link_to "Déconnexion", destroy_producer_session_path, { method: :delete, :class => 'nav-link external' } %>
+          </li>
+        <% else %>
+          <li class="nav-item dropdown">
+            <a class="nav-link external nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Connexion/Inscription
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <%= link_to "Inscription Utilisateur", new_user_registration_path, class:"dropdown-item nav-link external"%>
+              <%= link_to "Connexion Utilisateur", new_user_session_path, class:"dropdown-item nav-link external"%>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Inscription Producteur", new_producer_registration_path, class:"dropdown-item nav-link external"%>
+              <%= link_to "Connexion Producteur", new_producer_session_path, class:"dropdown-item nav-link external"%>
+
+            </div>
           </li>
         <% end %>
       </ul>
