@@ -5,9 +5,9 @@
 
           <% @producer.sort{ |x,y| y <=> x }.each do |producer| %>
             <div class="col-lg-6 col-md-6"> 
-              <div class="box-testimony "> 
-                <div class= card-producer_index>
-                  <blockquote class="fadeInDown animated text-white">
+              <div class="box-testimony"> 
+                <div class= "card-producer_index">
+                  <blockquote class="fadeInDown animated text-white mb-1">
 
                     <%if producer.city_name.nil? %>
                       <i>Pas d'adresse enregistrée pour le moment</i>
@@ -37,7 +37,7 @@
 
                   </blockquote>
 
-                  <div class="author to-animate fadeInUp animated mx-2">
+                  <div class="fadeInUp animated mx-2 pb-1">
                     <figure>
                       <% if producer.avatar.attached? %>
                         <%= link_to image_tag(producer.avatar, alt: 'avatar', class:'user_picture'), producer.avatar  %>

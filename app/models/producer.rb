@@ -47,7 +47,6 @@ class Producer < ApplicationRecord
   end
 
   ### sending an email when a producer is deleted
-
   before_destroy :goodbye_send
   def goodbye_send
     ProducerMailer.goodbye_email(self).deliver_now
