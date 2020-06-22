@@ -1,86 +1,88 @@
-<div class= "row "> 
-    <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
-      <div class="row">
+<section data-section="map">
+  <div class= "row "> 
+      <div class= "col-lg-8 col-md-6 col-sm-6 col-xs-6 ">  
+        <div class="row">
 
-        <% @producer.sort{ |x,y| y <=> x }.each do |producer| %>
-          <div class="col-lg-6 col-md-6"> 
-            <div class="box-testimony "> 
-              <div class= card-producer_index>
-                <blockquote class="to-animate-2 fadeInDown animated text-white">
+          <% @producer.sort{ |x,y| y <=> x }.each do |producer| %>
+            <div class="col-lg-6 col-md-6"> 
+              <div class="box-testimony"> 
+                <div class= "card-producer_index">
+                  <blockquote class="fadeInDown animated text-white mb-1">
 
-                  <%if producer.city_name.nil? %>
-                    <i>Pas d'adresse enregistrée pour le moment</i>
-                    <%else%>
-                    <p><strong>Localisation:</strong> <%= producer.city_name %> <%= producer.address %></p>    
+                    <%if producer.city_name.nil? %>
+                      <i>Pas d'adresse enregistrée pour le moment</i>
+                      <%else%>
+                      <p><strong>Localisation:</strong> <%= producer.city_name %> <%= producer.address %></p>    
 
-                  <%end%>
+                    <%end%>
 
-                  <p><strong>Description: </strong><%= producer.description %></p>
-                    <div class="stars">
-                      <span>Note : </span>
-                      <% if producer.rating == nil %>
-                        <% 5.times do %>
-                          <i class='fa fa-star align-middle'></i>
+                    <p><strong>Description: </strong><%= producer.description %></p>
+                      <div class="stars">
+                        <span>Note : </span>
+                        <% if producer.rating == nil %>
+                          <% 5.times do %>
+                            <i class='fa fa-star align-middle'></i>
+                          <% end %>
+                        <% else %>
+                          <% number_star = producer.rating.truncate %>
+                          <% number_star.times do %>
+                            <i class='fa fa-star align-middle checked'></i>
+                          <% end %>
+                          <% (5 - number_star).times do %>
+                            <i class='fa fa-star align-middle'></i>
+                          <% end %>
                         <% end %>
+                      </div>
+                      <%= link_to "Découvrir le producteur", producer_path(producer.id), class: 'btn btn-sm btn-primary mb-2 my-1' %>
+
+                  </blockquote>
+
+                  <div class="fadeInUp animated mx-2 pb-1">
+                    <figure>
+                      <% if producer.avatar.attached? %>
+                        <%= link_to image_tag(producer.avatar, alt: 'avatar', class:'user_picture'), producer.avatar  %>
                       <% else %>
-                        <% number_star = producer.rating.truncate %>
-                        <% number_star.times do %>
-                          <i class='fa fa-star align-middle checked'></i>
-                        <% end %>
-                        <% (5 - number_star).times do %>
-                          <i class='fa fa-star align-middle'></i>
-                        <% end %>
+                        <%= image_tag("no_avatar.png", alt: 'avatar', class:'user_picture') %>
                       <% end %>
-                    </div>
-                     <%= link_to "Découvrir le producteur", producer_path(producer.id), class: 'btn btn-sm btn-primary mb-2 my-1' %>
-
-                </blockquote>
-
-                <div class="author to-animate fadeInUp animated mx-2">
-                  <figure>
-                     <% if producer.avatar.attached? %>
-                      <%= link_to image_tag(producer.avatar, alt: 'avatar', class:'user_picture'), producer.avatar  %>
-                    <% else %>
-                      <%= image_tag("no_avatar.png", alt: 'avatar', class:'user_picture') %>
-                    <% end %>
-                  </figure>
-                  <p>
-                    <% if producer.first_name.nil? || producer.last_name.nil? %>
-                      <em>Non enregistré</em>
-                    <% else %>
-                      <%= producer.first_name.capitalize %> <%= producer.last_name.upcase %>
-                    <% end %>
-                    <br>
-                  <span class="subtext"><%= producer.email %></a> </span></p>
+                    </figure>
+                    <p>
+                      <% if producer.first_name.nil? || producer.last_name.nil? %>
+                        <em>Non enregistré</em>
+                      <% else %>
+                        <%= producer.first_name.capitalize %> <%= producer.last_name.upcase %>
+                      <% end %>
+                      <br>
+                    <span class="subtext"><%= producer.email %></a> </span></p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
- 
-    <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
-     <div class ="map" id="map"> 
-    </div> >
-  </div>  
+  
+      <div class= "container_card col-lg-4 col-md-6 col-sm-6 col-xs-6">  
+      <div class ="map" id="map"> 
+      </div> >
+    </div>  
 
-<script>
+  <script>
 
-  var map = L.map('map').setView([ 48.0667,-0.7667], 9);
+    var map = L.map('map').setView([ 48.0667,-0.7667], 9);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-   <% @producer.each do |producer| %>
-    <% if producer.latitude != nil && producer.longitude != nil %>
+    <% @producer.each do |producer| %>
+      <% if producer.latitude != nil && producer.longitude != nil %>
 
-      L.marker([<%= producer.latitude %>, <%= producer.longitude %>]).addTo(map)
-          .bindPopup('<%= producer.city_name %> <%= producer.address %><br /> <%= producer.description %>')
-          .openPopup();
-          
+        L.marker([<%= producer.latitude %>, <%= producer.longitude %>]).addTo(map)
+            .bindPopup('<%= producer.city_name %> <%= producer.address %><br /> <%= producer.description %>')
+            .openPopup();
+            
+      <% end %>
     <% end %>
-  <% end %>
 
-</script>
+  </script>
+</section>
