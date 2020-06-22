@@ -15,10 +15,6 @@ _Made with ❤️ by :_
 [<img src="http://pngimg.com/uploads/github/github_PNG40.png" width="25" >](https://github.com/JordanT2310)<br>
 - Aurore CARRIERE → 
 [<img src="http://pngimg.com/uploads/github/github_PNG40.png" width="25" >](https://github.com/Titpioupiou)<br>
-- Clement FACCO → 
-[<img src="http://pngimg.com/uploads/github/github_PNG40.png" width="25" >](https://github.com/cfacco1)<br>
-- Marvin PIERRAT → 
-[<img src="http://pngimg.com/uploads/github/github_PNG40.png" width="25" >](https://github.com/Homarv)<br>
 
 ## 📅  Our Manifesto
 
