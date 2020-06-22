@@ -1,4 +1,4 @@
-<section id="fh5co-home" data-section="contact" style="background-image: url(&quot; https://cdn.pixabay.com/photo/2019/06/16/19/10/wheat-4278543_1280.jpg &quot;); background-position: 0px 0px; height: 200px" data-stellar-background-ratio="0.5">
+<section id="fh5co-home" data-section="connection" style="background-image: url(&quot; https://cdn.pixabay.com/photo/2019/06/16/19/10/wheat-4278543_1280.jpg &quot;); background-position: 0px 0px; height: 200px" data-stellar-background-ratio="0.5">
   <div class="gradient"></div>
   <div class="container">
     <div class="text-wrap" style="height: 180px">
@@ -14,9 +14,9 @@
   <div class="slant"></div>
 </section>
 
-<section id="fh5co-connection" data-section="connection" class='pt-5'>
+<section id="fh5co-testimonials" data-section="connection" class='pt-5'>
   <% if user_signed_in? || producer_signed_in? %>
-    <div class="to-animate fadeInUp animated text-center">
+    <div class="to-animate text-center">
       <h1 class='display-4 mb-5'>
         <i class="fas fa-exclamation-triangle" style="color: red;"></i>
         <br>
@@ -26,7 +26,7 @@
     </div>
   <% else %>
     
-    <div class="col-8 offset-2 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4 to-animate fadeInUp animated text-center">
+    <div class="col-8 offset-2 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4 to-animate text-center">
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
