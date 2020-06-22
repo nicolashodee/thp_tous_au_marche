@@ -10,7 +10,6 @@ class Producer < ApplicationRecord
   has_many_attached :images
   has_many :comments
   
-  # returns the users that favorite a producer
   belongs_to :producer, optional: true
   has_many :favorite_producers  
   has_many :favorited_by, through: :favorite_producers, source: :user  
@@ -42,21 +41,21 @@ class Producer < ApplicationRecord
   end
 
   ### Sending an email when a producer is created
-  # after_create :welcome_send
-  # def welcome_send
-  #   ProducerMailer.welcome_email(self).deliver_now
-  # end
+  after_create :welcome_send
+  def welcome_send
+    ProducerMailer.welcome_email(self).deliver_now
+  end
 
   ### sending an email when a producer is deleted
 
-  # before_destroy :goodbye_send
-  # def goodbye_send
-  #   ProducerMailer.goodbye_email(self).deliver_now
-  # end
+  before_destroy :goodbye_send
+  def goodbye_send
+    ProducerMailer.goodbye_email(self).deliver_now
+  end
 
-  # before_destroy :goodbye_send
-  # def goodbye_send
-  #   ProducerMailer.goodbye_email(self).deliver_now
-  # end
+  before_destroy :goodbye_send
+  def goodbye_send
+    ProducerMailer.goodbye_email(self).deliver_now
+  end
 
 end
