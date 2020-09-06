@@ -61,8 +61,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'faker' 
-gem 'devise' 
+gem 'faker'
+gem 'devise'
 gem 'table_print'
 gem 'better_errors'
 gem 'dotenv-rails'
@@ -74,5 +74,5 @@ gem 'geocoder', '~> 1.6', '>= 1.6.3'
 gem 'mail_form'
 gem 'letter_opener'
 gem 'sendgrid-ruby'
-gem "aws-sdk-s3", require: false
+# gem "aws-sdk-s3", require: false
 gem 'devise-i18n'
