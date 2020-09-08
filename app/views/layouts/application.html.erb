@@ -26,15 +26,14 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
-    
+
   </head>
-  
+
   <body>
-    <!-- AdressComplete -->
     <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=<%= ENV['ADDRESS_COMPLETE_KEY'] %>" />
     <script type="text/javascript" src="https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js?key=<%= ENV['ADDRESS_COMPLETE_KEY'] %>"></script>
 
-    <div class="main-container mx-0">
+    <div class="main-container">
       <%= render 'layouts/navbar' %>
       <%= render 'layouts/flash' %>
       <%= yield %>

@@ -1,71 +1,83 @@
-/* Main tags */
+/* --------------- MAIN TAGS --------------- */
 
 html,
 body {
-    height: 100%;
-    position: relative;
+  height: 100%;
+  position: relative;
 }
 
 .main-container {
-    min-height: 100vh;
-    overflow: hidden;
-    display: block;
-    position: relative;
-    padding: 55px 0px 190px 0px;
-    margin: 0 auto;
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding: 55px 0px 190px 0px;
+  margin: 0 auto;
 }
 
-.banner {
-    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
-    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
-    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
-}
+/* .banner {
+  -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+  -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+  box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.73);
+} */
 
 #navbar {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 @media screen and (max-width: 992px) {
-    #navbar {
-        border-top: 1px solid #A4D792;
-        justify-content: flex-start;
-    }
-    #navbar ul {
-        margin: 8px 0 8px 8px;
-    }
+  #navbar {
+    border-top: 1px solid #A4D792;
+    justify-content: flex-start;
+  }
+  #navbar ul {
+    margin: 8px 0 8px 8px;
+  }
+  .dropdown-menu {
+    border-radius: 0;
+    border: none;
+    border-left: solid 2px #A4D792;
+  }
 }
 
 #footer {
-    position: absolute;
-    bottom: 0px;
-    padding: 20px 20px 0 20px;
+  position: absolute;
+  bottom: 0px;
+  padding: 20px 20px 0 20px;
 }
 
 footer .hr {
-    align-items: center;
-    display: flex;
-    text-align: center;
-    position: relative;
-    top: -10px;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  position: relative;
+  top: -10px;
 }
 
 footer .hr::before,
 footer .hr::after {
-    border-top: 1px #A4D792 solid;
-    content: "";
-    flex: 1;
-    margin: 0 .5em;
+  border-top: 1px #A4D792 solid;
+  content: "";
+  flex: 1;
+  margin: 0 .5em;
 }
 
 footer a {
-    max-height: 40px;
+  max-height: 40px;
 }
 
 footer a .fa-arrow-up {
-    position: relative;
-    top: -10px;
+  position: relative;
+  top: -10px;
 }
 
+.green {
+  color: #A4D792;
+}
+
+.orange {
+  color: #ff9900;
+}
 
 /* Custom CSS for Show pages */
 
@@ -260,10 +272,19 @@ list-group-item {
 }
 
 
-/* Custom CSS for the HOME PAGE */
+/* --------------- Custom CSS for the HOME PAGE --------------- */
 
-.hidden {
-    display: none;
+
+.home-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-size: cover;
+  opacity: 0.8;
+  filter: brightness(75%);
 }
 
 .btn-jumbotron {
@@ -276,41 +297,21 @@ list-group-item {
     border: 2px solid #A4D792 !important;
 }
 
-.buttons-intro-homepage {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+.app-card {
+  top: 0;
+  width: 350px;
+  transition: box-shadow 0.3s, top 0.3s;
+  margin: 48px 4px;
+  border-radius: 3%;
 }
 
-.test-links {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
+.app-card:hover {
+  top: -20px;
+  box-shadow: 0 0.25rem 1.5rem 0 rgba(31, 45, 65, .55);
 }
 
-#fh5co-home .gradient {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    opacity: 0.8;
-}
-
-.portraits {
-    display: flex;
-    justify-content: space-evenly;
-    align-content: space-between;
-    height: 100%;
-    margin-top: 100px;
-    flex-wrap: nowrap;
-}
-
-.counter-homepage {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+.app-card-text {
+  min-height: 226px;
 }
 
 /* Custom CSS for indexproducers */
@@ -324,7 +325,7 @@ list-group-item {
     border-left: none;
     padding: 30px;
     background: #fff;
-    background: seagreen; 
+    background: seagreen;
     font-size: 20px;
     font-weight: 300;
     position: relative;
