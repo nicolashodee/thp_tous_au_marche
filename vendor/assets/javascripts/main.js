@@ -2,8 +2,6 @@
 
 	'use strict';
 
-
-
 	// iPad and iPod detection
 	var isiPad = function(){
 		return (navigator.platform.indexOf("iPad") != -1);
@@ -27,7 +25,6 @@
 	var burgerMenu = function() {
 		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
 			event.preventDefault();
-
 			if ( $('#navbar').is(':visible') ) {
 				$(this).removeClass('active');
 			} else {
@@ -35,7 +32,6 @@
 			}
 		});
 	};
-
 
 	var goToTop = function() {
 		$('.js-gotop').on('click', function(event){
@@ -98,7 +94,7 @@
 
 
 
-	/* --------------- BELOW PART IN COMMENT --------------- */
+	/* --------------- PART BELOW IN COMMENT --------------- */
 
 	/* For now, we use a fixed navbar in any situation. If we change our mind, the code below has to be put in again */
 
@@ -125,7 +121,7 @@
 	// 	});
 	// };
 
-	/* --------------- ABOVE PART IN COMMENT --------------- */
+	/* --------------- PART ABOVE IN COMMENT --------------- */
 
 	// Animations
 	// Home
@@ -159,9 +155,9 @@
 							var el = $(this);
 							setTimeout ( function () {
 								el.addClass('fadeInRight animated');
-							},  k * 200, 'easeInOutExpo' );
+							},  k * 100, 'easeInOutExpo' );
 						});
-					}, 1000);
+					}, 100);
 					$(this.element).addClass('animated');
 				}
 			} , { offset: '80%' } );
@@ -236,7 +232,7 @@
 							var el = $(this);
 							setTimeout ( function () {
 								el.addClass('bounceIn animated');
-							},  k * 200, 'easeInOutExpo' );
+							},  k * 150, 'easeInOutExpo' );
 						});
 					}, sec);
 					$(this.element).addClass('animated');
@@ -264,102 +260,82 @@
 		}
 	};
 
-	var countersAnimate = function() {
-		var counters = $('#fh5co-counters');
-		if ( counters.length > 0 ) {
+	/* --------------- PART BELOW IN COMMENT --------------- */
 
-			counters.waypoint( function( direction ) {
+	/* For now, we don't a counter. If we change our mind, the code below has to be put in again */
 
-				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+	// var countersAnimate = function() {
+	// 	var counters = $('#fh5co-counters');
+	// 	if ( counters.length > 0 ) {
+	//
+	// 		counters.waypoint( function( direction ) {
+	//
+	// 			if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+	//
+	// 				var sec = counters.find('.to-animate').length,
+	// 				sec = parseInt((sec * 200) + 400);
+	//
+	// 				setTimeout(function() {
+	// 					counters.find('.to-animate').each(function( k ) {
+	// 						var el = $(this);
+	//
+	// 						setTimeout ( function () {
+	// 							el.addClass('fadeInUp animated');
+	// 						},  k * 200, 'easeInOutExpo' );
+	//
+	// 					});
+	// 				}, 200);
+	//
+	// 				setTimeout(function() {
+	// 					counters.find('.js-counter').countTo({
+	// 						formatter: function (value, options) {
+	// 							return value.toFixed(options.decimals);
+	// 						},
+	// 					});
+	// 				}, 400);
+	//
+	// 				setTimeout(function() {
+	// 					counters.find('.to-animate-2').each(function( k ) {
+	// 						var el = $(this);
+	// 						setTimeout ( function () {
+	// 							el.addClass('bounceIn animated');
+	// 						},  k * 200, 'easeInOutExpo' );
+	// 					});
+	// 				}, sec);
+	// 				$(this.element).addClass('animated');
+	// 			}
+	// 		} , { offset: '80%' } );
+	// 	}
+	// };
 
-					var sec = counters.find('.to-animate').length,
-					sec = parseInt((sec * 200) + 400);
-
-					setTimeout(function() {
-						counters.find('.to-animate').each(function( k ) {
-							var el = $(this);
-
-							setTimeout ( function () {
-								el.addClass('fadeInUp animated');
-							},  k * 200, 'easeInOutExpo' );
-
-						});
-					}, 200);
-
-					setTimeout(function() {
-						counters.find('.js-counter').countTo({
-							formatter: function (value, options) {
-								return value.toFixed(options.decimals);
-							},
-						});
-					}, 400);
-
-					setTimeout(function() {
-						counters.find('.to-animate-2').each(function( k ) {
-							var el = $(this);
-
-							setTimeout ( function () {
-								el.addClass('bounceIn animated');
-							},  k * 200, 'easeInOutExpo' );
-
-						});
-					}, sec);
-
-
-
-
-
-					$(this.element).addClass('animated');
-
-				}
-			} , { offset: '80%' } );
-
-		}
-	};
+	/* --------------- PART ABOVE IN COMMENT --------------- */
 
 
 	var contactAnimate = function() {
 		var contact = $('#fh5co-contact');
 		if ( contact.length > 0 ) {
-
 			contact.waypoint( function( direction ) {
-
 				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-
 					setTimeout(function() {
 						contact.find('.to-animate').each(function( k ) {
 							var el = $(this);
-
 							setTimeout ( function () {
 								el.addClass('fadeInUp animated');
 							},  k * 200, 'easeInOutExpo' );
-
 						});
 					}, 200);
-
 					$(this.element).addClass('animated');
-
 				}
 			} , { offset: '80%' } );
-
 		}
 	};
-
-
-
-
-
-
-
 
 
 	// Document on load.
 	$(function(){
 
 		parallax();
-
 		burgerMenu();
-
 		clickMenu();
 
 		/* --------------- BELOW PART IN COMMENT --------------- */
@@ -382,11 +358,16 @@
 		testimonialAnimate();
 		servicesAnimate();
 		aboutAnimate();
-		countersAnimate();
+
+		/* --------------- PART BELOW IN COMMENT --------------- */
+
+		/* For now, we use a fixed navbar in any situation. If we change our mind, the code below has to be put in again */
+
+		// countersAnimate();
+
+		/* --------------- PART ABOVE IN COMMENT --------------- */
+
 		contactAnimate();
 
-
 	});
-
-
 }());
