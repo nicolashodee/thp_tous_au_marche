@@ -93,9 +93,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #### Mailer ####
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => 'https://tous-au-marche.herokuapp.com/' }
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.default_url_options = { :host => 'https://tous-au-marche.herokuapp.com/' }
+  # config.action_mailer.delivery_method = :smtp
   #### end of Mailer ####
 
 end

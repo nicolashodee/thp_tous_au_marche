@@ -24,10 +24,9 @@ class ContactsController < ApplicationController
 
   def set_subject_options
     @subject_options = [
-    "Demande de renseignements", 
-    "Support technique", 
-    "Problème avec votre compte", 
+    "Demande de renseignements",
+    "Support technique",
+    "Problème avec votre compte",
     "Autres"]
   end
 end
-
