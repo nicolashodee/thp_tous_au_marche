@@ -1,6 +1,6 @@
 <h1 align="center"><img src="https://image.flaticon.com/icons/png/512/1868/1868787.png" width="50" style="font-family: 'Oswald', sans-serif;" > TOUS AU MARCHE <img src="https://image.flaticon.com/icons/png/512/1868/1868787.png" width="50" ></h1>
 
-→ **This project is an social media website running with Ruby on Rails**<br>
+→ **This project is a social media website running with Ruby on Rails**<br>
 
 → Link: https://tous-au-marche.herokuapp.com/ <br>
 
